@@ -1,0 +1,12 @@
+#folders
+/.gradle/*
+/build/*
+/eclipse/*
+/gradle/*
+/src/main/java/test/*
+
+#files
+/gradlew.bat
+/build.gradle
+/AnomalyMod.iml
+/gradlew
