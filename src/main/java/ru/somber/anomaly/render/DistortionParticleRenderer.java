@@ -148,10 +148,10 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
     private void prepareDistortionShaderProgramUniform() {
         int uniformLocation;
 
-        uniformLocation = GL20.glGetUniformLocation(shaderProgram.getShaderProgramID(), "colorTexture");
+        uniformLocation = GL20.glGetUniformLocation(assembleDistortionShaderProgram.getShaderProgramID(), "colorTexture");
         GL20.glUniform1i(uniformLocation, 0);
 
-        uniformLocation = GL20.glGetUniformLocation(shaderProgram.getShaderProgramID(), "distortionTexture");
+        uniformLocation = GL20.glGetUniformLocation(assembleDistortionShaderProgram.getShaderProgramID(), "distortionTexture");
         GL20.glUniform1i(uniformLocation, 1);
     }
 
