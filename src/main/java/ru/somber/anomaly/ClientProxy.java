@@ -5,6 +5,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ru.somber.anomaly.render.DistortionParticleRenderer;
 import ru.somber.particlesystem.container.IParticleContainer;
 import ru.somber.particlesystem.container.ListParticleContainer;
 import ru.somber.particlesystem.manager.IParticleManager;
@@ -37,7 +38,7 @@ public class ClientProxy extends CommonProxy {
 
 
         IParticleContainer distortionParticleContainer = new ListParticleContainer();
-        IParticleRenderer distortionParticleRenderer = new GeometryShaderParticleRenderer();
+        IParticleRenderer distortionParticleRenderer = new DistortionParticleRenderer();
         distortionParticleManager = new SimpleParticleManager();
         distortionParticleManager.setParticleContainer(distortionParticleContainer);
         distortionParticleManager.setParticleRenderer(distortionParticleRenderer);

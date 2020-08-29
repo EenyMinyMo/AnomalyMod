@@ -12,9 +12,11 @@ public class AnomalyMod {
     public static final String MOD_NAME = "Somber anomaly mod";
     public static final String MOD_VERSION = "0.0.0";
 
+
     @SidedProxy(clientSide = "ru.somber.anomaly.ClientProxy",
             serverSide = "ru.somber.anomaly.ServerProxy")
     public static CommonProxy proxy;
+
 
     public void preInit(FMLPreInitializationEvent event) {
         proxy.preInit(event);
