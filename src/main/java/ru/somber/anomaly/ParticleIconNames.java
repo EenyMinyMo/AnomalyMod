@@ -70,8 +70,6 @@ public final class ParticleIconNames {
     public static final String anomalyAnim3Icon =   AnomalyMod.MOD_ID + ":" + "anomaly/anim/anomaly_anim_3";
     public static final String anomalyAnim4Icon =   AnomalyMod.MOD_ID + ":" + "anomaly/anim/anomaly_anim_4";
     public static final String anomalyAnim5Icon =   AnomalyMod.MOD_ID + ":" + "anomaly/anim/anomaly_anim_5";
-    public static final String anomalyAnim6Icon =   AnomalyMod.MOD_ID + ":" + "anomaly/anim/anomaly_anim_6";
-    public static final String anomalyAnim7Icon =   AnomalyMod.MOD_ID + ":" + "anomaly/anim/anomaly_anim_7";
 
     public static final String anomalyEnerg0Icon =   AnomalyMod.MOD_ID + ":" + "anomaly/energ/anomaly_energ_0";
     public static final String anomalyEnerg1Icon =   AnomalyMod.MOD_ID + ":" + "anomaly/energ/anomaly_energ_1";
@@ -102,12 +100,6 @@ public final class ParticleIconNames {
 
     //=======================================animation fire particles=======================================
     public static final String animfireExplosionAnim0Icon =   AnomalyMod.MOD_ID + ":" + "animfire/explosion_anim_0";
-    public static final String animfireExplosionAnim1Icon =   AnomalyMod.MOD_ID + ":" + "animfire/explosion_anim_0";
-    public static final String animfireExplosionAnim2Icon =   AnomalyMod.MOD_ID + ":" + "animfire/explosion_anim_0";
-    public static final String animfireExplosionAnim3Icon =   AnomalyMod.MOD_ID + ":" + "animfire/explosion_anim_0";
-    public static final String animfireExplosionAnim4Icon =   AnomalyMod.MOD_ID + ":" + "animfire/explosion_anim_0";
-    public static final String animfireExplosionAnimEnerg0Icon =   AnomalyMod.MOD_ID + ":" + "animfire/explosion_anim_energ_0";
-
     public static final String animfireFireAnimEnerg0Icon =   AnomalyMod.MOD_ID + ":" + "animfire/fire_anim_energ_0";
 
 
@@ -130,11 +122,6 @@ public final class ParticleIconNames {
     public static final String smokeAnim0Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_0";
     public static final String smokeAnim1Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_1";
     public static final String smokeAnim2Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_2";
-    public static final String smokeAnim3Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_3";
-    public static final String smokeAnim4Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_4";
-    public static final String smokeAnim5Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_5";
-    public static final String smokeAnim6Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_6";
-    public static final String smokeAnim7Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_7";
 
     public static final String smokeAnimEnerg0Icon =   AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_energ_0";
 
@@ -149,13 +136,6 @@ public final class ParticleIconNames {
     public static final String trashAnim1Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_1";
     public static final String trashAnim2Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_2";
     public static final String trashAnim3Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_3";
-    public static final String trashAnim4Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_4";
-    public static final String trashAnim5Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_5";
-    public static final String trashAnim6Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_6";
-    public static final String trashAnim7Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_7";
-    public static final String trashAnim8Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_8";
-    public static final String trashAnim9Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_9";
-    public static final String trashAnim10Icon =   AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_10";
 
 
     //=======================================Other particles=======================================
@@ -176,9 +156,6 @@ public final class ParticleIconNames {
 
     public static final String otherCresty0Icon =   AnomalyMod.MOD_ID + ":" + "other/cresty_0";
 
-    public static final String otherFlameAnim0Icon =   AnomalyMod.MOD_ID + ":" + "other/flame_anim_0";
-    public static final String otherFlameAnim1Icon =   AnomalyMod.MOD_ID + ":" + "other/flame_anim_1";
-
     public static final String otherFlash0Icon =   AnomalyMod.MOD_ID + ":" + "other/flash_0";
     public static final String otherFlash1Icon =   AnomalyMod.MOD_ID + ":" + "other/flash_1";
     public static final String otherFlash2Icon =   AnomalyMod.MOD_ID + ":" + "other/flash_2";
@@ -194,29 +171,29 @@ public final class ParticleIconNames {
     public static final String otherFlash12Icon =  AnomalyMod.MOD_ID + ":" + "other/flash_12";
     public static final String otherFlash13Icon =  AnomalyMod.MOD_ID + ":" + "other/flash_13";
 
-    public static final String otherRingfire0Icon =   AnomalyMod.MOD_ID + ":" + "other/ringfire_0";
+    public static final String otherRingfire0Icon =     AnomalyMod.MOD_ID + ":" + "other/ringfire_0";
 
-    public static final String otherRocket0Icon =   AnomalyMod.MOD_ID + ":" + "other/rocket_0";
+    public static final String otherRocket0Icon =       AnomalyMod.MOD_ID + ":" + "other/rocket_0";
 
     public static final String otherSparksAnim0Icon =   AnomalyMod.MOD_ID + ":" + "other/sparks_anim_0";
     public static final String otherSparksAnim1Icon =   AnomalyMod.MOD_ID + ":" + "other/sparks_anim_1";
 
-    public static final String otherSpiral0Icon =   AnomalyMod.MOD_ID + ":" + "other/spiral_0";
+    public static final String otherSpiral0Icon =       AnomalyMod.MOD_ID + ":" + "other/spiral_0";
 
-    public static final String otherSplash0Icon =   AnomalyMod.MOD_ID + ":" + "other/splash_0";
-    public static final String otherSplash1Icon =   AnomalyMod.MOD_ID + ":" + "other/splash_1";
-    public static final String otherSplash2Icon =   AnomalyMod.MOD_ID + ":" + "other/splash_2";
+    public static final String otherSplash0Icon =       AnomalyMod.MOD_ID + ":" + "other/splash_0";
+    public static final String otherSplash1Icon =       AnomalyMod.MOD_ID + ":" + "other/splash_1";
+    public static final String otherSplash2Icon =       AnomalyMod.MOD_ID + ":" + "other/splash_2";
 
-    public static final String otherStuden0Icon =   AnomalyMod.MOD_ID + ":" + "other/studen_0";
+    public static final String otherStuden0Icon =       AnomalyMod.MOD_ID + ":" + "other/studen_0";
 
-    public static final String otherSynus0Icon =   AnomalyMod.MOD_ID + ":" + "other/synus_0";
+    public static final String otherSynus0Icon =        AnomalyMod.MOD_ID + ":" + "other/synus_0";
 
-    public static final String otherTrasser0Icon =   AnomalyMod.MOD_ID + ":" + "other/trasser_0";
+    public static final String otherTrasser0Icon =      AnomalyMod.MOD_ID + ":" + "other/trasser_0";
 
-    public static final String otherShells0Icon =   AnomalyMod.MOD_ID + ":" + "other/shells_0";
+    public static final String otherShells0Icon =       AnomalyMod.MOD_ID + ":" + "other/shells_0";
 
-    public static final String otherWaterWave0Icon =   AnomalyMod.MOD_ID + ":" + "other/water_wave_0";
+    public static final String otherWaterWave0Icon =    AnomalyMod.MOD_ID + ":" + "other/water_wave_0";
 
-    public static final String otherSkinSplashAnim0Icon =   AnomalyMod.MOD_ID + ":" + "other/skinsplash_anim_0";
+    public static final String otherSkinSplashAnim0Icon = AnomalyMod.MOD_ID + ":" + "other/skinsplash_anim_0";
 
 }
