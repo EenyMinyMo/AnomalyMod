@@ -10,7 +10,9 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import ru.somber.anomaly.render.DistortionParticleRenderer;
 import ru.somber.particlesystem.ParticleAPI;
+import ru.somber.particlesystem.container.IEmitterContainer;
 import ru.somber.particlesystem.container.IParticleContainer;
+import ru.somber.particlesystem.container.ListEmitterContainer;
 import ru.somber.particlesystem.container.ListParticleContainer;
 import ru.somber.particlesystem.manager.IParticleManager;
 import ru.somber.particlesystem.manager.SimpleParticleManager;
@@ -24,6 +26,7 @@ public class ClientProxy extends CommonProxy {
 
     private static IParticleManager particleManager;
     private static IParticleManager distortionParticleManager;
+    private static IEmitterContainer emitterContainer;
 
     private static ParticleAtlasTexture particleAtlasTexture;
 
@@ -45,8 +48,8 @@ public class ClientProxy extends CommonProxy {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, particleAtlasTexture.getGlTextureId());
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
+//        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
+//        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_REPEAT);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 
@@ -69,6 +72,9 @@ public class ClientProxy extends CommonProxy {
         ParticleAPI particleAPI = ParticleAPI.getInstance();
         particleAPI.addParticleManager(0, particleManager);
         particleAPI.addParticleManager(1, distortionParticleManager);
+
+        emitterContainer = new ListEmitterContainer();
+        particleAPI.addEmitterContainer(emitterContainer);
     }
 
     @Override
@@ -265,7 +271,7 @@ public class ClientProxy extends CommonProxy {
 
 
 
-//        particleAtlasTexture.setAnisotropicFiltering(16);
+        particleAtlasTexture.setAnisotropicFiltering(16);
 
         particleAtlasTexture.loadTextureAtlas(Minecraft.getMinecraft().getResourceManager());
     }
@@ -277,6 +283,10 @@ public class ClientProxy extends CommonProxy {
 
     public static IParticleManager getDistortionParticleManager() {
         return distortionParticleManager;
+    }
+
+    public static IEmitterContainer getEmitterContainer() {
+        return emitterContainer;
     }
 
     public static ParticleAtlasTexture getParticleAtlasTexture() {

@@ -4,7 +4,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.emitter.KiselEmitter;
 import ru.somber.particlesystem.emitter.IParticleEmitter;
@@ -14,7 +13,6 @@ public class KiselTileEntity extends TileEntity {
     @SideOnly(Side.CLIENT)
     private IParticleEmitter emitter;
 
-
     public KiselTileEntity(World world, int metadata) {
         super();
 
@@ -23,7 +21,7 @@ public class KiselTileEntity extends TileEntity {
 
         if (world.isRemote) {
             emitter = new KiselEmitter(xCoord + 0.5F, yCoord, zCoord + 0.5F);
-            ClientProxy.getParticleManager().getParticleContainer().addEmitter(emitter);
+            ClientProxy.getEmitterContainer().addEmitter(emitter);
         }
     }
 

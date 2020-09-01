@@ -1,12 +1,11 @@
 package ru.somber.anomaly.emitter;
 
-import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
+import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.particle.kisel.KiselBubbleParticle;
-import ru.somber.particlesystem.container.IParticleContainer;
+import ru.somber.anomaly.particle.kisel.KiselDistortionBubbleParticle;
 import ru.somber.particlesystem.emitter.AbstractEmitter;
-import ru.somber.particlesystem.particle.AbstractParticle;
-import test.particles.TestSphericalParticle;
+import ru.somber.particlesystem.particle.IParticle;
 
 public class KiselEmitter extends AbstractEmitter {
 
@@ -15,27 +14,20 @@ public class KiselEmitter extends AbstractEmitter {
     }
 
     @Override
-    public void create(IParticleContainer container) {
-        super.create(container);
+    public void create() {
+        super.create();
     }
 
     @Override
     public void update() {
         super.update();
 
-        AbstractParticle particle = null;
-        if (getTick() % 500 == 0) {
-            particle = new KiselBubbleParticle(
-                    new Vector3f(getPositionX() - 0.5F + ((float) Math.random()), getPositionY(), getPositionZ() - 0.5F + ((float) Math.random())));
-
-        } else if (Math.random() > 0.995) {
-            particle = new KiselBubbleParticle(
-                    new Vector3f(getPositionX() - 0.5F + ((float) Math.random()), getPositionY(), getPositionZ() - 0.5F + ((float) Math.random())));
+        if (Math.random() > 0.9) {
+            createColorBubbleParticle();
         }
 
-        if (particle != null) {
-            getEmitterParticleList().add(particle);
-            getParticleContainer().addParticle(particle);
+        if (Math.random() > 0.9) {
+            createDistortionBubbleParticle();
         }
     }
 
@@ -43,5 +35,22 @@ public class KiselEmitter extends AbstractEmitter {
     public void delete() {
         super.delete();
     }
-    
+
+
+    private void createColorBubbleParticle() {
+        Vector3f position = new Vector3f(getPositionX() - 0.5F + ((float) Math.random()), getPositionY(), getPositionZ() - 0.5F + ((float) Math.random()));
+        IParticle particle = new KiselBubbleParticle(position);
+
+        addParticleInEmitter(particle);
+        ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
+    }
+
+    private void createDistortionBubbleParticle() {
+        Vector3f position = new Vector3f(getPositionX() - 0.5F + ((float) Math.random()), getPositionY(), getPositionZ() - 0.5F + ((float) Math.random()));
+        IParticle particle = new KiselDistortionBubbleParticle(position);
+
+        addParticleInEmitter(particle);
+        ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
+    }
+
 }

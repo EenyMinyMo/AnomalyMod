@@ -4,12 +4,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.BufferUtils;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.*;
 import ru.somber.anomaly.AnomalyMod;
-import ru.somber.clientutil.opengl.BufferObject;
-import ru.somber.clientutil.opengl.Shader;
-import ru.somber.clientutil.opengl.ShaderProgram;
-import ru.somber.clientutil.opengl.VAO;
+import ru.somber.clientutil.opengl.*;
 import ru.somber.clientutil.opengl.texture.Texture;
 import ru.somber.particlesystem.particle.IParticle;
 import ru.somber.particlesystem.render.GeometryShaderParticleRenderer;
@@ -37,16 +35,16 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         framebufferCopyTexture = Texture.createTexture(framebuffer.framebufferWidth, framebuffer.framebufferHeight);
 
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, distortionBufferTexture.getTextureID());
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_REPEAT);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
 
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, framebufferCopyTexture.getTextureID());
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_REPEAT);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 
         framebufferDefaultTexture = new Texture(framebuffer.framebufferTexture);
@@ -71,10 +69,13 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         }
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, distortionBufferTexture.getTextureID());
-        GL11.glClearColor(0.5F, 0.5F, 0.5F, 1.0F);
+        GL11.glDisable(GL11.GL_ALPHA_TEST);
+        GL11.glClearColor(0.5F, 0.5F, 0.5F, 1);
+        GL11.glClearColor(0, 0, 0, 0);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
         GL11.glDepthMask(false);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
     }
 
     @Override
@@ -82,12 +83,19 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         super.postRender(particleList, interpolationFactor);
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, framebufferDefaultTexture.getTextureID());
-        GL11.glDepthMask(true);
+        if (! Keyboard.isKeyDown(Keyboard.KEY_Y)) {
 
-        //сборка эффекта distortion.
-        preDistortionRender();
-        distortionRender();
-        postDistortionRender();
+            //сборка эффекта distortion.
+            preDistortionRender();
+            distortionRender();
+            postDistortionRender();
+        } else {
+            GL11.glDisable(GL11.GL_DEPTH_TEST);
+            GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+            OpenGLUtils.drawTextureOverFramebuffer(distortionBufferTexture.getTextureID());
+//            GL11.glEnable(GL11.GL_DEPTH_TEST);
+        }
+        GL11.glDepthMask(true);
     }
 
 
@@ -111,8 +119,8 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
 
         float[] displayCoordArray = {
                 -1, -1,
-                1, -1,
-                1,  1,
+                 1, -1,
+                 1,  1,
                 -1,  1
         };
 
