@@ -38,16 +38,14 @@ public class KiselEmitter extends AbstractEmitter {
 
 
     private void createColorBubbleParticle() {
-        Vector3f position = new Vector3f(getPositionX() - 0.5F + ((float) Math.random()), getPositionY(), getPositionZ() - 0.5F + ((float) Math.random()));
-        IParticle particle = new KiselBubbleParticle(position);
+        IParticle particle = new KiselBubbleParticle(getPositionX() - 0.5F + ((float) Math.random()), getPositionY(), getPositionZ() - 0.5F + ((float) Math.random()));
 
         addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
     private void createDistortionBubbleParticle() {
-        Vector3f position = new Vector3f(getPositionX() - 0.5F + ((float) Math.random()), getPositionY(), getPositionZ() - 0.5F + ((float) Math.random()));
-        IParticle particle = new KiselDistortionBubbleParticle(position);
+        IParticle particle = new KiselDistortionBubbleParticle(getPositionX() - 0.5F + ((float) Math.random()), getPositionY(), getPositionZ() - 0.5F + ((float) Math.random()));
 
         addParticleInEmitter(particle);
         ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);

@@ -8,33 +8,34 @@ import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 public class KiselBubbleParticle extends AbstractSphericalParticle {
 
     private final float maxHeight;
-    private float x, y, z;
+    private final float xStart, yStart, zStart;
 
-    public KiselBubbleParticle(Vector3f newPosition) {
-        super(newPosition, 20 + ((int) (Math.random() * 5)), ParticleIconNames.otherBubble0Icon);
+    public KiselBubbleParticle(float x, float y, float z) {
+        super(x, y, z, 20 + ((int) (Math.random() * 5)), ParticleIconNames.otherByaka1Icon);
 
-        x = newPosition.getX();
-        y = newPosition.getY();
-        z = newPosition.getZ();
+        this.xStart = x;
+        this.yStart = y;
+        this.zStart = z;
 
         maxHeight = 0.5F + (float) Math.random() * 0.25F;
 //        setColorFactor(0.1F, 0.9F, 0.1F, 1F);
         setHalfSizes(0.2F, 0.4F);
     }
 
+    public KiselBubbleParticle(Vector3f newPosition) {
+        this(newPosition.getX(), newPosition.getY(), newPosition.getZ());
+    }
+
     @Override
     public void update() {
         super.update();
 
-        lifeTime++;
-
-        oldPosition.set(newPosition);
-
-        float lifeFactor = ((float)lifeTime) / maxLifeTime;
+        float lifeFactor = ((float) getLifeTime()) / getMaxLifeTime();
         float sin = MathHelper.sin( ((float)Math.PI * lifeFactor));
-        newPosition.setY(y + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
+        setPositionY(yStart + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
 
-//        setHalfSizes(1F * MathHelper.sin(lifeTime / ((float)Math.PI * 2)), 1F * ));
+//        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));
+//        setRotateAnglesZ(((float)Math.PI * lifeFactor));
     }
 }
 
