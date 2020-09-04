@@ -7,7 +7,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 import ru.somber.anomaly.render.DistortionParticleRenderer;
 import ru.somber.particlesystem.ParticleAPI;
 import ru.somber.particlesystem.container.IEmitterContainer;

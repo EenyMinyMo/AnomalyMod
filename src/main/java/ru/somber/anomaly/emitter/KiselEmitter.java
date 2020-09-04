@@ -1,6 +1,5 @@
 package ru.somber.anomaly.emitter;
 
-import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.particle.kisel.KiselBubbleParticle;
 import ru.somber.anomaly.particle.kisel.KiselDistortionBubbleParticle;
