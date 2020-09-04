@@ -20,7 +20,7 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         anomalyKiselBlock = new AnomalyKiselBlock();
         GameRegistry.registerBlock(anomalyKiselBlock, anomalyKiselBlock.getUnlocalizedName());
-        GameRegistry.registerTileEntity(KiselTileEntity.class, "tessellator_particle_tile_entity");
+        GameRegistry.registerTileEntity(KiselTileEntity.class, "anomaly_kisel_tileentity");
     }
 
     public void init(FMLInitializationEvent event) {
