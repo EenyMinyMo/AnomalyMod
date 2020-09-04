@@ -11,14 +11,14 @@ public class KiselBubbleParticle extends AbstractSphericalParticle {
     private final float xStart, yStart, zStart;
 
     public KiselBubbleParticle(float x, float y, float z) {
-        super(x, y, z, 20 + ((int) (Math.random() * 5)), ParticleIconNames.otherByaka1Icon);
+        super(x, y, z, 20 + ((int) (Math.random() * 5)), ParticleIconNames.otherBubble5Icon);
 
         this.xStart = x;
         this.yStart = y;
         this.zStart = z;
 
         maxHeight = 0.5F + (float) Math.random() * 0.25F;
-//        setColorFactor(0.1F, 0.9F, 0.1F, 1F);
+        setColorFactor(0.1F, 0.9F, 0.1F, 1F);
         setHalfSizes(0.2F, 0.4F);
     }
 
