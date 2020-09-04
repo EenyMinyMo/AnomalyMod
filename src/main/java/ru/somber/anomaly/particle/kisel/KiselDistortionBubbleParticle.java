@@ -1,7 +1,7 @@
 package ru.somber.anomaly.particle.kisel;
 
 import org.lwjgl.util.vector.Vector3f;
-import ru.somber.anomaly.ParticleIconNames;
+import ru.somber.anomaly.ParticleIcons;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 
 public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
@@ -10,7 +10,7 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
     private final float xStart, yStart, zStart;
 
     public KiselDistortionBubbleParticle(float x, float y, float z) {
-        super(x, y, z, 3 * 20 + ((int) (10 * Math.random())), ParticleIconNames.distortion17Icon);
+        super(x, y, z, 3 * 20 + ((int) (10 * Math.random())), ParticleIcons.distortion17Icon);
 
         this.xStart = x;
         this.yStart = y;
@@ -18,9 +18,10 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
 
         maxHeight = 0.8F + (float) Math.random() * 0.2F;
         setColorFactor(1, 1, 1, 0.3F + (float) Math.random() * 0.3F);
+        setColorFactor(1, 1, 1, 0.5F);
 
         float sizeRandom = 0.1F + (float) Math.random() * 0.05F;
-//        sizeRandom = 0.5F;
+//        sizeRandom = 0.2F;
         setHalfSizes(sizeRandom, sizeRandom);
     }
 

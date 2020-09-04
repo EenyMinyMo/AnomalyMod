@@ -69,13 +69,9 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         }
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, distortionBufferTexture.getTextureID());
-        GL11.glDisable(GL11.GL_ALPHA_TEST);
-        GL11.glClearColor(0.5F, 0.5F, 0.5F, 1);
+//        GL11.glClearColor(0.5F, 0.5F, 0.5F, 1);
         GL11.glClearColor(0, 0, 0, 0);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-
-        GL11.glDepthMask(false);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
     }
 
     @Override
@@ -83,19 +79,18 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         super.postRender(particleList, interpolationFactor);
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, framebufferDefaultTexture.getTextureID());
-        if (! Keyboard.isKeyDown(Keyboard.KEY_Y)) {
+        //для дебага размытия
+        if (! Keyboard.isKeyDown(Keyboard.KEY_Y)) { //рендер кадра с эффектом размытия.
 
             //сборка эффекта distortion.
             preDistortionRender();
             distortionRender();
             postDistortionRender();
-        } else {
+        } else {    //буфера размытия без окружающего мира.
             GL11.glDisable(GL11.GL_DEPTH_TEST);
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
             OpenGLUtils.drawTextureOverFramebuffer(distortionBufferTexture.getTextureID());
-//            GL11.glEnable(GL11.GL_DEPTH_TEST);
         }
-        GL11.glDepthMask(true);
     }
 
 
@@ -198,7 +193,6 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 
         GL11.glEnable(GL11.GL_DEPTH_TEST);
-        GL11.glEnable(GL11.GL_BLEND);
     }
 
     private void setFramebufferTexture(int attachment, int textureID) {
