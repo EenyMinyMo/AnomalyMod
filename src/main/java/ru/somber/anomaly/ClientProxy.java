@@ -68,8 +68,8 @@ public class ClientProxy extends CommonProxy {
         distortionParticleManager.setParticleRenderer(distortionParticleRenderer);
 
         ParticleAPI particleAPI = ParticleAPI.getInstance();
-        particleAPI.addParticleManager(0, particleManager);
-        particleAPI.addParticleManager(1, distortionParticleManager);
+        particleAPI.addParticleManager(0, distortionParticleManager);
+        particleAPI.addParticleManager(1, particleManager);
 
         emitterContainer = new ListEmitterContainer();
         particleAPI.addEmitterContainer(emitterContainer);
