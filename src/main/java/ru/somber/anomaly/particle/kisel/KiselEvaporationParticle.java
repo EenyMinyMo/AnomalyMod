@@ -2,7 +2,7 @@ package ru.somber.anomaly.particle.kisel;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.SomberUtils;
+import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 
 public class KiselEvaporationParticle extends AbstractSphericalParticle {
@@ -48,7 +48,7 @@ public class KiselEvaporationParticle extends AbstractSphericalParticle {
 
         setAlphaFactor((1 - lifeFactor) * maxAlpha);
 
-        float size = SomberUtils.interpolateBetween(minSize, maxSize, lifeFactor);
+        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
         setHalfSizes(size, size);
 
 //        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));

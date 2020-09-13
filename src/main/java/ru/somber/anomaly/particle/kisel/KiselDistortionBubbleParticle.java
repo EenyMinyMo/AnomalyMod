@@ -19,11 +19,9 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
         maxHeight = 0.8F + (float) Math.random() * 0.2F;
         setRotateAnglesZ((float) Math.toRadians(-180));
         setAlphaFactor(0.2F + (float) Math.random() * 0.1F);
-//        setColorFactor(3, 3, 3, 3);
 
         float sizeRandom = 0.1F + (float) Math.random() * 0.05F;
         setHalfSizes(sizeRandom, sizeRandom);
-//        setBlendFactor(1);
     }
 
     public KiselDistortionBubbleParticle(Vector3f newPosition) {

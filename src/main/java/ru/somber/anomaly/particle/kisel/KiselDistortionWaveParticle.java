@@ -2,10 +2,8 @@ package ru.somber.anomaly.particle.kisel;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.SomberUtils;
-import ru.somber.particlesystem.particle.AbstractSphericalParticle;
+import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractStaticParticle;
-import ru.somber.particlesystem.texture.ParticleAtlasIcon;
 
 public class KiselDistortionWaveParticle extends AbstractStaticParticle {
 
@@ -37,7 +35,7 @@ public class KiselDistortionWaveParticle extends AbstractStaticParticle {
         super.update();
 
         float lifeFactor = (float) getLifeTime() / getMaxLifeTime();
-        float size = SomberUtils.interpolateBetween(minSize, maxSize, lifeFactor);
+        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
         setHalfSizes(size, size);
 
         setAlphaFactor((1 - lifeFactor) * 0.6F);

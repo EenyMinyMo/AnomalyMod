@@ -3,7 +3,7 @@ package ru.somber.anomaly.particle.kisel;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.SomberUtils;
+import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 
 public class KiselBubbleParticle extends AbstractSphericalParticle {
@@ -41,7 +41,7 @@ public class KiselBubbleParticle extends AbstractSphericalParticle {
         float sin = MathHelper.sin( ((float)Math.PI * lifeFactor));
         setPositionY(yStart + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
 
-        float size = SomberUtils.interpolateBetween(minSize, maxSize, lifeFactor* 0.9F);
+        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor* 0.9F);
         setHalfSizes(size,size);
 
 //        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));

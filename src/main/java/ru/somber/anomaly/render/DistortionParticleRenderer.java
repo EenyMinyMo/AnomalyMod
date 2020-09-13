@@ -9,6 +9,7 @@ import org.lwjgl.opengl.*;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.clientutil.opengl.*;
 import ru.somber.clientutil.opengl.texture.Texture;
+import ru.somber.clientutil.opengl.vbo.VBO;
 import ru.somber.particlesystem.particle.IParticle;
 import ru.somber.particlesystem.render.GeometryShaderParticleRenderer;
 
@@ -23,7 +24,7 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
     private Texture framebufferCopyTexture;
     private Texture framebufferDefaultTexture;
 
-    private BufferObject vboDisplayPosition;
+    private VBO vboDisplayPosition;
     private VAO vaoDistortionRender;
 
 
@@ -69,7 +70,6 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         }
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, distortionBufferTexture.getTextureID());
-//        GL11.glClearColor(0.5F, 0.5F, 0.5F, 1);
         GL11.glClearColor(0, 0, 0, 0);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
     }
@@ -95,8 +95,8 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
 
 
     @Override
-    protected void assembleShaderProgram() {
-        super.assembleShaderProgram();
+    protected void createShaderProgram() {
+        super.createShaderProgram();
 
         ResourceLocation vertexDistortionShaderLocation = new ResourceLocation(AnomalyMod.MOD_ID, "shaders/assemble_distortion_vert.glsl");
         ResourceLocation fragmentDistortionShaderLocation = new ResourceLocation(AnomalyMod.MOD_ID, "shaders/assemble_distortion_frag.glsl");
@@ -104,12 +104,12 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         Shader vertDistortionShader = Shader.createShaderObject(GL20.GL_VERTEX_SHADER, vertexDistortionShaderLocation);
         Shader fragDistortionShader = Shader.createShaderObject(GL20.GL_FRAGMENT_SHADER, fragmentDistortionShaderLocation);
 
-        assembleDistortionShaderProgram = ShaderProgram.createShaderProgram(vertDistortionShader, fragDistortionShader);
+        assembleDistortionShaderProgram =  ShaderProgram.createShaderProgram(vertDistortionShader, fragDistortionShader);
     }
 
     @Override
-    protected void createVertexAttribVBOs() {
-        super.createVertexAttribVBOs();
+    protected void createVBOsAndVertAttribVBOs() {
+        super.createVBOsAndVertAttribVBOs();
 
 
         float[] displayCoordArray = {
@@ -123,10 +123,10 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         displayCoordBuffer.put(displayCoordArray);
         displayCoordBuffer.flip();
 
-        vboDisplayPosition = BufferObject.createVBO();
-        BufferObject.bindBuffer(vboDisplayPosition);
-        BufferObject.bufferData(vboDisplayPosition, displayCoordBuffer, GL15.GL_STATIC_DRAW);
-        BufferObject.bindNone(vboDisplayPosition);
+        vboDisplayPosition = VBO.createVBO();
+        vboDisplayPosition.bindBuffer();
+        vboDisplayPosition.bufferData(displayCoordBuffer, GL15.GL_STATIC_DRAW);
+        vboDisplayPosition.bindNone();
     }
 
     @Override
@@ -138,13 +138,13 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         VAO.bindVAO(vaoDistortionRender);
 
         GL20.glEnableVertexAttribArray(0);
-        BufferObject.bindBuffer(vboDisplayPosition);
+        vboDisplayPosition.bindBuffer();
         GL20.glVertexAttribPointer(0, 2, GL11.GL_FLOAT, false, 0, 0);
 
         VAO.bindNone();
 
         GL20.glDisableVertexAttribArray(0);
-        BufferObject.bindNone(vboDisplayPosition);
+        vboDisplayPosition.bindNone();
     }
 
 
