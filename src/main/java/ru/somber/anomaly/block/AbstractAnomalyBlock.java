@@ -8,18 +8,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import ru.somber.anomaly.AnomalyMod;
-import ru.somber.anomaly.tileentity.KiselTileEntity;
 
-public class AnomalyKiselBlock extends Block implements ITileEntityProvider {
+public abstract class AbstractAnomalyBlock extends Block implements ITileEntityProvider {
 
-    public AnomalyKiselBlock() {
+    public AbstractAnomalyBlock() {
         super(Material.rock);
 
-        this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setBlockName("anomaly_kisel_block");
         this.setBlockTextureName(AnomalyMod.MOD_ID + ":empty");
-
+        this.setCreativeTab(CreativeTabs.tabBlock);
     }
+
 
     @Override
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
@@ -36,9 +34,8 @@ public class AnomalyKiselBlock extends Block implements ITileEntityProvider {
         return false;
     }
 
+
     @Override
-    public TileEntity createNewTileEntity(World world, int metadata) {
-        return new KiselTileEntity(world, metadata);
-    }
+    public abstract TileEntity createNewTileEntity(World world, int metadata);
 
 }

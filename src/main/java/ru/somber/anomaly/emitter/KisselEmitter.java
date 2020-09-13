@@ -1,13 +1,13 @@
 package ru.somber.anomaly.emitter;
 
 import ru.somber.anomaly.ClientProxy;
-import ru.somber.anomaly.particle.kisel.*;
+import ru.somber.anomaly.particle.kissel.*;
 import ru.somber.particlesystem.emitter.AbstractEmitter;
 import ru.somber.particlesystem.particle.IParticle;
 
-public class KiselEmitter extends AbstractEmitter {
+public class KisselEmitter extends AbstractEmitter {
 
-    public KiselEmitter(float x, float y, float z) {
+    public KisselEmitter(float x, float y, float z) {
         super(x, y, z);
     }
 
@@ -17,9 +17,19 @@ public class KiselEmitter extends AbstractEmitter {
     }
 
     @Override
+    public void delete() {
+        super.delete();
+    }
+
+    @Override
     public void update() {
         super.update();
 
+        updateIdleMode();
+//        updateActiveMode();
+    }
+
+    private void updateIdleMode() {
         if (Math.random() > 0.95) {
             createColorBubbleParticle();
         }
@@ -39,22 +49,18 @@ public class KiselEmitter extends AbstractEmitter {
         if (Math.random() > 0.97) {
             createBigFogParticle();
         }
-
-//        if (Math.random() > 0.75) {
-//            createBigActiveParticle();
-//            createColorBubbleParticle();
-//        }
-//
-//        if (Math.random() > 0.75) {
-//            createColorBubbleParticle();
-//        }
     }
 
-    @Override
-    public void delete() {
-        super.delete();
-    }
+    private void updateActiveMode() {
+        if (Math.random() > 0.75) {
+            createBigActiveParticle();
+            createColorBubbleParticle();
+        }
 
+        if (Math.random() > 0.75) {
+            createColorBubbleParticle();
+        }
+    }
 
     private void createColorBubbleParticle() {
         float x = getPositionX() - 0.5F + ((float) Math.random());
@@ -68,17 +74,6 @@ public class KiselEmitter extends AbstractEmitter {
 
         createDistortionWaveParticle(x, y + 0.002F, z, 20 + ((int) (Math.random() * 5)));
 //        createFoamAnimParticle(x, y + 0.005F, z, 20 + ((int) (Math.random() * 5)));
-    }
-
-    private void createDistortionBubbleParticle() {
-        float x = getPositionX() - 0.5F + ((float) Math.random());
-        float y = getPositionY();
-        float z = getPositionZ() - 0.5F + ((float) Math.random());
-
-        IParticle particle = new KiselDistortionBubbleParticle(x, y, z);
-
-        addParticleInEmitter(particle);
-        ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
     }
 
     private void createEvaporationParticle() {
@@ -103,14 +98,6 @@ public class KiselEmitter extends AbstractEmitter {
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
-
-    private void createDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
-        IParticle particle = new KiselDistortionWaveParticle(x, y, z, maxLifeTime);
-
-        addParticleInEmitter(particle);
-        ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
-    }
-
     private void createBigFogParticle() {
         float x = getPositionX() - 0.5F + ((float) Math.random());
         float y = getPositionY();
@@ -131,6 +118,25 @@ public class KiselEmitter extends AbstractEmitter {
 
         addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
+    }
+
+
+    private void createDistortionBubbleParticle() {
+        float x = getPositionX() - 0.5F + ((float) Math.random());
+        float y = getPositionY();
+        float z = getPositionZ() - 0.5F + ((float) Math.random());
+
+        IParticle particle = new KiselDistortionBubbleParticle(x, y, z);
+
+        addParticleInEmitter(particle);
+        ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
+    }
+
+    private void createDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
+        IParticle particle = new KiselDistortionWaveParticle(x, y, z, maxLifeTime);
+
+        addParticleInEmitter(particle);
+        ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
     }
 
 }

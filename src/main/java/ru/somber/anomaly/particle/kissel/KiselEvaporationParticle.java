@@ -1,11 +1,11 @@
-package ru.somber.anomaly.particle.kisel;
+package ru.somber.anomaly.particle.kissel;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 
-public class KiselBigActiveParticle extends AbstractSphericalParticle {
+public class KiselEvaporationParticle extends AbstractSphericalParticle {
 
     private final float maxHeight;
     private final float maxAngle;
@@ -13,27 +13,27 @@ public class KiselBigActiveParticle extends AbstractSphericalParticle {
     private final float maxAlpha;
     private final float xStart, yStart, zStart;
 
-    public KiselBigActiveParticle(float x, float y, float z) {
+    public KiselEvaporationParticle(float x, float y, float z) {
         super(x, y, z, 20 + ((int) (Math.random() * 5)), ParticleIcons.anomaly1Icon);
 
         this.xStart = x;
         this.yStart = y;
         this.zStart = z;
 
-        maxHeight = 0.7F + (float) Math.random() * 0.2F;
+        maxHeight = 0.4F + (float) Math.random() * 0.15F;
         maxAngle = (float) (Math.PI * 0.5F * (0.5 - Math.random())) * 0.5F;
-        minSize = 0.5F;
-        maxSize = 1.4F;
-        maxAlpha = 0.5F;
+        minSize = 0.1F;
+        maxSize = 0.5F;
+        maxAlpha = 0.3F;
 
         setAlphaFactor(maxAlpha);
         setHalfSizes(minSize, minSize);
 
-        setBlendFactor(0.8F);
+        setBlendFactor(1F);
         setLightFactor(1.0F);
     }
 
-    public KiselBigActiveParticle(Vector3f newPosition) {
+    public KiselEvaporationParticle(Vector3f newPosition) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ());
     }
 
@@ -50,6 +50,9 @@ public class KiselBigActiveParticle extends AbstractSphericalParticle {
 
         float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
         setHalfSizes(size, size);
+
+//        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));
+//        setRotateAnglesZ(((float)Math.PI * lifeFactor));
     }
 
 }

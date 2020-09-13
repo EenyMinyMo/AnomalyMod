@@ -1,4 +1,4 @@
-package ru.somber.anomaly.particle.kisel;
+package ru.somber.anomaly.particle.kissel;
 
 import net.minecraft.util.MathHelper;
 import org.lwjgl.util.vector.Vector3f;

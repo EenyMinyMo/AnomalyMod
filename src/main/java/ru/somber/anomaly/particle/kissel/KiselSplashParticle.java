@@ -1,17 +1,17 @@
-package ru.somber.anomaly.particle.kisel;
+package ru.somber.anomaly.particle.kissel;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 
-public class KiselBigFogParticle extends AbstractSphericalParticle {
+public class KiselSplashParticle  extends AbstractSphericalParticle {
 
     private final float minHeight;
     private final float maxHeight;
     private final float maxAlpha;
 
 
-    public KiselBigFogParticle(float x, float y, float z, int maxLifeTime) {
+    public KiselSplashParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.smoke0Icon);
 
         minHeight = 0.5F;
@@ -27,7 +27,7 @@ public class KiselBigFogParticle extends AbstractSphericalParticle {
         setLightFactor(1.0F);
     }
 
-    public KiselBigFogParticle(Vector3f newPosition, int maxLifeTime) {
+    public KiselSplashParticle(Vector3f newPosition, int maxLifeTime) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
     }
 
