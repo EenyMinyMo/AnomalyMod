@@ -20,7 +20,7 @@ public class KiselEmitter extends AbstractEmitter {
     public void update() {
         super.update();
 
-        if (Math.random() > 0.93) {
+        if (Math.random() > 0.95) {
             createColorBubbleParticle();
         }
 

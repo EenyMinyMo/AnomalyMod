@@ -8,6 +8,7 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
 
     private final float maxHeight;
     private final float xStart, yStart, zStart;
+    private float xForce, yForce, zForce;
 
     public KiselDistortionBubbleParticle(float x, float y, float z) {
         super(x, y, z, 3 * 20 + ((int) (10 * Math.random())), ParticleIcons.distortion17Icon);
@@ -15,6 +16,10 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
         this.xStart = x;
         this.yStart = y;
         this.zStart = z;
+
+        xForce = 0;
+        yForce = 0;
+        zForce = 0;
 
         maxHeight = 0.8F + (float) Math.random() * 0.2F;
         setRotateAnglesZ((float) Math.toRadians(-180));
@@ -34,6 +39,11 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
 
+        xForce += (float) ((Math.random() - 0.5) * 0.002);
+        zForce += (float) ((Math.random() - 0.5) * 0.002);
+
+        setPositionX(getPositionX() + xForce);
+        setPositionZ(getPositionZ() + zForce);
 
 //        newPosition.setX(x - 0.3F * (1 - MathHelper.sin((float) Math.PI / 2 + (float) Math.PI * lifeTime / maxLifeTime / 2)));
 //        newPosition.setZ(z - 0.3F * (1 - MathHelper.sin((float) Math.PI / 2 + (float) Math.PI * lifeTime / maxLifeTime / 2)));

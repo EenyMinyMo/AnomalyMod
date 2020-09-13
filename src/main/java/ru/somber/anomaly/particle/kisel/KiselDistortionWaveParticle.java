@@ -9,14 +9,16 @@ public class KiselDistortionWaveParticle extends AbstractStaticParticle {
 
     private final float minSize;
     private final float maxSize;
+    private final float maxAlpha;
 
     public KiselDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.distortion7Icon);
 
         minSize = 0.2F;
         maxSize = 0.7F + (float) Math.random() * 0.2F;
+        maxAlpha = 0.7F;
 
-//        setAlphaFactor(0.3F + (float) Math.random() * 0.3F);
+        setAlphaFactor(maxAlpha);
 
         setRotateAnglesX((float) Math.toRadians(-90));
         setHalfSizes(minSize, minSize);
@@ -38,6 +40,6 @@ public class KiselDistortionWaveParticle extends AbstractStaticParticle {
         float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
         setHalfSizes(size, size);
 
-        setAlphaFactor((1 - lifeFactor) * 0.6F);
+        setAlphaFactor((1 - lifeFactor) * maxAlpha);
     }
 }
