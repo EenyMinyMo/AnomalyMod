@@ -15,7 +15,7 @@ public abstract class AbstractAnomalyBlock extends Block implements ITileEntityP
         super(Material.rock);
 
         this.setBlockTextureName(AnomalyMod.MOD_ID + ":empty");
-        this.setCreativeTab(CreativeTabs.tabBlock);
+//        this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
 
