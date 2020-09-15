@@ -26,6 +26,18 @@ public class CommonProxy {
     public CommonProxy() {}
 
     public void preInit(FMLPreInitializationEvent event) {
+        registerAnomalyBlock();
+    }
+
+    public void init(FMLInitializationEvent event) {
+
+    }
+
+    public void postInit(FMLPostInitializationEvent event) {
+
+    }
+
+    private void registerAnomalyBlock() {
         anomalyAcidMistBlock = new AnomalyAcidMistBlock();
         GameRegistry.registerBlock(anomalyAcidMistBlock, AnomalyAcidMistItem.class, anomalyAcidMistBlock.getUnlocalizedName());
         GameRegistry.registerTileEntity(AnomalyAcidMistTileEntity.class, "anomaly_acidmist_tileentity");
@@ -65,14 +77,6 @@ public class CommonProxy {
         anomalyTrampolineBlock = new AnomalyTrampolineBlock();
         GameRegistry.registerBlock(anomalyTrampolineBlock, AnomalyTrampolineItem.class, anomalyTrampolineBlock.getUnlocalizedName());
         GameRegistry.registerTileEntity(AnomalyTrampolineTileEntity.class, "anomaly_trampoline_tileentity");
-    }
-
-    public void init(FMLInitializationEvent event) {
-
-    }
-
-    public void postInit(FMLPostInitializationEvent event) {
-
     }
 
 }
