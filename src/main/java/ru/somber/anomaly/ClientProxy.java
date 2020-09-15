@@ -42,7 +42,10 @@ public class ClientProxy extends CommonProxy {
         super.init(event);
 
         particleAtlasTexture = new ParticleAtlasTexture("textures/particles");
-        prepareParticleAtlasIcon();
+        registerParticleAtlasIcon();
+        particleAtlasTexture.setAnisotropicFiltering(16);
+        particleAtlasTexture.loadTextureAtlas(Minecraft.getMinecraft().getResourceManager());
+
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, particleAtlasTexture.getGlTextureId());
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
@@ -81,7 +84,7 @@ public class ClientProxy extends CommonProxy {
     }
 
 
-    private void prepareParticleAtlasIcon() {
+    private void registerParticleAtlasIcon() {
         particleAtlasTexture.registerIcon(ParticleIcons.distortion0Icon);
         particleAtlasTexture.registerIcon(ParticleIcons.distortion1Icon);
         particleAtlasTexture.registerIcon(ParticleIcons.distortion2Icon);
@@ -267,12 +270,6 @@ public class ClientProxy extends CommonProxy {
         particleAtlasTexture.registerIcon(ParticleIcons.otherWaterWave0Icon);
 
         particleAtlasTexture.registerIcon(ParticleIcons.otherSkinSplashAnim0Icon);
-
-
-
-        particleAtlasTexture.setAnisotropicFiltering(16);
-
-        particleAtlasTexture.loadTextureAtlas(Minecraft.getMinecraft().getResourceManager());
     }
 
 
