@@ -209,6 +209,7 @@ public class ClientProxy extends CommonProxy {
         particleAtlasTexture.registerIcon(ParticleIcons.trashAnim3Icon);
 
 
+        particleAtlasTexture.registerIcon(ParticleIcons.otherActPuh0Icon);
 
         particleAtlasTexture.registerIcon(ParticleIcons.otherBlood0Icon);
         particleAtlasTexture.registerIcon(ParticleIcons.otherBloodEnerg0Icon);

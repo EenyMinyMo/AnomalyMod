@@ -38,9 +38,7 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
         anomalyAcidMistBlock = new AnomalyAcidMistBlock();
-        anomalyAcidMistItem = new AnomalyAcidMistItem(anomalyAcidMistBlock);
         GameRegistry.registerBlock(anomalyAcidMistBlock, AnomalyAcidMistItem.class, anomalyAcidMistBlock.getUnlocalizedName());
-//        GameRegistry.registerItem(anomalyAcidMistItem, anomalyAcidMistItem.getUnlocalizedName());
         GameRegistry.registerTileEntity(AnomalyAcidMistTileEntity.class, "anomaly_acidmist_tileentity");
 
         anomalyAerationBlock = new AnomalyAerationBlock();

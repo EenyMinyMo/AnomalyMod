@@ -142,6 +142,8 @@ public final class ParticleIcons {
 
 
     //=======================================Other particles=======================================
+    public static final ParticleAtlasIcon otherActPuh0Icon =   new ParticleAtlasIcon(AnomalyMod.MOD_ID + ":" + "other/act_puh", true);
+
     public static final ParticleAtlasIcon otherBlood0Icon =   new ParticleAtlasIcon(AnomalyMod.MOD_ID + ":" + "other/blood_0", true);
     public static final ParticleAtlasIcon otherBloodEnerg0Icon =   new ParticleAtlasIcon(AnomalyMod.MOD_ID + ":" + "other/blood_energ_0", true);
 
