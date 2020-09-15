@@ -22,17 +22,6 @@ public class CommonProxy {
     public static AbstractAnomalyBlock anomalySteamBlock;
     public static AbstractAnomalyBlock anomalyTrampolineBlock;
 
-    public static AbstractAnomalyItem anomalyAcidMistItem;
-    public static AbstractAnomalyItem anomalyAerationItem;
-    public static AbstractAnomalyItem anomalyBurningFluffItem;
-    public static AbstractAnomalyItem anomalyCarouselItem;
-    public static AbstractAnomalyItem anomalyElectraItem;
-    public static AbstractAnomalyItem anomalyFryItem;
-    public static AbstractAnomalyItem anomalyFunnelItem;
-    public static AbstractAnomalyItem anomalyKisselItem;
-    public static AbstractAnomalyItem anomalySteamItem;
-    public static AbstractAnomalyItem anomalyTrampolineItem;
-
 
     public CommonProxy() {}
 
