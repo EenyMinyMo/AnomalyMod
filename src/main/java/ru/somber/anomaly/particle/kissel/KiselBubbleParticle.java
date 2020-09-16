@@ -19,14 +19,13 @@ public class KiselBubbleParticle extends AbstractSphericalParticle {
         this.yStart = y;
         this.zStart = z;
 
-        maxHeight = 0.6F + (float) Math.random() * 0.3F;
-        minSize = 0.085F;
-        maxSize = 0.6F;
+        this.maxHeight = 0.6F + (float) Math.random() * 0.3F;
+        this.minSize = 0.085F;
+        this.maxSize = 0.6F;
 
         setColorFactor(0.0F, 1.0F, 0.0F, 1.0F);
         setHalfSizes(0.3F, 0.6F);
         setBlendFactor(1.0F);
-        setLightFactor(1.0F);
     }
 
     public KiselBubbleParticle(Vector3f newPosition) {
@@ -38,6 +37,7 @@ public class KiselBubbleParticle extends AbstractSphericalParticle {
         super.update();
 
         float lifeFactor = ((float) getLifeTime()) / getMaxLifeTime();
+
         float sin = MathHelper.sin( ((float)Math.PI * lifeFactor));
         setPositionY(yStart + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
 

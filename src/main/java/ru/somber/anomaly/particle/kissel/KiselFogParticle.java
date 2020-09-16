@@ -17,17 +17,12 @@ public class KiselFogParticle extends AbstractSphericalParticle {
         this.yStart = y;
         this.zStart = z;
 
-        maxHeight = 0.4F + (float) Math.random() * 1.4F;
-        maxAlpha = 0.05F;
+        this.maxHeight = 0.4F + (float) Math.random() * 1.4F;
+        this.maxAlpha = 0.05F;
 
-        setRedFactor(0.3F);
-        setGreenFactor(1F);
-        setBlueFactor(0.3F);
-        setAlphaFactor(maxAlpha);
-
+        setColorFactor(0.3F, 1F, 0.3F, maxAlpha);
         setHalfSizes(0.8F, 0.8F);
         setBlendFactor(1.0F);
-        setLightFactor(1.0F);
     }
 
     public KiselFogParticle(Vector3f newPosition) {

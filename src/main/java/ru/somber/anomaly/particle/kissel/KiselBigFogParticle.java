@@ -14,17 +14,13 @@ public class KiselBigFogParticle extends AbstractSphericalParticle {
     public KiselBigFogParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.smoke0Icon);
 
-        minHeight = 0.5F;
-        maxHeight = 2.5F;
-        maxAlpha = 0.1F;
-
-        setHalfSizes(1.5F, 1.5F);
-//        setRotateAnglesX((float) Math.toRadians(-90));
+        this.minHeight = 0.5F;
+        this.maxHeight = 2.5F;
+        this.maxAlpha = 0.1F;
 
         setColorFactor(0.3F, 1F, 0.3F, maxAlpha);
-
+        setHalfSizes(1.5F, 1.5F);
         setBlendFactor(1.0F);
-        setLightFactor(1.0F);
     }
 
     public KiselBigFogParticle(Vector3f newPosition, int maxLifeTime) {
@@ -38,11 +34,10 @@ public class KiselBigFogParticle extends AbstractSphericalParticle {
 
         float lifeFactor = (float) getLifeTime() / getMaxLifeTime();
 
+        setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
 
 //        float size = SomberUtils.interpolateBetween(minSize, maxSize, lifeFactor);
 //        setHalfSizes(size, size);
-
-        setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
 
         setAlphaFactor(maxAlpha * (1 - lifeFactor));
     }

@@ -17,11 +17,12 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
         this.yStart = y;
         this.zStart = z;
 
-        xForce = 0;
-        yForce = 0;
-        zForce = 0;
+        this.xForce = 0;
+        this.yForce = 0;
+        this.zForce = 0;
 
-        maxHeight = 0.8F + (float) Math.random() * 0.2F;
+        this.maxHeight = 0.8F + (float) Math.random() * 0.2F;
+
         setRotateAnglesZ((float) Math.toRadians(-180));
         setAlphaFactor(0.2F + (float) Math.random() * 0.1F);
 
@@ -39,14 +40,11 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
 
-        xForce += (float) ((Math.random() - 0.5) * 0.002);
-        zForce += (float) ((Math.random() - 0.5) * 0.002);
+        this.xForce += (float) ((Math.random() - 0.5) * 0.002);
+        this.zForce += (float) ((Math.random() - 0.5) * 0.002);
 
         setPositionX(getPositionX() + xForce);
         setPositionZ(getPositionZ() + zForce);
-
-//        newPosition.setX(x - 0.3F * (1 - MathHelper.sin((float) Math.PI / 2 + (float) Math.PI * lifeTime / maxLifeTime / 2)));
-//        newPosition.setZ(z - 0.3F * (1 - MathHelper.sin((float) Math.PI / 2 + (float) Math.PI * lifeTime / maxLifeTime / 2)));
 
 //        float log = (float) Math.log10((double) lifeTime / maxLifeTime);
 //        float colorFactor =  1 - (log + 1F);

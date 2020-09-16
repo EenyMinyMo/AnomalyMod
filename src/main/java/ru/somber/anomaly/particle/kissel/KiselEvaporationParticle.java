@@ -20,17 +20,15 @@ public class KiselEvaporationParticle extends AbstractSphericalParticle {
         this.yStart = y;
         this.zStart = z;
 
-        maxHeight = 0.4F + (float) Math.random() * 0.15F;
-        maxAngle = (float) (Math.PI * 0.5F * (0.5 - Math.random())) * 0.5F;
-        minSize = 0.1F;
-        maxSize = 0.5F;
-        maxAlpha = 0.3F;
+        this.maxHeight = 0.4F + (float) Math.random() * 0.15F;
+        this.maxAngle = (float) (Math.PI * 0.5F * (0.5 - Math.random())) * 0.5F;
+        this.minSize = 0.1F;
+        this.maxSize = 0.5F;
+        this.maxAlpha = 0.3F;
 
         setAlphaFactor(maxAlpha);
         setHalfSizes(minSize, minSize);
-
         setBlendFactor(1F);
-        setLightFactor(1.0F);
     }
 
     public KiselEvaporationParticle(Vector3f newPosition) {
@@ -46,10 +44,10 @@ public class KiselEvaporationParticle extends AbstractSphericalParticle {
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
         setRotateAnglesZ(getAngleZ() + maxAngle * (1.0F / getMaxLifeTime()));
 
-        setAlphaFactor((1 - lifeFactor) * maxAlpha);
-
         float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
         setHalfSizes(size, size);
+
+        setAlphaFactor((1 - lifeFactor) * maxAlpha);
 
 //        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));
 //        setRotateAnglesZ(((float)Math.PI * lifeFactor));

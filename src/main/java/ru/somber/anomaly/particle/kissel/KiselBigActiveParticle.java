@@ -11,26 +11,19 @@ public class KiselBigActiveParticle extends AbstractSphericalParticle {
     private final float maxAngle;
     private final float minSize, maxSize;
     private final float maxAlpha;
-    private final float xStart, yStart, zStart;
 
     public KiselBigActiveParticle(float x, float y, float z) {
         super(x, y, z, 20 + ((int) (Math.random() * 5)), ParticleIcons.anomaly1Icon);
 
-        this.xStart = x;
-        this.yStart = y;
-        this.zStart = z;
-
-        maxHeight = 0.7F + (float) Math.random() * 0.2F;
-        maxAngle = (float) (Math.PI * 0.5F * (0.5 - Math.random())) * 0.5F;
-        minSize = 0.5F;
-        maxSize = 1.4F;
-        maxAlpha = 0.5F;
+        this.maxHeight = 0.7F + (float) Math.random() * 0.2F;
+        this.maxAngle = (float) (Math.PI * 0.5F * (0.5 - Math.random())) * 0.5F;
+        this.minSize = 0.5F;
+        this.maxSize = 1.4F;
+        this.maxAlpha = 0.5F;
 
         setAlphaFactor(maxAlpha);
         setHalfSizes(minSize, minSize);
-
         setBlendFactor(0.8F);
-        setLightFactor(1.0F);
     }
 
     public KiselBigActiveParticle(Vector3f newPosition) {
