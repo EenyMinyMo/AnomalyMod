@@ -29,6 +29,7 @@ public class KisselEmitter extends AbstractEmitter {
 //        updateActiveMode();
     }
 
+
     private void updateIdleMode() {
         if (Math.random() > 0.95) {
             createColorBubbleParticle();

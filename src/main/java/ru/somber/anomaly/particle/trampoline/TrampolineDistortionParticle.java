@@ -6,6 +6,8 @@ import ru.somber.particlesystem.texture.ParticleAtlasIcon;
 
 public class TrampolineDistortionParticle extends AbstractSphericalParticle {
 
+    private static final float sizes = 0.15F;
+
     private final float maxHeight;
     private final float maxSize;
 
@@ -16,7 +18,6 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
         this.maxSize = 1.2F;
 
         setHalfSizes(0F, 0F);
-        setAlphaFactor(0.75F);
     }
 
     public TrampolineDistortionParticle(Vector3f newPosition, int maxLifeTime, ParticleAtlasIcon icon) {
@@ -29,6 +30,20 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
 
         float lifeFactor = (float) getLifeTime() / getMaxLifeTime();
         setPositionY(getPositionY() + maxHeight / getMaxLifeTime());
-        setHalfSizes(getHalfWidth() + maxSize / getMaxLifeTime(), getHalfHeight() + maxSize / getMaxLifeTime());
+        setHalfSizes(maxSize * lifeFactor, maxSize * lifeFactor);
+
+        float logFactor = (float) (Math.log(-(getLifeTime() - getMaxLifeTime())) / 4);
+
+        setAlphaFactor(logFactor * 0.75F);
     }
+
+    public void setInvisible() {
+        setHalfSizes(0, 0);
+    }
+
+    public void setVisible() {
+        setHalfSizes(sizes, sizes);
+    }
+
+
 }

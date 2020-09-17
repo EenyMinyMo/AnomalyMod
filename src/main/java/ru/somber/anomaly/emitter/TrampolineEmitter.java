@@ -9,19 +9,21 @@ import ru.somber.particlesystem.texture.ParticleAtlasIcon;
 
 public class TrampolineEmitter extends AbstractEmitter {
 
-    private TrampolineDistortionParticle distortionParticle;
     private TrampolineFlashParticle flashParticle;
+    private boolean particleInit;
+    private int deltaTimeFlashParticle;
 
     public TrampolineEmitter(float x, float y, float z) {
         super(x, y, z);
-
-        createDistortionParticle();
-        createFlashParticle();
+        setTick((int) (Math.random() * 100));
+        deltaTimeFlashParticle = 20 + (int) (20 * Math.random());
     }
 
     @Override
     public void create() {
         super.create();
+
+
     }
 
     @Override
@@ -32,39 +34,54 @@ public class TrampolineEmitter extends AbstractEmitter {
     @Override
     public void update() {
         super.update();
+        if (! particleInit) {
+            flashParticle = createFlashParticle();
 
-        createDistortionParticle();
+            addParticleInEmitter(flashParticle);
+
+            ClientProxy.getParticleManager().getParticleContainer().addParticle(flashParticle);
+
+            particleInit = true;
+        }
+
+
+        updateIdleParticle();
+
+        if (getTick() % 60 == 0) {
+            createDistortionParticle();
+        }
 
     }
 
     private void updateIdleParticle() {
+        if (getTick() % deltaTimeFlashParticle == 0) {
+            float randomX = getPositionX() - 0.3F + ((float) Math.random()) * 0.6F;
+            float randomY = getPositionY() + 0.2F + ((float) Math.random()) * 0.6F;
+            float randomZ = getPositionZ() - 0.3F + ((float) Math.random()) * 0.6F;
+            flashParticle.setPosition(randomX, randomY, randomZ);
+            flashParticle.setVisible();
 
+            deltaTimeFlashParticle = 30 + (int) (20 * Math.random());
+        }
     }
 
     private void createDistortionParticle() {
         int maxLifeTime = 60;
         ParticleAtlasIcon icon = ParticleIcons.distortion3Icon;
 
-        if (getTick() % maxLifeTime == 0) {
-            distortionParticle = new TrampolineDistortionParticle(getPositionX(), getPositionY(), getPositionZ(), maxLifeTime, icon);
+        TrampolineDistortionParticle distortionParticle = new TrampolineDistortionParticle(getPositionX(), getPositionY(), getPositionZ(), maxLifeTime, icon);
 
-            addParticleInEmitter(distortionParticle);
-            ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(distortionParticle);
-        }
-
+        addParticleInEmitter(distortionParticle);
+        ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(distortionParticle);
     }
 
-    private void createFlashParticle() {
-        int maxLifeTime = 60;
-        ParticleAtlasIcon icon = ParticleIcons.distortion3Icon;
+    private TrampolineFlashParticle createFlashParticle() {
+//        int cycleTime = 60;
+        ParticleAtlasIcon icon = ParticleIcons.anomaly0Icon;
 
-        if (getTick() % maxLifeTime == 0) {
-            flashParticle = new TrampolineFlashParticle(getPositionX(), getPositionY(), getPositionZ(), maxLifeTime, icon);
+        TrampolineFlashParticle flashParticle = new TrampolineFlashParticle(getPositionX(), getPositionY(), getPositionZ(), Integer.MAX_VALUE, icon);
 
-            addParticleInEmitter(flashParticle);
-            ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(flashParticle);
-        }
-
+        return flashParticle;
     }
 
 }
