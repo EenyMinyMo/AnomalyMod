@@ -7,6 +7,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 import ru.somber.anomaly.render.DistortionParticleRenderer;
 import ru.somber.clientutil.textureatlas.AtlasTexture;
 import ru.somber.particlesystem.ParticleAPI;
@@ -66,7 +67,6 @@ public class ClientProxy extends CommonProxy {
      */
     private AtlasTexture createParticleAtlasTexture() {
         AtlasTexture atlas = new AtlasTexture("textures/particles");
-//        atlas.setAnisotropicFiltering(16);
 
         registerParticleAtlasIcon(atlas);
         atlas.stitchTextureAtlas(Minecraft.getMinecraft().getResourceManager());
@@ -74,8 +74,8 @@ public class ClientProxy extends CommonProxy {
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, atlas.getGlTextureId());
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_REPEAT);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 
         return atlas;
