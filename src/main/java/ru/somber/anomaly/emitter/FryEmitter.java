@@ -1,8 +1,6 @@
 package ru.somber.anomaly.emitter;
 
-import ru.somber.particlesystem.emitter.AbstractEmitter;
-
-public class FryEmitter extends AbstractEmitter {
+public class FryEmitter extends AbstractAnomalyEmitter {
 
     public FryEmitter(float x, float y, float z) {
         super(x, y, z);

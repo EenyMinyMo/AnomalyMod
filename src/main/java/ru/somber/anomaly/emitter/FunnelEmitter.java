@@ -1,8 +1,6 @@
 package ru.somber.anomaly.emitter;
 
-import ru.somber.particlesystem.emitter.AbstractEmitter;
-
-public class FunnelEmitter extends AbstractEmitter {
+public class FunnelEmitter extends AbstractAnomalyEmitter {
 
     public FunnelEmitter(float x, float y, float z) {
         super(x, y, z);

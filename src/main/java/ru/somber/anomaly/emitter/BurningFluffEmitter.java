@@ -1,8 +1,6 @@
 package ru.somber.anomaly.emitter;
 
-import ru.somber.particlesystem.emitter.AbstractEmitter;
-
-public class BurningFluffEmitter extends AbstractEmitter {
+public class BurningFluffEmitter extends AbstractAnomalyEmitter {
 
     public BurningFluffEmitter(float x, float y, float z) {
         super(x, y, z);

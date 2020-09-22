@@ -2,10 +2,9 @@ package ru.somber.anomaly.emitter;
 
 import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.particle.kissel.*;
-import ru.somber.particlesystem.emitter.AbstractEmitter;
 import ru.somber.particlesystem.particle.IParticle;
 
-public class KisselEmitter extends AbstractEmitter {
+public class KisselEmitter extends AbstractAnomalyEmitter {
 
     public KisselEmitter(float x, float y, float z) {
         super(x, y, z);

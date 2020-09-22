@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 import ru.somber.anomaly.render.DistortionParticleRenderer;
+import ru.somber.clientutil.textureatlas.AtlasTexture;
 import ru.somber.particlesystem.ParticleAPI;
 import ru.somber.particlesystem.container.IEmitterContainer;
 import ru.somber.particlesystem.container.IParticleContainer;
@@ -17,13 +18,12 @@ import ru.somber.particlesystem.manager.IParticleManager;
 import ru.somber.particlesystem.manager.SimpleParticleManager;
 import ru.somber.particlesystem.render.GeometryShaderParticleRenderer;
 import ru.somber.particlesystem.render.IParticleRenderer;
-import ru.somber.particlesystem.texture.ParticleAtlasTexture;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
     /** Текстура-атлас с текстурами используемых частиц. */
-    private static ParticleAtlasTexture particleAtlasTexture;
+    private static AtlasTexture particleAtlasTexture;
     /** Менеджер частиц обычных частиц. */
     private static IParticleManager particleManager;
     /** Менеджер частиц distortion частиц. */
@@ -64,12 +64,12 @@ public class ClientProxy extends CommonProxy {
     /**
      * Создает и заполняет текстуру-атлас с текстурами частиц.
      */
-    private ParticleAtlasTexture createParticleAtlasTexture() {
-        ParticleAtlasTexture atlas = new ParticleAtlasTexture("textures/particles");
-        atlas.setAnisotropicFiltering(16);
+    private AtlasTexture createParticleAtlasTexture() {
+        AtlasTexture atlas = new AtlasTexture("textures/particles");
+//        atlas.setAnisotropicFiltering(16);
 
         registerParticleAtlasIcon(atlas);
-        atlas.loadTextureAtlas(Minecraft.getMinecraft().getResourceManager());
+        atlas.stitchTextureAtlas(Minecraft.getMinecraft().getResourceManager());
 
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, atlas.getGlTextureId());
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
@@ -85,7 +85,7 @@ public class ClientProxy extends CommonProxy {
      * Регистрирует все иконки частиц в переданную текстуру-атлас.
      * Для иконок может понадобиться индивидуальная настройка иконки, поэтому регистрация проводится в одном месте.
      */
-    private void registerParticleAtlasIcon(ParticleAtlasTexture atlasTexture) {
+    private void registerParticleAtlasIcon(AtlasTexture atlasTexture) {
         atlasTexture.registerIcon(ParticleIcons.distortion0Icon);
         atlasTexture.registerIcon(ParticleIcons.distortion1Icon);
         atlasTexture.registerIcon(ParticleIcons.distortion2Icon);
@@ -279,7 +279,7 @@ public class ClientProxy extends CommonProxy {
     private IParticleManager createParticleManager() {
         IParticleContainer particleContainer = new ListParticleContainer();
         IParticleRenderer particleRenderer = new GeometryShaderParticleRenderer();
-        particleRenderer.setParticleTextureAtlas(particleAtlasTexture);
+        particleRenderer.setAtlasTexture(particleAtlasTexture);
 
         IParticleManager manager = new SimpleParticleManager();
         manager.setParticleContainer(particleContainer);
@@ -294,7 +294,7 @@ public class ClientProxy extends CommonProxy {
     private IParticleManager createDistortionParticleManager() {
         IParticleContainer distortionParticleContainer = new ListParticleContainer();
         IParticleRenderer distortionParticleRenderer = new DistortionParticleRenderer();
-        distortionParticleRenderer.setParticleTextureAtlas(particleAtlasTexture);
+        distortionParticleRenderer.setAtlasTexture(particleAtlasTexture);
 
         IParticleManager manager = new SimpleParticleManager();
         manager.setParticleContainer(distortionParticleContainer);
@@ -338,7 +338,7 @@ public class ClientProxy extends CommonProxy {
     /**
      * Вовзвращает текстуру-атлас с текстурами частиц.
      */
-    public static ParticleAtlasTexture getParticleAtlasTexture() {
+    public static AtlasTexture getParticleAtlasTexture() {
         return particleAtlasTexture;
     }
 

@@ -1,8 +1,8 @@
 package ru.somber.anomaly.particle.trampoline;
 
 import org.lwjgl.util.vector.Vector3f;
+import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
-import ru.somber.particlesystem.texture.ParticleAtlasIcon;
 
 public class TrampolineDistortionParticle extends AbstractSphericalParticle {
 
@@ -11,7 +11,7 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
     private final float maxHeight;
     private final float maxSize;
 
-    public TrampolineDistortionParticle(float x, float y, float z, int maxLifeTime, ParticleAtlasIcon icon) {
+    public TrampolineDistortionParticle(float x, float y, float z, int maxLifeTime, AtlasIcon icon) {
         super(x, y, z, maxLifeTime, icon);
 
         this.maxHeight = 0.9F;
@@ -20,7 +20,7 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
         setHalfSizes(0F, 0F);
     }
 
-    public TrampolineDistortionParticle(Vector3f newPosition, int maxLifeTime, ParticleAtlasIcon icon) {
+    public TrampolineDistortionParticle(Vector3f newPosition, int maxLifeTime, AtlasIcon icon) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime, icon);
     }
 

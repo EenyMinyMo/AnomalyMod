@@ -1,8 +1,6 @@
 package ru.somber.anomaly.emitter;
 
-import ru.somber.particlesystem.emitter.AbstractEmitter;
-
-public class CarouselEmitter extends AbstractEmitter {
+public class CarouselEmitter extends AbstractAnomalyEmitter {
 
     public CarouselEmitter(float x, float y, float z) {
         super(x, y, z);

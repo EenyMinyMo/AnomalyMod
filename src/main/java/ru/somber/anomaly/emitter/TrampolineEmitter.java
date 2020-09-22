@@ -4,10 +4,10 @@ import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.anomaly.particle.trampoline.TrampolineDistortionParticle;
 import ru.somber.anomaly.particle.trampoline.TrampolineFlashParticle;
+import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.particlesystem.emitter.AbstractEmitter;
-import ru.somber.particlesystem.texture.ParticleAtlasIcon;
 
-public class TrampolineEmitter extends AbstractEmitter {
+public class TrampolineEmitter extends AbstractAnomalyEmitter {
 
     private TrampolineFlashParticle flashParticle;
     private boolean particleInit;
@@ -34,6 +34,7 @@ public class TrampolineEmitter extends AbstractEmitter {
     @Override
     public void update() {
         super.update();
+
         if (! particleInit) {
             flashParticle = createFlashParticle();
 
@@ -67,7 +68,7 @@ public class TrampolineEmitter extends AbstractEmitter {
 
     private void createDistortionParticle() {
         int maxLifeTime = 60;
-        ParticleAtlasIcon icon = ParticleIcons.distortion3Icon;
+        AtlasIcon icon = ParticleIcons.distortion3Icon;
 
         TrampolineDistortionParticle distortionParticle = new TrampolineDistortionParticle(getPositionX(), getPositionY(), getPositionZ(), maxLifeTime, icon);
 
@@ -77,7 +78,7 @@ public class TrampolineEmitter extends AbstractEmitter {
 
     private TrampolineFlashParticle createFlashParticle() {
 //        int cycleTime = 60;
-        ParticleAtlasIcon icon = ParticleIcons.anomaly0Icon;
+        AtlasIcon icon = ParticleIcons.anomaly0Icon;
 
         TrampolineFlashParticle flashParticle = new TrampolineFlashParticle(getPositionX(), getPositionY(), getPositionZ(), Integer.MAX_VALUE, icon);
 

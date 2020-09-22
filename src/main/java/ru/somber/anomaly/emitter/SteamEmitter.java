@@ -1,8 +1,6 @@
 package ru.somber.anomaly.emitter;
 
-import ru.somber.particlesystem.emitter.AbstractEmitter;
-
-public class SteamEmitter extends AbstractEmitter {
+public class SteamEmitter extends AbstractAnomalyEmitter {
 
     public SteamEmitter(float x, float y, float z) {
         super(x, y, z);
@@ -21,8 +19,6 @@ public class SteamEmitter extends AbstractEmitter {
     @Override
     public void update() {
         super.update();
-
-
     }
 
 

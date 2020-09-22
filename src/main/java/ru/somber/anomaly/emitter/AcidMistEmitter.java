@@ -1,8 +1,6 @@
 package ru.somber.anomaly.emitter;
 
-import ru.somber.particlesystem.emitter.AbstractEmitter;
-
-public class AcidMistEmitter extends AbstractEmitter {
+public class AcidMistEmitter extends AbstractAnomalyEmitter {
 
     public AcidMistEmitter(float x, float y, float z) {
         super(x, y, z);
