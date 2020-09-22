@@ -5,7 +5,6 @@ import ru.somber.anomaly.ParticleIcons;
 import ru.somber.anomaly.particle.trampoline.TrampolineDistortionParticle;
 import ru.somber.anomaly.particle.trampoline.TrampolineFlashParticle;
 import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
-import ru.somber.particlesystem.emitter.AbstractEmitter;
 
 public class TrampolineEmitter extends AbstractAnomalyEmitter {
 

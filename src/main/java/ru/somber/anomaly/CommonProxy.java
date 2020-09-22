@@ -4,7 +4,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
 import ru.somber.anomaly.block.*;
 import ru.somber.anomaly.item.*;
 import ru.somber.anomaly.tileentity.*;
