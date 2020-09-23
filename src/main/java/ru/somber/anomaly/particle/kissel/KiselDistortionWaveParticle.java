@@ -5,17 +5,22 @@ import ru.somber.anomaly.ParticleIcons;
 import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractStaticParticle;
 
+import java.util.Random;
+
 public class KiselDistortionWaveParticle extends AbstractStaticParticle {
 
     private final float minSize;
     private final float maxSize;
     private final float maxAlpha;
 
+
     public KiselDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.distortion7Icon);
 
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+
         this.minSize = 0.2F;
-        this.maxSize = 0.7F + (float) Math.random() * 0.2F;
+        this.maxSize = 0.7F + randomizer.nextFloat() * 0.2F;
         this.maxAlpha = 0.7F;
 
         setAlphaFactor(maxAlpha);
@@ -32,10 +37,11 @@ public class KiselDistortionWaveParticle extends AbstractStaticParticle {
     public void update() {
         super.update();
 
-        float lifeFactor = (float) getLifeTime() / getMaxLifeTime();
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        float lifeFactor = getLifeFactor();
         float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
-        setHalfSizes(size, size);
 
+        setHalfSizes(size, size);
         setAlphaFactor((1 - lifeFactor) * maxAlpha);
     }
 }

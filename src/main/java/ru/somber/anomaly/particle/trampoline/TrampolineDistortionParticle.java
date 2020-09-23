@@ -2,7 +2,10 @@ package ru.somber.anomaly.particle.trampoline;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
+import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
+
+import java.util.Random;
 
 public class TrampolineDistortionParticle extends AbstractSphericalParticle {
 
@@ -11,8 +14,11 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
     private final float maxHeight;
     private final float maxSize;
 
+
     public TrampolineDistortionParticle(float x, float y, float z, int maxLifeTime, AtlasIcon icon) {
         super(x, y, z, maxLifeTime, icon);
+
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
 
         this.maxHeight = 0.9F;
         this.maxSize = 1.2F;
@@ -28,12 +34,12 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
     public void update() {
         super.update();
 
-        float lifeFactor = (float) getLifeTime() / getMaxLifeTime();
-        setPositionY(getPositionY() + maxHeight / getMaxLifeTime());
-        setHalfSizes(maxSize * lifeFactor, maxSize * lifeFactor);
-
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        float lifeFactor = getLifeFactor();
         float logFactor = (float) (Math.log(-(getLifeTime() - getMaxLifeTime())) / 4);
 
+        setPositionY(getPositionY() + maxHeight / getMaxLifeTime());
+        setHalfSizes(maxSize * lifeFactor, maxSize * lifeFactor);
         setAlphaFactor(logFactor * 0.75F);
     }
 

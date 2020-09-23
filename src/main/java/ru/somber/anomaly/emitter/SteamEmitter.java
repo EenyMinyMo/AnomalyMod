@@ -1,5 +1,9 @@
 package ru.somber.anomaly.emitter;
 
+import ru.somber.commonutil.SomberCommonUtils;
+
+import java.util.Random;
+
 public class SteamEmitter extends AbstractAnomalyEmitter {
 
     public SteamEmitter(float x, float y, float z) {
@@ -19,6 +23,9 @@ public class SteamEmitter extends AbstractAnomalyEmitter {
     @Override
     public void update() {
         super.update();
+
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+
     }
 
 

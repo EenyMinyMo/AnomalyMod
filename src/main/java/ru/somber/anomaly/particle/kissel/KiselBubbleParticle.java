@@ -6,20 +6,25 @@ import ru.somber.anomaly.ParticleIcons;
 import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 
+import java.util.Random;
+
 public class KiselBubbleParticle extends AbstractSphericalParticle {
 
     private final float maxHeight;
     private final float minSize, maxSize;
     private final float xStart, yStart, zStart;
 
+
     public KiselBubbleParticle(float x, float y, float z) {
-        super(x, y, z, 20 + ((int) (Math.random() * 5)), ParticleIcons.otherBubble3Icon);
+        super(x, y, z, 20 + SomberCommonUtils.RANDOMIZER.nextInt(5), ParticleIcons.otherBubble3Icon);
+
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
 
         this.xStart = x;
         this.yStart = y;
         this.zStart = z;
 
-        this.maxHeight = 0.6F + (float) Math.random() * 0.3F;
+        this.maxHeight = 0.6F + randomizer.nextFloat() * 0.3F;
         this.minSize = 0.085F;
         this.maxSize = 0.6F;
 
@@ -36,12 +41,12 @@ public class KiselBubbleParticle extends AbstractSphericalParticle {
     public void update() {
         super.update();
 
-        float lifeFactor = ((float) getLifeTime()) / getMaxLifeTime();
-
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        float lifeFactor = getLifeFactor();
         float sin = MathHelper.sin( ((float)Math.PI * lifeFactor));
-        setPositionY(yStart + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
+        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor * 0.9F);
 
-        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor* 0.9F);
+        setPositionY(yStart + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
         setHalfSizes(size,size);
 
 //        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));

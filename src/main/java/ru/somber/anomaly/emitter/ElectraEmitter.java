@@ -1,5 +1,9 @@
 package ru.somber.anomaly.emitter;
 
+import ru.somber.commonutil.SomberCommonUtils;
+
+import java.util.Random;
+
 public class ElectraEmitter extends AbstractAnomalyEmitter {
 
     public ElectraEmitter(float x, float y, float z) {
@@ -20,6 +24,7 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
     public void update() {
         super.update();
 
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
 
     }
 

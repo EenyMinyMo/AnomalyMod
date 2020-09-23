@@ -5,6 +5,8 @@ import ru.somber.anomaly.ParticleIcons;
 import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 
+import java.util.Random;
+
 public class KiselBigActiveParticle extends AbstractSphericalParticle {
 
     private final float maxHeight;
@@ -12,11 +14,14 @@ public class KiselBigActiveParticle extends AbstractSphericalParticle {
     private final float minSize, maxSize;
     private final float maxAlpha;
 
-    public KiselBigActiveParticle(float x, float y, float z) {
-        super(x, y, z, 20 + ((int) (Math.random() * 5)), ParticleIcons.anomaly1Icon);
 
-        this.maxHeight = 0.7F + (float) Math.random() * 0.2F;
-        this.maxAngle = (float) (Math.PI * 0.5F * (0.5 - Math.random())) * 0.5F;
+    public KiselBigActiveParticle(float x, float y, float z) {
+        super(x, y, z, 20 + SomberCommonUtils.RANDOMIZER.nextInt(10), ParticleIcons.anomaly1Icon);
+
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+
+        this.maxHeight = 0.7F + randomizer.nextFloat() * 0.2F;
+        this.maxAngle = (float) (Math.PI * 0.5F * (0.5F - randomizer.nextFloat())) * 0.5F;
         this.minSize = 0.5F;
         this.maxSize = 1.4F;
         this.maxAlpha = 0.5F;
@@ -34,15 +39,14 @@ public class KiselBigActiveParticle extends AbstractSphericalParticle {
     public void update() {
         super.update();
 
-        float lifeFactor = ((float) getLifeTime()) / getMaxLifeTime();
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        float lifeFactor = getLifeFactor();
+        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
         setRotateAnglesZ(getAngleZ() + maxAngle * (1.0F / getMaxLifeTime()));
-
-        setAlphaFactor((1 - lifeFactor) * maxAlpha);
-
-        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
         setHalfSizes(size, size);
+        setAlphaFactor((1 - lifeFactor) * maxAlpha);
     }
 
 }

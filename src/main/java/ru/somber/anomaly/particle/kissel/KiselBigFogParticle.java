@@ -2,7 +2,10 @@ package ru.somber.anomaly.particle.kissel;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
+import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
+
+import java.util.Random;
 
 public class KiselBigFogParticle extends AbstractSphericalParticle {
 
@@ -13,6 +16,8 @@ public class KiselBigFogParticle extends AbstractSphericalParticle {
 
     public KiselBigFogParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.smoke0Icon);
+
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
 
         this.minHeight = 0.5F;
         this.maxHeight = 2.5F;
@@ -32,14 +37,14 @@ public class KiselBigFogParticle extends AbstractSphericalParticle {
     public void update() {
         super.update();
 
-        float lifeFactor = (float) getLifeTime() / getMaxLifeTime();
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        float lifeFactor = getLifeFactor();
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
+        setAlphaFactor(maxAlpha * (1 - lifeFactor));
 
 //        float size = SomberUtils.interpolateBetween(minSize, maxSize, lifeFactor);
 //        setHalfSizes(size, size);
-
-        setAlphaFactor(maxAlpha * (1 - lifeFactor));
     }
 
 }

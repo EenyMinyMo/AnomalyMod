@@ -1,13 +1,19 @@
 package ru.somber.anomaly.emitter;
 
 import ru.somber.anomaly.ClientProxy;
+import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.emitter.AbstractEmitter;
 import ru.somber.particlesystem.particle.IParticle;
+
+import java.util.Random;
 
 public class AbstractAnomalyEmitter extends AbstractEmitter {
 
     public AbstractAnomalyEmitter(float x, float y, float z) {
         super(x, y, z);
+
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        setTick(randomizer.nextInt(1000));
     }
 
     @Override

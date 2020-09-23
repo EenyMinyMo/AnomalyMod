@@ -2,16 +2,23 @@ package ru.somber.anomaly.particle.trampoline;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
+import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
+
+import java.util.Random;
 
 public class TrampolineFlashParticle extends AbstractSphericalParticle {
 
     private static final float sizes = 0.3F;
     private static final int maxVisTime = 3;
+
     private int visTime = 0;
+
 
     public TrampolineFlashParticle(float x, float y, float z, int maxLifeTime, AtlasIcon icon) {
         super(x, y, z, maxLifeTime, icon);
+
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
 
         setHalfSizes(0F, 0F);
         setAlphaFactor(0.1F);
@@ -25,6 +32,8 @@ public class TrampolineFlashParticle extends AbstractSphericalParticle {
     @Override
     public void update() {
         super.update();
+
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
 
         visTime++;
         if (visTime > maxVisTime) {

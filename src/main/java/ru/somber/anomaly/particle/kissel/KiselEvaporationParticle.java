@@ -5,23 +5,23 @@ import ru.somber.anomaly.ParticleIcons;
 import ru.somber.commonutil.SomberCommonUtils;
 import ru.somber.particlesystem.particle.AbstractSphericalParticle;
 
+import java.util.Random;
+
 public class KiselEvaporationParticle extends AbstractSphericalParticle {
 
     private final float maxHeight;
     private final float maxAngle;
     private final float minSize, maxSize;
     private final float maxAlpha;
-    private final float xStart, yStart, zStart;
+
 
     public KiselEvaporationParticle(float x, float y, float z) {
-        super(x, y, z, 20 + ((int) (Math.random() * 5)), ParticleIcons.anomaly1Icon);
+        super(x, y, z, 20 + SomberCommonUtils.RANDOMIZER.nextInt(5), ParticleIcons.anomaly1Icon);
 
-        this.xStart = x;
-        this.yStart = y;
-        this.zStart = z;
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
 
-        this.maxHeight = 0.4F + (float) Math.random() * 0.15F;
-        this.maxAngle = (float) (Math.PI * 0.5F * (0.5 - Math.random())) * 0.5F;
+        this.maxHeight = 0.4F + randomizer.nextFloat() * 0.15F;
+        this.maxAngle = (float) (Math.PI * 0.5F * 0.5F - randomizer.nextFloat()) * 0.5F;
         this.minSize = 0.1F;
         this.maxSize = 0.5F;
         this.maxAlpha = 0.3F;
@@ -39,14 +39,13 @@ public class KiselEvaporationParticle extends AbstractSphericalParticle {
     public void update() {
         super.update();
 
-        float lifeFactor = ((float) getLifeTime()) / getMaxLifeTime();
+        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        float lifeFactor = getLifeFactor();
+        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
         setRotateAnglesZ(getAngleZ() + maxAngle * (1.0F / getMaxLifeTime()));
-
-        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
         setHalfSizes(size, size);
-
         setAlphaFactor((1 - lifeFactor) * maxAlpha);
 
 //        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));
