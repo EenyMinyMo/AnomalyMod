@@ -21,7 +21,7 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
         Random randomizer = SomberCommonUtils.RANDOMIZER;
 
         this.maxHeight = 0.9F;
-        this.maxSize = 1.2F;
+        this.maxSize = 2F;
 
         setHalfSizes(0F, 0F);
     }
@@ -36,11 +36,10 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
 
         Random randomizer = SomberCommonUtils.RANDOMIZER;
         float lifeFactor = getLifeFactor();
-        float logFactor = (float) (Math.log(-(getLifeTime() - getMaxLifeTime())) / 4);
 
         setPositionY(getPositionY() + maxHeight / getMaxLifeTime());
         setHalfSizes(maxSize * lifeFactor, maxSize * lifeFactor);
-        setAlphaFactor(logFactor * 0.75F);
+        setAlphaFactor((1 - lifeFactor));
     }
 
     public void setInvisible() {

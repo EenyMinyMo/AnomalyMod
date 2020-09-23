@@ -46,7 +46,7 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
 
         updateIdleParticle(randomizer);
 
-        if (getTick() % 60 == 0) {
+        if (getTick() % 100 == 0) {
             createDistortionParticle(randomizer);
         }
 
@@ -65,7 +65,7 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
     }
 
     private void createDistortionParticle(Random randomizer) {
-        int maxLifeTime = 60;
+        int maxLifeTime = 100;
         AtlasIcon icon = ParticleIcons.distortion3Icon;
 
         TrampolineDistortionParticle distortionParticle = new TrampolineDistortionParticle(getPositionX(), getPositionY(), getPositionZ(), maxLifeTime, icon);
