@@ -30,6 +30,8 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
     private VBO vboDisplayPosition;
     private VAO vaoDistortionRender;
 
+    private int samplerID;
+
 
     public DistortionParticleRenderer() {
         super();
@@ -39,19 +41,25 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         framebufferCopyTexture = Texture.createTexture(framebuffer.framebufferWidth, framebuffer.framebufferHeight);
 
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, distortionBufferTexture.getTextureID());
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
 
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, framebufferCopyTexture.getTextureID());
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_NEAREST);
-        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 
         framebufferDefaultTexture = new Texture(framebuffer.framebufferTexture);
+
+        samplerID = GL33.glGenSamplers();
+        GL33.glSamplerParameteri(samplerID, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+        GL33.glSamplerParameteri(samplerID, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+        GL33.glSamplerParameteri(samplerID, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
+        GL33.glSamplerParameteri(samplerID, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
     }
 
     @Override
@@ -64,21 +72,38 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
                 distortionBufferTexture.getHeightTexture() != framebuffer.framebufferHeight) {
 
             Texture.recreateTexture(distortionBufferTexture, framebuffer.framebufferWidth, framebuffer.framebufferHeight);
+
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, distortionBufferTexture.getTextureID());
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
         }
 
         if (framebufferCopyTexture.getWidthTexture() != framebuffer.framebufferWidth ||
                 framebufferCopyTexture.getHeightTexture() != framebuffer.framebufferHeight) {
 
             Texture.recreateTexture(framebufferCopyTexture, framebuffer.framebufferWidth, framebuffer.framebufferHeight);
+
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, framebufferCopyTexture.getTextureID());
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL12.GL_CLAMP_TO_EDGE);
+            GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL12.GL_CLAMP_TO_EDGE);
+            GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
         }
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, distortionBufferTexture.getTextureID());
         GL11.glClearColor(0, 0, 0, 0);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+
+        GL33.glBindSampler(0, samplerID);
     }
 
     @Override
     public void postRender(List<IParticle> particleList, float interpolationFactor) {
+        GL33.glBindSampler(0, 0);
         super.postRender(particleList, interpolationFactor);
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, framebufferDefaultTexture.getTextureID());
@@ -164,6 +189,8 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
     private void preDistortionRender() {
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glDisable(GL11.GL_BLEND);
+        GL11.glEnable(GL11.GL_ALPHA_TEST);
+        GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
 
         GL11.glReadBuffer(GL30.GL_COLOR_ATTACHMENT0);
         GL11.glBindTexture(GL11.GL_TEXTURE_2D, framebufferCopyTexture.getTextureID());
