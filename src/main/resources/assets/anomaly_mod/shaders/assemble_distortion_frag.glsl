@@ -1,7 +1,7 @@
 #version 330
 
-uniform sampler2D colorTexture;
-uniform sampler2D distortionTexture;
+uniform sampler2D colorBufferTexture;
+uniform sampler2D distortionBufferTexture;
 
 in vec2 textureCoord;
 
@@ -9,12 +9,11 @@ out vec4 fragColor;
 
 void main() {
     float distortionFactor = 0.1;
-    vec4 distortionColor = texture2D(distortionTexture, textureCoord);
+    vec4 distortionColor = texture2D(distortionBufferTexture, textureCoord);
 
-    float xOffset = textureCoord.x + (distortionColor.r - 0.5) * distortionColor.a * distortionFactor;
-    float yOffset = textureCoord.y + (distortionColor.g - 0.5) * distortionColor.a * distortionFactor;
+    vec2 distortionTexCoord = (textureCoord.xy + (distortionColor.rg - 0.5) * distortionColor.a * distortionFactor);
 
-    fragColor = vec4(texture2D(colorTexture, vec2(xOffset, yOffset)).rgb, 1);
+    fragColor = vec4(texture2D(colorBufferTexture, distortionTexCoord).rgb, 1);
 
 //    fragColor = vec4(distortionColor.rgb, 1.0);
 }
