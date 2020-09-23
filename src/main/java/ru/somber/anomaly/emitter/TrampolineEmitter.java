@@ -3,6 +3,7 @@ package ru.somber.anomaly.emitter;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.anomaly.particle.trampoline.TrampolineDistortionParticle;
 import ru.somber.anomaly.particle.trampoline.TrampolineFlashParticle;
+import ru.somber.anomaly.particle.trampoline.TrampolineLeafParticle;
 import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.commonutil.SomberCommonUtils;
 
@@ -50,6 +51,11 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
             createDistortionParticle(randomizer);
         }
 
+
+        if (randomizer.nextFloat() > 0.95F) {
+            createLeafParticle(randomizer);
+        }
+
     }
 
     private void updateIdleParticle(Random randomizer) {
@@ -66,19 +72,25 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
 
     private void createDistortionParticle(Random randomizer) {
         int maxLifeTime = 100;
-        AtlasIcon icon = ParticleIcons.distortion3Icon;
 
-        TrampolineDistortionParticle distortionParticle = new TrampolineDistortionParticle(getPositionX(), getPositionY(), getPositionZ(), maxLifeTime, icon);
+        TrampolineDistortionParticle distortionParticle = new TrampolineDistortionParticle(getPositionX(), getPositionY(), getPositionZ(), maxLifeTime);
 
         addDistortionParticleContainer(distortionParticle);
     }
 
     private TrampolineFlashParticle createFlashParticle(Random randomizer) {
-        AtlasIcon icon = ParticleIcons.anomaly0Icon;
-
-        TrampolineFlashParticle flashParticle = new TrampolineFlashParticle(getPositionX(), getPositionY(), getPositionZ(), Integer.MAX_VALUE, icon);
+        TrampolineFlashParticle flashParticle = new TrampolineFlashParticle(getPositionX(), getPositionY(), getPositionZ(), Integer.MAX_VALUE);
 
         return flashParticle;
+    }
+
+    private void createLeafParticle(Random randomizer) {
+        float randomX = getPositionX();
+        float randomY = getPositionY() + randomizer.nextFloat() * 0.05F;
+        float randomZ = getPositionZ();
+
+        TrampolineLeafParticle leafParticle = new TrampolineLeafParticle(randomX, randomY, randomZ, 200);
+        addParticleContainer(leafParticle);
     }
 
 }
