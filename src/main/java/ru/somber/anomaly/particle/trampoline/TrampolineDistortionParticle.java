@@ -21,8 +21,8 @@ public class TrampolineDistortionParticle extends AbstractSphericalParticle {
 
         Random randomizer = SomberCommonUtils.RANDOMIZER;
 
-        this.maxHeight = 0.6F;
-        this.maxSize = 1.2F;
+        this.maxHeight = 0.76F;
+        this.maxSize = 1.5F;
 
         setHalfSizes(0F, 0F);
     }
