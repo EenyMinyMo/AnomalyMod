@@ -95,7 +95,7 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         }
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, distortionBufferTexture.getTextureID());
-        GL11.glClearColor(0, 0, 0, 0);
+        GL11.glClearColor(0.5F, 0.5F, 0.5F, 0);
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
         GL33.glBindSampler(0, samplerID);
