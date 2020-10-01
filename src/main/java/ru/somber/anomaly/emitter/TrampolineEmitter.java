@@ -50,7 +50,7 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
         }
 
 
-        if (randomizer.nextFloat() > 0.965F) {
+        if (randomizer.nextFloat() > 0.97F) {
             createLeafParticle(randomizer);
         }
 
@@ -87,7 +87,7 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
         float randomY = getPositionY() + randomizer.nextFloat() * 0.05F - 0.15F;
         float randomZ = getPositionZ();
 
-        TrampolineLeafParticle leafParticle = new TrampolineLeafParticle(randomX, randomY, randomZ, 200);
+        TrampolineLeafParticle leafParticle = new TrampolineLeafParticle(randomX, randomY, randomZ, 300);
         addParticleContainer(leafParticle);
     }
 
