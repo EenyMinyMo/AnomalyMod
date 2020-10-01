@@ -3,17 +3,17 @@ package ru.somber.anomaly.particle.kissel;
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.commonutil.SomberCommonUtils;
-import ru.somber.particlesystem.particle.AbstractSphericalParticle;
+import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
 
-public class KiselFogParticle extends AbstractSphericalParticle {
+public class KisselFogParticle extends AbstractParticleSimpleData {
 
     private final float maxHeight;
     private final float maxAlpha;
 
 
-    public KiselFogParticle(float x, float y, float z) {
+    public KisselFogParticle(float x, float y, float z) {
         super(x, y, z, 60 + SomberCommonUtils.RANDOMIZER.nextInt(5), ParticleIcons.smoke0Icon);
 
         Random randomizer = SomberCommonUtils.RANDOMIZER;
@@ -26,8 +26,14 @@ public class KiselFogParticle extends AbstractSphericalParticle {
         setBlendFactor(1.0F);
     }
 
-    public KiselFogParticle(Vector3f newPosition) {
+    public KisselFogParticle(Vector3f newPosition) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ());
+    }
+
+
+    @Override
+    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
+        super.computeNormalVectorSphericalParticle(destination, lookAtX, lookAtY, lookAtZ, interpolateFactor);
     }
 
     @Override

@@ -1,10 +1,8 @@
 package ru.somber.anomaly.emitter;
 
-import ru.somber.anomaly.ParticleIcons;
 import ru.somber.anomaly.particle.trampoline.TrampolineDistortionParticle;
 import ru.somber.anomaly.particle.trampoline.TrampolineFlashParticle;
 import ru.somber.anomaly.particle.trampoline.TrampolineLeafParticle;
-import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.commonutil.SomberCommonUtils;
 
 import java.util.Random;

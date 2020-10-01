@@ -72,7 +72,7 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY();
         float z = getPositionZ() - 0.5F + randomizer.nextFloat();
 
-        IParticle particle = new KiselBubbleParticle(x, y, z);
+        IParticle particle = new KisselBubbleParticle(x, y, z);
 
         addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
@@ -86,7 +86,7 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY();
         float z = getPositionZ() - 0.5F + randomizer.nextFloat();
 
-        IParticle particle = new KiselEvaporationParticle(x, y, z);
+        IParticle particle = new KisselEvaporationParticle(x, y, z);
 
         addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
@@ -97,7 +97,7 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY();
         float z = getPositionZ() - 0.7F + randomizer.nextFloat() * 1.4F;
 
-        IParticle particle = new KiselFogParticle(x, y, z);
+        IParticle particle = new KisselFogParticle(x, y, z);
 
         addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
@@ -108,7 +108,7 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY();
         float z = getPositionZ() - 0.5F + ((float) Math.random());
 
-        IParticle particle = new KiselBigFogParticle(x, y + 0.002F, z, 100 + randomizer.nextInt(5));
+        IParticle particle = new KisselBigFogParticle(x, y + 0.002F, z, 100 + randomizer.nextInt(5));
 
         addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
@@ -119,7 +119,7 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY();
         float z = getPositionZ() - 0.5F + randomizer.nextFloat();
 
-        IParticle particle = new KiselBigActiveParticle(x, y, z);
+        IParticle particle = new KisselBigActiveParticle(x, y, z);
 
         addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
@@ -131,14 +131,14 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY();
         float z = getPositionZ() - 0.5F + randomizer.nextFloat();
 
-        IParticle particle = new KiselDistortionBubbleParticle(x, y, z);
+        IParticle particle = new KisselDistortionBubbleParticle(x, y, z);
 
         addParticleInEmitter(particle);
         ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
     }
 
     private void createDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
-        IParticle particle = new KiselDistortionWaveParticle(x, y, z, maxLifeTime);
+        IParticle particle = new KisselDistortionWaveParticle(x, y, z, maxLifeTime);
 
         addParticleInEmitter(particle);
         ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);

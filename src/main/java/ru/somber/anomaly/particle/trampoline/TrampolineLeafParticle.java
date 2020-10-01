@@ -6,11 +6,11 @@ import ru.somber.anomaly.ParticleIcons;
 import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
 import ru.somber.commonutil.SomberCommonUtils;
-import ru.somber.particlesystem.particle.AbstractSphericalParticle;
+import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
 
-public class TrampolineLeafParticle extends AbstractSphericalParticle {
+public class TrampolineLeafParticle extends AbstractParticleSimpleData {
 
     private final float xStart, yStart, zStart;
     private final float minRadius, maxRadius;
@@ -47,6 +47,12 @@ public class TrampolineLeafParticle extends AbstractSphericalParticle {
 
     public TrampolineLeafParticle(Vector3f newPosition, int maxLifeTime) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
+    }
+
+
+    @Override
+    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
+        super.computeNormalVectorSphericalParticle(destination, lookAtX, lookAtY, lookAtZ, interpolateFactor);
     }
 
     @Override

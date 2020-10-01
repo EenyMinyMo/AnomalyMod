@@ -3,18 +3,18 @@ package ru.somber.anomaly.particle.kissel;
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.commonutil.SomberCommonUtils;
-import ru.somber.particlesystem.particle.AbstractStaticParticle;
+import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
 
-public class KiselDistortionWaveParticle extends AbstractStaticParticle {
+public class KisselDistortionWaveParticle extends AbstractParticleSimpleData {
 
     private final float minSize;
     private final float maxSize;
     private final float maxAlpha;
 
 
-    public KiselDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
+    public KisselDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.distortion7Icon);
 
         Random randomizer = SomberCommonUtils.RANDOMIZER;
@@ -28,10 +28,15 @@ public class KiselDistortionWaveParticle extends AbstractStaticParticle {
         setRotateAnglesX((float) Math.toRadians(-90));
     }
 
-    public KiselDistortionWaveParticle(Vector3f newPosition, int maxLifeTime) {
+    public KisselDistortionWaveParticle(Vector3f newPosition, int maxLifeTime) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
     }
 
+
+    @Override
+    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
+        super.computeNormalVectorStaticParticle(destination);
+    }
 
     @Override
     public void update() {

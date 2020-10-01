@@ -5,11 +5,11 @@ import ru.somber.anomaly.ParticleIcons;
 import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
 import ru.somber.commonutil.SomberCommonUtils;
-import ru.somber.particlesystem.particle.AbstractStaticParticle;
+import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
 
-public class DebugParticle extends AbstractStaticParticle {
+public class DebugParticle extends AbstractParticleSimpleData {
 
     public DebugParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.trashAnim1Icon);
@@ -21,6 +21,11 @@ public class DebugParticle extends AbstractStaticParticle {
 
     public DebugParticle(Vector3f newPosition, int maxLifeTime) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
+    }
+
+    @Override
+    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
+        super.computeNormalVectorStaticParticle(destination);
     }
 
     @Override

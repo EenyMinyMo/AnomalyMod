@@ -3,17 +3,17 @@ package ru.somber.anomaly.particle.kissel;
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.commonutil.SomberCommonUtils;
-import ru.somber.particlesystem.particle.AbstractSphericalParticle;
+import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
 
-public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
+public class KisselDistortionBubbleParticle extends AbstractParticleSimpleData {
 
     private final float maxHeight;
     private float xForce, yForce, zForce;
 
 
-    public KiselDistortionBubbleParticle(float x, float y, float z) {
+    public KisselDistortionBubbleParticle(float x, float y, float z) {
         super(x, y, z, 3 * 20 + SomberCommonUtils.RANDOMIZER.nextInt(10), ParticleIcons.distortion17Icon);
 
         Random randomizer = SomberCommonUtils.RANDOMIZER;
@@ -31,8 +31,14 @@ public class KiselDistortionBubbleParticle extends AbstractSphericalParticle {
         setHalfSizes(sizeRandom, sizeRandom);
     }
 
-    public KiselDistortionBubbleParticle(Vector3f newPosition) {
+    public KisselDistortionBubbleParticle(Vector3f newPosition) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ());
+    }
+
+
+    @Override
+    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
+        super.computeNormalVectorSphericalParticle(destination, lookAtX, lookAtY, lookAtZ, interpolateFactor);
     }
 
     @Override

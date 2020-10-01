@@ -2,12 +2,13 @@ package ru.somber.anomaly.particle.trampoline;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
+import ru.somber.commonutil.Axis;
 import ru.somber.commonutil.SomberCommonUtils;
-import ru.somber.particlesystem.particle.AbstractSphericalParticle;
+import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
 
-public class TrampolineFlashParticle extends AbstractSphericalParticle {
+public class TrampolineFlashParticle extends AbstractParticleSimpleData {
 
     private static final float sizes = 0.38F;
     private static final int maxVisTime = 3;
@@ -27,6 +28,12 @@ public class TrampolineFlashParticle extends AbstractSphericalParticle {
 
     public TrampolineFlashParticle(Vector3f newPosition, int maxLifeTime) {
         this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
+    }
+
+
+    @Override
+    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
+        super.computeNormalVectorSphericalParticle(destination, lookAtX, lookAtY, lookAtZ, interpolateFactor);
     }
 
     @Override
