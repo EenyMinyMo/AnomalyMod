@@ -2,7 +2,7 @@ package ru.somber.anomaly.particle.kissel;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
@@ -17,7 +17,7 @@ public class KisselDistortionWaveParticle extends AbstractParticleSimpleData {
     public KisselDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.distortion7Icon);
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.minSize = 0.2F;
         this.maxSize = 0.7F + randomizer.nextFloat() * 0.2F;
@@ -42,9 +42,9 @@ public class KisselDistortionWaveParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
         float lifeFactor = getLifeFactor();
-        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
+        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, lifeFactor);
 
         setHalfSizes(size, size);
         setAlphaFactor((1 - lifeFactor) * maxAlpha);

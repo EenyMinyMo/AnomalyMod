@@ -7,7 +7,7 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.*;
 import ru.somber.anomaly.AnomalyMod;
-import ru.somber.clientutil.opengl.OpenGLUtils;
+import ru.somber.clientutil.opengl.OpenGLUtil;
 import ru.somber.clientutil.opengl.Shader;
 import ru.somber.clientutil.opengl.ShaderProgram;
 import ru.somber.clientutil.opengl.VAO;
@@ -117,7 +117,7 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         } else {    //буфера размытия без окружающего мира.
             GL11.glDisable(GL11.GL_DEPTH_TEST);
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-            OpenGLUtils.drawTextureOverFramebuffer(distortionBufferTexture.getTextureID());
+            OpenGLUtil.drawTextureOverFramebuffer(distortionBufferTexture.getTextureID());
         }
     }
 

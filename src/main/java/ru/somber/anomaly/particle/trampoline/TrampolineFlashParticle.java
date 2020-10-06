@@ -2,8 +2,7 @@ package ru.somber.anomaly.particle.trampoline;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.Axis;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
@@ -19,7 +18,7 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
     public TrampolineFlashParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.anomaly0Icon);
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         setHalfSizes(0F, 0F);
         setAlphaFactor(0.2F);
@@ -40,7 +39,7 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         visTime++;
         if (visTime > maxVisTime) {
@@ -52,7 +51,7 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
     }
 
     public void setVisible() {
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         setHalfSizes(sizes, sizes);
         setRotateAnglesZ((float) Math.PI * 2 * randomizer.nextFloat());

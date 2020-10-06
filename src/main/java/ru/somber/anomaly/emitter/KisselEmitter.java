@@ -2,7 +2,7 @@ package ru.somber.anomaly.emitter;
 
 import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.particle.kissel.*;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.IParticle;
 
 import java.util.Random;
@@ -27,7 +27,7 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         updateIdleMode(randomizer);
 //        updateActiveMode(randomizer);

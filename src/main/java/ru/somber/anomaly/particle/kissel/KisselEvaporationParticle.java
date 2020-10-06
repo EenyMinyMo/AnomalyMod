@@ -2,7 +2,7 @@ package ru.somber.anomaly.particle.kissel;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
@@ -16,9 +16,9 @@ public class KisselEvaporationParticle extends AbstractParticleSimpleData {
 
 
     public KisselEvaporationParticle(float x, float y, float z) {
-        super(x, y, z, 20 + SomberCommonUtils.RANDOMIZER.nextInt(5), ParticleIcons.anomaly1Icon);
+        super(x, y, z, 20 + SomberCommonUtil.RANDOMIZER.nextInt(5), ParticleIcons.anomaly1Icon);
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.maxHeight = 0.4F + randomizer.nextFloat() * 0.15F;
         this.maxAngle = (float) (Math.PI * 0.5F * 0.5F - randomizer.nextFloat()) * 0.5F;
@@ -45,9 +45,9 @@ public class KisselEvaporationParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
         float lifeFactor = getLifeFactor();
-        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor);
+        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, lifeFactor);
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
         setRotateAnglesZ(getAngleZ() + maxAngle * (1.0F / getMaxLifeTime()));

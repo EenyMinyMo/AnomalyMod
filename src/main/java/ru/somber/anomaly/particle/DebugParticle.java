@@ -4,7 +4,7 @@ import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
@@ -14,7 +14,7 @@ public class DebugParticle extends AbstractParticleSimpleData {
     public DebugParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.trashAnim1Icon);
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         setHalfSizes(2, 1);
     }
@@ -32,7 +32,7 @@ public class DebugParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
         float lifeFactor = getLifeFactor();
 
     }

@@ -3,7 +3,7 @@ package ru.somber.anomaly.emitter;
 import ru.somber.anomaly.particle.trampoline.TrampolineDistortionParticle;
 import ru.somber.anomaly.particle.trampoline.TrampolineFlashParticle;
 import ru.somber.anomaly.particle.trampoline.TrampolineLeafParticle;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 
 import java.util.Random;
 
@@ -16,7 +16,7 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
     public TrampolineEmitter(float x, float y, float z) {
         super(x, y, z);
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
         deltaTimeFlashParticle = 20 + randomizer.nextInt(20);
     }
 
@@ -34,7 +34,7 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         if (! particleInit) {
             particleInit = true;

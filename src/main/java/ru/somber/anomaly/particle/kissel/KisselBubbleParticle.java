@@ -3,7 +3,7 @@ package ru.somber.anomaly.particle.kissel;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
@@ -16,9 +16,9 @@ public class KisselBubbleParticle extends AbstractParticleSimpleData {
 
 
     public KisselBubbleParticle(float x, float y, float z) {
-        super(x, y, z, 20 + SomberCommonUtils.RANDOMIZER.nextInt(5), ParticleIcons.otherBubble3Icon);
+        super(x, y, z, 20 + SomberCommonUtil.RANDOMIZER.nextInt(5), ParticleIcons.otherBubble3Icon);
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.xStart = x;
         this.yStart = y;
@@ -47,10 +47,10 @@ public class KisselBubbleParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
         float lifeFactor = getLifeFactor();
         float sin = MathHelper.sin( ((float)Math.PI * lifeFactor));
-        float size = SomberCommonUtils.interpolateBetween(minSize, maxSize, lifeFactor * 0.9F);
+        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, lifeFactor * 0.9F);
 
         setPositionY(yStart + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
         setHalfSizes(size,size);

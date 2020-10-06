@@ -2,7 +2,7 @@ package ru.somber.anomaly.particle.kissel;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
@@ -14,9 +14,9 @@ public class KisselDistortionBubbleParticle extends AbstractParticleSimpleData {
 
 
     public KisselDistortionBubbleParticle(float x, float y, float z) {
-        super(x, y, z, 3 * 20 + SomberCommonUtils.RANDOMIZER.nextInt(10), ParticleIcons.distortion17Icon);
+        super(x, y, z, 3 * 20 + SomberCommonUtil.RANDOMIZER.nextInt(10), ParticleIcons.distortion17Icon);
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.xForce = 0;
         this.yForce = 0;
@@ -45,7 +45,7 @@ public class KisselDistortionBubbleParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
         this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.002F);
         this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.002F);
 

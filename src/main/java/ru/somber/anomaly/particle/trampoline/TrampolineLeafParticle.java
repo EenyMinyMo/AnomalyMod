@@ -5,7 +5,7 @@ import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
-import ru.somber.commonutil.SomberCommonUtils;
+import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
@@ -22,7 +22,7 @@ public class TrampolineLeafParticle extends AbstractParticleSimpleData {
     public TrampolineLeafParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.trashAnim3Icon);
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.xStart = x;
         this.yStart = y;
@@ -59,11 +59,11 @@ public class TrampolineLeafParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtils.RANDOMIZER;
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
         float lifeFactor = getLifeFactor();
 
         float rotateAngleRadian = (float) Math.PI * lifeFactor * 3 + offsetAngleRadians;
-        float interpolateRadius = SomberCommonUtils.interpolateBetween(minRadius, maxRadius, lifeFactor);
+        float interpolateRadius = SomberCommonUtil.interpolateBetween(minRadius, maxRadius, lifeFactor);
         float newY = yStart + maxHeight * lifeFactor * lifeFactor;
         float newX = xStart + MathHelper.cos(rotateAngleRadian) * interpolateRadius;
         float newZ = zStart + MathHelper.sin(rotateAngleRadian) * interpolateRadius;
