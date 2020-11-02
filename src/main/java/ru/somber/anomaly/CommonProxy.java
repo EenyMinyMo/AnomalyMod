@@ -20,6 +20,7 @@ public class CommonProxy {
     public static AbstractAnomalyBlock anomalyKisselBlock;
     public static AbstractAnomalyBlock anomalySteamBlock;
     public static AbstractAnomalyBlock anomalyTrampolineBlock;
+    public static AbstractAnomalyBlock debugBlock;
 
 
     public CommonProxy() {}
@@ -76,6 +77,10 @@ public class CommonProxy {
         anomalyTrampolineBlock = new AnomalyTrampolineBlock();
         GameRegistry.registerBlock(anomalyTrampolineBlock, AnomalyTrampolineItem.class, anomalyTrampolineBlock.getUnlocalizedName());
         GameRegistry.registerTileEntity(AnomalyTrampolineTileEntity.class, "anomaly_trampoline_tileentity");
+
+        debugBlock = new DebugParticleBlock();
+        GameRegistry.registerBlock(debugBlock, debugBlock.getUnlocalizedName());
+        GameRegistry.registerTileEntity(DebugParticleTileEntity.class, "debug_tileentity");
     }
 
 }
