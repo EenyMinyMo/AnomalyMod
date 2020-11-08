@@ -3,12 +3,15 @@ package ru.somber.anomaly;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-import ru.somber.anomaly.render.DistortionParticleRenderer;
+import ru.somber.anomaly.client.render.DistortionParticleRenderer;
+import ru.somber.anomaly.client.tileentity.ClientDebugTileEntity;
+import ru.somber.anomaly.client.tileentity.ClientFryTileEntity;
 import ru.somber.clientutil.textureatlas.AtlasTexture;
 import ru.somber.particlesystem.ParticleAPI;
 import ru.somber.particlesystem.container.IEmitterContainer;
@@ -39,6 +42,9 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
+
+        GameRegistry.registerTileEntity(ClientDebugTileEntity.class, "client_debug_tileentity");
+        GameRegistry.registerTileEntity(ClientFryTileEntity.class, "client_fry_tileentity");
     }
 
     @Override

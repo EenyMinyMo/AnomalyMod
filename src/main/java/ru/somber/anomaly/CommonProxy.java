@@ -4,8 +4,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import ru.somber.anomaly.block.*;
-import ru.somber.anomaly.item.*;
+import ru.somber.anomaly.common.block.*;
+import ru.somber.anomaly.common.item.*;
 import ru.somber.anomaly.tileentity.*;
 
 public class CommonProxy {
@@ -80,7 +80,7 @@ public class CommonProxy {
 
         debugBlock = new DebugParticleBlock();
         GameRegistry.registerBlock(debugBlock, debugBlock.getUnlocalizedName());
-        GameRegistry.registerTileEntity(DebugParticleTileEntity.class, "debug_tileentity");
+//        GameRegistry.registerTileEntity(DebugParticleTileEntity.class, "debug_tileentity");
     }
 
 }

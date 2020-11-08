@@ -1,5 +1,7 @@
 package ru.somber.anomaly.tileentity;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -14,8 +16,9 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
 
 
     @Override
+    @SideOnly(Side.CLIENT)
     public double getMaxRenderDistanceSquared() {
-        return 128 * 128;
+        return 256 * 256;
     }
 
     @Override
@@ -26,12 +29,6 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
     @Override
     public boolean canUpdate() {
         return true;
-    }
-
-    /** Здесь убивать эмиттеры и прочие убиваемые вещи. */
-    @Override
-    public void onChunkUnload() {
-        super.onChunkUnload();
     }
 
     /** Здесь убивать эмиттеры и прочие убиваемые вещи. */

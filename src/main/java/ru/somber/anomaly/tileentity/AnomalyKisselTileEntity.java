@@ -4,7 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.World;
 import ru.somber.anomaly.ClientProxy;
-import ru.somber.anomaly.emitter.KisselEmitter;
+import ru.somber.anomaly.client.emitter.KisselEmitter;
 
 public class AnomalyKisselTileEntity extends AbstractAnomalyTileEntity {
 
