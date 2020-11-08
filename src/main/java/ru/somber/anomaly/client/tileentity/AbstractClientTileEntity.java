@@ -82,7 +82,6 @@ public abstract class AbstractClientTileEntity extends TileEntity {
         currentPhase = phases[phaseOrdinal];
 
         currentPhaseTick = 0;
-        System.out.println(getClass().getName() + " change on " + currentPhase);
     }
 
     @Override
