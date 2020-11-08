@@ -2,7 +2,8 @@ package ru.somber.anomaly.common.block;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import ru.somber.anomaly.tileentity.AnomalyCarouselTileEntity;
+import ru.somber.anomaly.client.tileentity.ClientCarouselTileEntity;
+import ru.somber.anomaly.server.tileentity.ServerCarouselTileEntity;
 
 public class AnomalyCarouselBlock extends AbstractAnomalyBlock {
 
@@ -13,7 +14,11 @@ public class AnomalyCarouselBlock extends AbstractAnomalyBlock {
 
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {
-        return new AnomalyCarouselTileEntity(world, metadata);
+        if (world.isRemote) {
+            return new ClientCarouselTileEntity();
+        } else {
+            return new ServerCarouselTileEntity();
+        }
     }
 
 }

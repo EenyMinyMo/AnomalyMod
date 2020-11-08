@@ -4,7 +4,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.client.tileentity.ClientFryTileEntity;
 import ru.somber.anomaly.server.tileentity.ServerFryTileEntity;
-import ru.somber.anomaly.tileentity.AnomalyFryTileEntity;
 
 public class AnomalyFryBlock extends AbstractAnomalyBlock {
 

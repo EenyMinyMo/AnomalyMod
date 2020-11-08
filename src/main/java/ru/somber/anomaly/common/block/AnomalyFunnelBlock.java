@@ -2,7 +2,8 @@ package ru.somber.anomaly.common.block;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import ru.somber.anomaly.tileentity.AnomalyFunnelTileEntity;
+import ru.somber.anomaly.client.tileentity.ClientFunnelTileEntity;
+import ru.somber.anomaly.server.tileentity.ServerFunnelTileEntity;
 
 public class AnomalyFunnelBlock extends AbstractAnomalyBlock {
 
@@ -13,7 +14,11 @@ public class AnomalyFunnelBlock extends AbstractAnomalyBlock {
 
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {
-        return new AnomalyFunnelTileEntity(world, metadata);
+        if (world.isRemote) {
+            return new ClientFunnelTileEntity();
+        } else {
+            return new ServerFunnelTileEntity();
+        }
     }
 
 }

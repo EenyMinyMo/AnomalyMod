@@ -5,11 +5,11 @@ import net.minecraft.world.World;
 import ru.somber.anomaly.client.tileentity.ClientDebugTileEntity;
 import ru.somber.anomaly.server.tileentity.ServerDebugTileEntity;
 
-public class DebugParticleBlock extends AbstractAnomalyBlock {
+public class AnomalyDebugBlock extends AbstractAnomalyBlock {
 
-    public DebugParticleBlock() {
+    public AnomalyDebugBlock() {
         super();
-        this.setBlockName("debug_particle_block");
+        this.setBlockName("anomaly_debug_block");
     }
 
     @Override
