@@ -25,14 +25,10 @@ public class KisselDistortionBubbleParticle extends AbstractParticleSimpleData {
         this.maxHeight = 0.8F + randomizer.nextFloat() * 0.2F;
 
         setRotateAnglesZ((float) Math.toRadians(-180));
-        setAlphaFactor(0.2F + randomizer.nextFloat() * 0.1F);
+        setAlphaFactor(1);
 
         float sizeRandom = 0.1F + randomizer.nextFloat() * 0.05F;
         setHalfSizes(sizeRandom, sizeRandom);
-    }
-
-    public KisselDistortionBubbleParticle(Vector3f newPosition) {
-        this(newPosition.getX(), newPosition.getY(), newPosition.getZ());
     }
 
 

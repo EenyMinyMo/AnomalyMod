@@ -1,7 +1,7 @@
 package ru.somber.anomaly.client.emitter;
 
-import ru.somber.anomaly.client.particle.acidmist.AcidMistBigFogParticle;
-import ru.somber.anomaly.client.particle.acidmist.AcidMistSmallFogParticle;
+import ru.somber.anomaly.ParticleIcons;
+import ru.somber.anomaly.client.particle.acidmist.AcidMistFogParticle;
 import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.IParticle;
 
@@ -28,50 +28,64 @@ public class AcidMistEmitter extends AbstractAnomalyEmitter {
         super.update();
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
-
-        if (getTick() % 18 == 1) {
+        if (getTick() % 10 == 1) {
             createBigFogParticle();
         }
 
-        if (getTick() % 16 == 1) {
+        if (getTick() % 9 == 1) {
             createSmallFogParticle();
         }
+
     }
 
+    @Override
+    public void updateDefaultPhase(int currentTick, int phaseTickDuration) {
+        super.updateDefaultPhase(currentTick, phaseTickDuration);
+    }
+
+    @Override
+    public void updateActivePhase(int currentTick, int phaseTickDuration) {
+        super.updateActivePhase(currentTick, phaseTickDuration);
+    }
+
+    @Override
+    public void updateSleepPhase(int currentTick, int phaseTickDuration) {
+        super.updateSleepPhase(currentTick, phaseTickDuration);
+    }
 
     private void createBigFogParticle() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float x = getPositionX() + randomizer.nextFloat() * 3F - 1.5F;
-        float y = getPositionY() + 0.3F;
-        float z = getPositionZ() + randomizer.nextFloat() * 3F - 1.5F;
+        float x = getPositionX() + randomizer.nextFloat() * 2.2F - 1.1F;
+        float y = getPositionY() + 0.2F;
+        float z = getPositionZ() + randomizer.nextFloat() * 2.2F - 1.1F;
 
-        IParticle particle = new AcidMistBigFogParticle(x, y, z);
+        IParticle particle;
 
-        addParticleInEmitter(particle);
+        particle = new AcidMistFogParticle(x, y, z, 100, 1.2F, ParticleIcons.smoke4Icon);
         addParticleContainer(particle);
 
-        particle = new AcidMistBigFogParticle(x - 0.4F, y + 0.3F, z + 0.3F);
-
-        addParticleInEmitter(particle);
+        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 100, 1.2F, ParticleIcons.smoke4Icon);
         addParticleContainer(particle);
 
-        particle = new AcidMistBigFogParticle(x + 0.35F, y - 0.1F, z + 0.1F);
-
-        addParticleInEmitter(particle);
+        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 100, 1.2F, ParticleIcons.smoke4Icon);
         addParticleContainer(particle);
     }
 
     private void createSmallFogParticle() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float x = getPositionX() + randomizer.nextFloat() * 3F - 1.5F;
-        float y = getPositionY() + 0.3F;
-        float z = getPositionZ() + randomizer.nextFloat() * 3F - 1.5F;
+        float x = getPositionX() + randomizer.nextFloat() * 2.2F - 1.1F;
+        float y = getPositionY() + 0.2F;
+        float z = getPositionZ() + randomizer.nextFloat() * 2.2F - 1.1F;
 
-        IParticle particle = new AcidMistSmallFogParticle(x, y, z);
+        IParticle particle = new AcidMistFogParticle(x, y, z, 90, 0.6F, ParticleIcons.smoke4Icon);
+        addParticleContainer(particle);
 
-        addParticleInEmitter(particle);
+        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 90, 0.6F, ParticleIcons.smoke4Icon);
+        addParticleContainer(particle);
+
+        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 90, 0.6F, ParticleIcons.smoke4Icon);
         addParticleContainer(particle);
     }
 

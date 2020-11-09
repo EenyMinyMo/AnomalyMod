@@ -9,9 +9,12 @@ import java.util.Random;
 
 public class DistortionHeatParticle extends AbstractParticleSimpleData {
 
-    private final float maxHeight;
-    private final float minSize, maxSize;
-    private float xForce, yForce, zForce;
+    private static final float maxHeight = 3.5F;
+    private static final float maxAlpha = 0.5F;
+    private static final float minSize = 0.4F;
+    private static final float maxSize = 1.1F;
+
+    private float xForce, zForce;
 
 
     public DistortionHeatParticle(float x, float y, float z) {
@@ -20,22 +23,12 @@ public class DistortionHeatParticle extends AbstractParticleSimpleData {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.xForce = 0;
-        this.yForce = 0;
         this.zForce = 0;
 
-        this.maxHeight = 3F + randomizer.nextFloat() * 0.3F;
-        this.minSize = 0.5F;
-        this.maxSize = 0.8F;
+        setRotateAnglesZ((float) Math.toRadians(360) * randomizer.nextFloat());
+        setAlphaFactor(maxAlpha);
 
-        setRotateAnglesZ((float) Math.toRadians(-180));
-//        setAlphaFactor(0.2F + randomizer.nextFloat() * 0.1F);
-
-//        float sizeRandom = 0.1F + randomizer.nextFloat() * 0.05F;
         setHalfSizes(minSize, minSize);
-    }
-
-    public DistortionHeatParticle(Vector3f newPosition) {
-        this(newPosition.getX(), newPosition.getY(), newPosition.getZ());
     }
 
 
@@ -49,6 +42,7 @@ public class DistortionHeatParticle extends AbstractParticleSimpleData {
         super.update();
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
+
         this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.001F);
         this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.001F);
 
@@ -56,7 +50,7 @@ public class DistortionHeatParticle extends AbstractParticleSimpleData {
         setPositionX(getPositionX() + xForce);
         setPositionZ(getPositionZ() + zForce);
 
-        setAlphaFactor(1 - (float) Math.pow(getLifeFactor(), 3));
+        setAlphaFactor((1 - (float) Math.pow(getLifeFactor(), 3)) * maxAlpha);
 
         float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, getLifeFactor());
         setHalfSizes(size, size);

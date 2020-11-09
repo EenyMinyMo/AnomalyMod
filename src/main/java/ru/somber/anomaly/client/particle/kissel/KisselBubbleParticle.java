@@ -33,10 +33,6 @@ public class KisselBubbleParticle extends AbstractParticleSimpleData {
         setBlendFactor(1.0F);
     }
 
-    public KisselBubbleParticle(Vector3f newPosition) {
-        this(newPosition.getX(), newPosition.getY(), newPosition.getZ());
-    }
-
 
     @Override
     public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {

@@ -31,7 +31,6 @@ public class DebugEmitter extends AbstractAnomalyEmitter {
         if (getTick() %  10000 == 1) {
             IParticle debugParticle = new DebugParticle(getPositionX(), getPositionY() + 0.5F, getPositionZ(), 10000);
             addParticleContainer(debugParticle);
-            addParticleInEmitter(debugParticle);
         }
 
     }

@@ -28,9 +28,6 @@ public class KisselBigFogParticle extends AbstractParticleSimpleData {
         setBlendFactor(1.0F);
     }
 
-    public KisselBigFogParticle(Vector3f newPosition, int maxLifeTime) {
-        this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
-    }
 
     @Override
     public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {

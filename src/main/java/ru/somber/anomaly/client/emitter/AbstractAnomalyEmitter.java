@@ -3,6 +3,7 @@ package ru.somber.anomaly.client.emitter;
 import ru.somber.anomaly.ClientProxy;
 import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.emitter.AbstractEmitter;
+import ru.somber.particlesystem.emitter.AbstractListContainerEmitter;
 import ru.somber.particlesystem.particle.IParticle;
 
 import java.util.Random;
@@ -46,12 +47,10 @@ public abstract class AbstractAnomalyEmitter extends AbstractEmitter {
 
 
     protected void addParticleContainer(IParticle particle) {
-        addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
     protected void addDistortionParticleContainer(IParticle particle) {
-        addParticleInEmitter(particle);
         ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
     }
 

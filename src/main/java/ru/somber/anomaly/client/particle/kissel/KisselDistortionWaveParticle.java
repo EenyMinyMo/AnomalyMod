@@ -11,25 +11,19 @@ public class KisselDistortionWaveParticle extends AbstractParticleSimpleData {
 
     private final float minSize;
     private final float maxSize;
-    private final float maxAlpha;
 
 
     public KisselDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
-        super(x, y, z, maxLifeTime, ParticleIcons.distortion7Icon);
+        super(x, y, z, maxLifeTime, ParticleIcons.distortion4Icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.minSize = 0.2F;
         this.maxSize = 0.7F + randomizer.nextFloat() * 0.2F;
-        this.maxAlpha = 0.7F;
 
-        setAlphaFactor(maxAlpha);
+        setAlphaFactor(1);
         setHalfSizes(minSize, minSize);
         setRotateAnglesX((float) Math.toRadians(-90));
-    }
-
-    public KisselDistortionWaveParticle(Vector3f newPosition, int maxLifeTime) {
-        this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
     }
 
 
@@ -47,6 +41,6 @@ public class KisselDistortionWaveParticle extends AbstractParticleSimpleData {
         float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, lifeFactor);
 
         setHalfSizes(size, size);
-        setAlphaFactor((1 - lifeFactor) * maxAlpha);
+        setAlphaFactor((1 - lifeFactor));
     }
 }

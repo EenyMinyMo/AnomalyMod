@@ -2,33 +2,30 @@ package ru.somber.anomaly.client.particle.acidmist;
 
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
+import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;
 
-public class AcidMistBigFogParticle extends AbstractParticleSimpleData {
+public class AcidMistFogParticle extends AbstractParticleSimpleData {
+
+    private final static float maxAlpha = 0.04F;
 
     private final float maxHeight;
-    private final float maxAlpha;
 
 
-    public AcidMistBigFogParticle(float x, float y, float z) {
-        super(x, y, z, 130 + SomberCommonUtil.RANDOMIZER.nextInt(5), ParticleIcons.smoke4Icon);
+    public AcidMistFogParticle(float x, float y, float z, int maxLifeTime, float halfSize, AtlasIcon icon) {
+        super(x, y, z, maxLifeTime, icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        this.maxHeight = 0.7F + randomizer.nextFloat() * 1.4F;
-        this.maxAlpha = 0.05F;
+        this.maxHeight = 1.4F + randomizer.nextFloat() * 1.4F;
 
         setColorFactor(0.3F, 0.6F, 0.3F, maxAlpha);
-        setHalfSizes(1.2F, 1.2F);
+        setHalfSizes(halfSize, halfSize);
         setRotateAnglesZ(360 * randomizer.nextFloat());
         setBlendFactor(1F);
-    }
-
-    public AcidMistBigFogParticle(Vector3f newPosition) {
-        this(newPosition.getX(), newPosition.getY(), newPosition.getZ());
     }
 
 
@@ -42,6 +39,7 @@ public class AcidMistBigFogParticle extends AbstractParticleSimpleData {
         super.update();
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
+
         float lifeFactor = getLifeFactor() * 2 - 1;
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));

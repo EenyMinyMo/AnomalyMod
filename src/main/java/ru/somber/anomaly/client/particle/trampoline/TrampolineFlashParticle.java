@@ -25,10 +25,6 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
         setBlendFactor(0.5F);
     }
 
-    public TrampolineFlashParticle(Vector3f newPosition, int maxLifeTime) {
-        this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
-    }
-
 
     @Override
     public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {

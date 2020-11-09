@@ -61,7 +61,6 @@ public class FryEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle = new DistortionHeatParticle(x, y, z);
         addDistortionParticleContainer(particle);
-        addParticleInEmitter(particle);
     }
 
 
@@ -74,7 +73,6 @@ public class FryEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle = new BurnParticle(x, y, z);
         addParticleContainer(particle);
-        addParticleInEmitter(particle);
     }
 
 }

@@ -74,7 +74,6 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle = new KisselBubbleParticle(x, y, z);
 
-        addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
 
         createDistortionWaveParticle(x, y + 0.002F, z, 20 + randomizer.nextInt(5));
@@ -88,7 +87,6 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle = new KisselEvaporationParticle(x, y, z);
 
-        addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
@@ -99,7 +97,6 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle = new KisselFogParticle(x, y, z);
 
-        addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
@@ -110,7 +107,6 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle = new KisselBigFogParticle(x, y + 0.002F, z, 100 + randomizer.nextInt(5));
 
-        addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
@@ -121,7 +117,6 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle = new KisselBigActiveParticle(x, y, z);
 
-        addParticleInEmitter(particle);
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
@@ -133,14 +128,12 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle = new KisselDistortionBubbleParticle(x, y, z);
 
-        addParticleInEmitter(particle);
         ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
     }
 
     private void createDistortionWaveParticle(float x, float y, float z, int maxLifeTime) {
         IParticle particle = new KisselDistortionWaveParticle(x, y, z, maxLifeTime);
 
-        addParticleInEmitter(particle);
         ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
     }
 

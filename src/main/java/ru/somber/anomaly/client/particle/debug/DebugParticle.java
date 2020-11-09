@@ -19,10 +19,6 @@ public class DebugParticle extends AbstractParticleSimpleData {
         setHalfSizes(2, 1);
     }
 
-    public DebugParticle(Vector3f newPosition, int maxLifeTime) {
-        this(newPosition.getX(), newPosition.getY(), newPosition.getZ(), maxLifeTime);
-    }
-
 
     @Override
     public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
