@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
+import ru.somber.commonutil.SomberCommonUtil;
 
 import java.util.List;
 
@@ -32,16 +33,26 @@ public class ServerFryTileEntity extends AbstractServerTileEntity {
 
     @Override
     protected boolean processDefaultPhase() {
-        List<EntityLivingBase> collisionEntities = (List<EntityLivingBase>)
-                getWorldObj().getEntitiesWithinAABB(EntityLivingBase.class, getAABBBody());
-        return applyAnomalyEffectEntityList(collisionEntities);
+        listFoSearchEntities.clear();
+        SomberCommonUtil.getEntitiesWithinAABB(getWorldObj(),
+                                               EntityLivingBase.class,
+                                               getAABBBody(),
+                                               null,
+                                               listFoSearchEntities);
+
+        return applyAnomalyEffectEntityList(listFoSearchEntities);
     }
 
     @Override
     protected boolean processActivePhase() {
-        List<EntityLivingBase> collisionEntities = (List<EntityLivingBase>)
-                getWorldObj().getEntitiesWithinAABB(EntityLivingBase.class, getAABBBody());
-        return (! applyAnomalyEffectEntityList(collisionEntities)) ||
+        listFoSearchEntities.clear();
+        SomberCommonUtil.getEntitiesWithinAABB(getWorldObj(),
+                                               EntityLivingBase.class,
+                                               getAABBBody(),
+                                               null,
+                                               listFoSearchEntities);
+
+        return (! applyAnomalyEffectEntityList(listFoSearchEntities)) ||
                 (getCurrentPhaseTick() >= getCurrentPhase().getTickDuration());
     }
 

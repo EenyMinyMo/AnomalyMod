@@ -4,12 +4,12 @@ import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
 public class ServerKisselTileEntity extends AbstractServerTileEntity {
-    private static final float xMinAABB = 0F;
+    private static final float xMinAABB = -0.5F;
     private static final float yMinAABB = 0F;
-    private static final float zMinAABB = 0F;
-    private static final float xMaxAABB = 1F;
+    private static final float zMinAABB = -0.5F;
+    private static final float xMaxAABB = 1.5F;
     private static final float yMaxAABB = 1F;
-    private static final float zMaxAABB = 1F;
+    private static final float zMaxAABB = 1.5F;
 
 
     public ServerKisselTileEntity() {

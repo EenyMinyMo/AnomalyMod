@@ -1,5 +1,7 @@
 package ru.somber.anomaly.server.tileentity;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
@@ -7,7 +9,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class AbstractServerTileEntity extends TileEntity {
+    protected static final List<EntityLivingBase> listFoSearchEntities = new ArrayList<>();
+
     /** AABB аномалии, в пределах которой будут накладываться эффекты на сущности. */
     private final AxisAlignedBB aabbBody;
     /** Объект фозы аномалии, который описывает текущую фазу. */

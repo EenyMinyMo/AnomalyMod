@@ -4,12 +4,12 @@ import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
 public class ServerCarouselTileEntity extends AbstractServerTileEntity {
-    private static final float xMinAABB = 0F;
+    private static final float xMinAABB = -1F;
     private static final float yMinAABB = 0F;
-    private static final float zMinAABB = 0F;
-    private static final float xMaxAABB = 1F;
+    private static final float zMinAABB = -1F;
+    private static final float xMaxAABB = 2F;
     private static final float yMaxAABB = 1F;
-    private static final float zMaxAABB = 1F;
+    private static final float zMaxAABB = 2F;
 
 
     public ServerCarouselTileEntity() {
@@ -17,10 +17,12 @@ public class ServerCarouselTileEntity extends AbstractServerTileEntity {
               xMaxAABB, yMaxAABB, zMaxAABB);
 
         AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
-        AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 100);
+        AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, -1);
+        AnomalyPhase sleepPhase = new AnomalyPhase(PhaseType.Active, 100);
 
         defaultPhase.setNextPhase(activePhase);
-        activePhase.setNextPhase(defaultPhase);
+        activePhase.setNextPhase(sleepPhase);
+        sleepPhase.setNextPhase(defaultPhase);
 
         setPhase(defaultPhase);
     }
