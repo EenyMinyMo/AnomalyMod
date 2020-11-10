@@ -17,13 +17,14 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
     private static final float yMaxAABB = 1.5F;
     private static final float zMaxAABB = 1.25F;
 
+
     public TrampolineTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
               xMaxAABB, yMaxAABB, zMaxAABB);
 
         AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
         AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 1);
-        AnomalyPhase sleepPhase = new AnomalyPhase(PhaseType.Sleep, 40);
+        AnomalyPhase sleepPhase = new AnomalyPhase(PhaseType.Sleep, 60);
 
         defaultPhase.setNextPhase(activePhase);
         activePhase.setNextPhase(sleepPhase);
@@ -55,7 +56,7 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
         if (AnomalyMod.IS_SERVER) {
 
         } else {
-            getEmitter().updateDefaultPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
+            getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
         }
         return getCurrentPhase().getTickDuration() <= getCurrentPhaseTick();
     }
@@ -65,7 +66,7 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
         if (AnomalyMod.IS_SERVER) {
 
         } else {
-            getEmitter().updateDefaultPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
+            getEmitter().updateSleepPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
         }
         return getCurrentPhase().getTickDuration() <= getCurrentPhaseTick();
     }

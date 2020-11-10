@@ -1,5 +1,6 @@
 package ru.somber.anomaly.client.particle.trampoline;
 
+import net.minecraft.util.MathHelper;
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.util.commonutil.SomberCommonUtil;
@@ -9,21 +10,13 @@ import java.util.Random;
 
 public class TrampolineDistortionParticle extends AbstractParticleSimpleData {
 
-    private static final float sizes = 0.15F;
-
-    private final float maxHeight;
-    private final float maxSize;
-
+    private static final float maxHeight = 1.3F;
+    private static final float maxSize = 2.4F;
 
     public TrampolineDistortionParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.distortion3Icon);
 
-        Random randomizer = SomberCommonUtil.RANDOMIZER;
-
-        this.maxHeight = 1.5F;
-        this.maxSize = 3F;
-
-        setHalfSizes(0F, 0F);
+        setHalfSizes(0, 0);
     }
 
 
@@ -36,21 +29,14 @@ public class TrampolineDistortionParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtil.RANDOMIZER;
         float lifeFactor = getLifeFactor();
+        float size = maxSize * lifeFactor;
 
         setPositionY(getPositionY() + maxHeight / getMaxLifeTime());
-        setHalfSizes(maxSize * lifeFactor, maxSize * lifeFactor);
-        setAlphaFactor((float) (1 - lifeFactor));
-    }
+        setHalfSizes(size, size);
 
-    public void setInvisible() {
-        setHalfSizes(0, 0);
+        float alphaFactor = 1 - lifeFactor;
+        setAlphaFactor((float) Math.pow(alphaFactor, 0.5F));
     }
-
-    public void setVisible() {
-        setHalfSizes(sizes, sizes);
-    }
-
 
 }

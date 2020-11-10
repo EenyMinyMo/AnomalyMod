@@ -9,20 +9,25 @@ import java.util.Random;
 
 public class TrampolineFlashParticle extends AbstractParticleSimpleData {
 
-    private static final float sizes = 0.38F;
-    private static final int maxVisTime = 3;
+    /** Размер частиц. */
+    private static final float sizes = 0.5F;
+    /** Время в тиках, которое видно частиц. */
+    private static final int maxVisibleTime = 2;
 
-    private int visTime = 0;
+    /**
+     * Время в тиках, которое видно частицу.
+     * Когда частицу делают видимой, это значение используется для отсчета времени, которое видно частицу.
+     * Когда значение в переменной сравняется с maxVisibleTime, частиц стане невидимой.
+     */
+    private int visibleTime = 0;
 
 
     public TrampolineFlashParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.anomaly0Icon);
 
-        Random randomizer = SomberCommonUtil.RANDOMIZER;
-
         setHalfSizes(0F, 0F);
         setAlphaFactor(0.15F);
-        setBlendFactor(0.5F);
+        setBlendFactor(1.0F);
     }
 
 
@@ -35,15 +40,10 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
     public void update() {
         super.update();
 
-        Random randomizer = SomberCommonUtil.RANDOMIZER;
-
-        visTime++;
-        if (visTime > maxVisTime) {
+        if (visibleTime >= maxVisibleTime) {
             setInvisible();
         }
-
-//        setVisible();
-//        setHalfSizes(0.3F, 0.3F);
+        visibleTime++;
     }
 
     public void setVisible() {
@@ -51,7 +51,7 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
 
         setHalfSizes(sizes, sizes);
         setRotateAnglesZ((float) Math.PI * 2 * randomizer.nextFloat());
-        visTime = 0;
+        visibleTime = 0;
     }
 
     public void setInvisible() {
