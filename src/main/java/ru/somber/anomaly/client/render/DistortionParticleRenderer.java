@@ -7,12 +7,12 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.*;
 import ru.somber.anomaly.AnomalyMod;
-import ru.somber.clientutil.opengl.OpenGLUtil;
-import ru.somber.clientutil.opengl.Shader;
-import ru.somber.clientutil.opengl.ShaderProgram;
-import ru.somber.clientutil.opengl.VAO;
-import ru.somber.clientutil.opengl.texture.Texture;
-import ru.somber.clientutil.opengl.vbo.VBO;
+import ru.somber.util.clientutil.opengl.OpenGLUtil;
+import ru.somber.util.clientutil.opengl.Shader;
+import ru.somber.util.clientutil.opengl.ShaderProgram;
+import ru.somber.util.clientutil.opengl.VAO;
+import ru.somber.util.clientutil.opengl.texture.Texture;
+import ru.somber.util.clientutil.opengl.vbo.VBO;
 import ru.somber.particlesystem.particle.IParticle;
 import ru.somber.particlesystem.render.GeometryShaderParticleRenderer;
 

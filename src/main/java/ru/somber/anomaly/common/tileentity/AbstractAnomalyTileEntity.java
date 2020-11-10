@@ -8,7 +8,7 @@ import net.minecraft.util.AxisAlignedBB;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.AbstractAnomalyEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
-import ru.somber.commonutil.SomberCommonUtil;
+import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.ArrayList;
 import java.util.List;

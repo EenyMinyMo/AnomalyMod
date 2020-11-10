@@ -1,7 +1,7 @@
 package ru.somber.anomaly.client.emitter;
 
 import ru.somber.anomaly.client.particle.debug.DebugParticle;
-import ru.somber.commonutil.SomberCommonUtil;
+import ru.somber.util.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.IParticle;
 
 import java.util.Random;

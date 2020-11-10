@@ -1,9 +1,8 @@
 package ru.somber.anomaly.client.particle.acidmist;
 
 import org.lwjgl.util.vector.Vector3f;
-import ru.somber.anomaly.ParticleIcons;
-import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
-import ru.somber.commonutil.SomberCommonUtil;
+import ru.somber.util.clientutil.textureatlas.icon.AtlasIcon;
+import ru.somber.util.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;

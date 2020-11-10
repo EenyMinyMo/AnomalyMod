@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
-import ru.somber.commonutil.SomberCommonUtil;
+import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.List;
 

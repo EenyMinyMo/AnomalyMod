@@ -1,6 +1,6 @@
 package ru.somber.anomaly.client.emitter;
 
-import ru.somber.commonutil.SomberCommonUtil;
+import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.Random;
 

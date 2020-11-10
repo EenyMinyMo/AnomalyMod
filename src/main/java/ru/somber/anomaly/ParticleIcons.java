@@ -1,7 +1,7 @@
 package ru.somber.anomaly;
 
-import ru.somber.clientutil.textureatlas.icon.AtlasIcon;
-import ru.somber.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
+import ru.somber.util.clientutil.textureatlas.icon.AtlasIcon;
+import ru.somber.util.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
 
 public final class ParticleIcons {
     private ParticleIcons() {}

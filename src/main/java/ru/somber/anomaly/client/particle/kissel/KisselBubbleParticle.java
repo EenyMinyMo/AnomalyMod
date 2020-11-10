@@ -3,7 +3,7 @@ package ru.somber.anomaly.client.particle.kissel;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
-import ru.somber.commonutil.SomberCommonUtil;
+import ru.somber.util.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 
 import java.util.Random;

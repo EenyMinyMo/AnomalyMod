@@ -1,9 +1,8 @@
 package ru.somber.anomaly.client.emitter;
 
 import ru.somber.anomaly.ClientProxy;
-import ru.somber.commonutil.SomberCommonUtil;
+import ru.somber.util.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.emitter.AbstractEmitter;
-import ru.somber.particlesystem.emitter.AbstractListContainerEmitter;
 import ru.somber.particlesystem.particle.IParticle;
 
 import java.util.Random;

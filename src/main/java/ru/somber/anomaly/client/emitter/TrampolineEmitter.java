@@ -3,7 +3,7 @@ package ru.somber.anomaly.client.emitter;
 import ru.somber.anomaly.client.particle.trampoline.TrampolineDistortionParticle;
 import ru.somber.anomaly.client.particle.trampoline.TrampolineFlashParticle;
 import ru.somber.anomaly.client.particle.trampoline.TrampolineLeafParticle;
-import ru.somber.commonutil.SomberCommonUtil;
+import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.Random;
 
