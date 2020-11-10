@@ -8,6 +8,7 @@ import ru.somber.anomaly.client.tileentity.ClientDebugTileEntity;
 import ru.somber.anomaly.common.block.*;
 import ru.somber.anomaly.common.item.*;
 import ru.somber.anomaly.common.tileentity.FryTileEntity;
+import ru.somber.anomaly.common.tileentity.TrampolineTileEntity;
 
 public class CommonProxy {
 
@@ -69,6 +70,7 @@ public class CommonProxy {
 
         anomalyTrampolineBlock = new AnomalyTrampolineBlock();
         GameRegistry.registerBlock(anomalyTrampolineBlock, AnomalyTrampolineItem.class, anomalyTrampolineBlock.getUnlocalizedName());
+        GameRegistry.registerTileEntity(TrampolineTileEntity.class, "anomaly_trampoline_tileentity");
 
         anomalyDebugBlock = new AnomalyDebugBlock();
         GameRegistry.registerBlock(anomalyDebugBlock, anomalyDebugBlock.getUnlocalizedName());
