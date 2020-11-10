@@ -3,6 +3,7 @@ package ru.somber.anomaly.common.block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.client.tileentity.ClientTrampolineTileEntity;
+import ru.somber.anomaly.common.tileentity.TrampolineTileEntity;
 import ru.somber.anomaly.server.tileentity.ServerTrampolineTileEntity;
 
 public class AnomalyTrampolineBlock extends AbstractAnomalyBlock {
@@ -14,11 +15,7 @@ public class AnomalyTrampolineBlock extends AbstractAnomalyBlock {
 
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {
-        if (world.isRemote) {
-            return new ClientTrampolineTileEntity();
-        } else {
-            return new ServerTrampolineTileEntity();
-        }
+        return new TrampolineTileEntity();
     }
 
 }

@@ -42,17 +42,17 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
 
-        GameRegistry.registerTileEntity(ClientDebugTileEntity.class, "client_anomaly_debug_tileentity");
-        GameRegistry.registerTileEntity(ClientAcidMistTileEntity.class, "client_anomaly_acidmist_tileentity");
-        GameRegistry.registerTileEntity(ClientAerationTileEntity.class, "client_anomaly_aeration_tileentity");
-        GameRegistry.registerTileEntity(ClientBurningFluffTileEntity.class, "client_anomaly_burningfluff_tileentity");
-        GameRegistry.registerTileEntity(ClientCarouselTileEntity.class, "client_anomaly_carousel_tileentity");
-        GameRegistry.registerTileEntity(ClientElectraTileEntity.class, "client_anomaly_electra_tileentity");
-        GameRegistry.registerTileEntity(ClientFryTileEntity.class, "client_anomaly_fry_tileentity");
-        GameRegistry.registerTileEntity(ClientFunnelTileEntity.class, "client_anomaly_funnel_tileentity");
-        GameRegistry.registerTileEntity(ClientKisselTileEntity.class, "client_anomaly_kissel_tileentity");
-        GameRegistry.registerTileEntity(ClientSteamTileEntity.class, "client_anomaly_steam_tileentity");
-        GameRegistry.registerTileEntity(ClientTrampolineTileEntity.class, "client_anomaly_trampoline_tileentity");
+//        GameRegistry.registerTileEntity(ClientDebugTileEntity.class, "client_anomaly_debug_tileentity");
+//        GameRegistry.registerTileEntity(ClientAcidMistTileEntity.class, "client_anomaly_acidmist_tileentity");
+//        GameRegistry.registerTileEntity(ClientAerationTileEntity.class, "client_anomaly_aeration_tileentity");
+//        GameRegistry.registerTileEntity(ClientBurningFluffTileEntity.class, "client_anomaly_burningfluff_tileentity");
+//        GameRegistry.registerTileEntity(ClientCarouselTileEntity.class, "client_anomaly_carousel_tileentity");
+//        GameRegistry.registerTileEntity(ClientElectraTileEntity.class, "client_anomaly_electra_tileentity");
+//        GameRegistry.registerTileEntity(ClientFryTileEntity.class, "client_anomaly_fry_tileentity");
+//        GameRegistry.registerTileEntity(ClientFunnelTileEntity.class, "client_anomaly_funnel_tileentity");
+//        GameRegistry.registerTileEntity(ClientKisselTileEntity.class, "client_anomaly_kissel_tileentity");
+//        GameRegistry.registerTileEntity(ClientSteamTileEntity.class, "client_anomaly_steam_tileentity");
+//        GameRegistry.registerTileEntity(ClientTrampolineTileEntity.class, "client_anomaly_trampoline_tileentity");
     }
 
     @Override
