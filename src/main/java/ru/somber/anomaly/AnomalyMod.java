@@ -13,7 +13,7 @@ public class AnomalyMod {
     public static final String MOD_ID = "anomaly_mod";
     public static final String MOD_NAME = "Somber anomaly mod";
     public static final String MOD_VERSION = "0.0.0";
-    public static final boolean IS_SERVER = FMLLaunchHandler.side().isServer();
+    public static final boolean IS_SERVER = FMLCommonHandler.instance().getSide().isServer();
 
 
     @SidedProxy(clientSide = "ru.somber.anomaly.ClientProxy",
