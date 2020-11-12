@@ -10,7 +10,7 @@ import java.util.Random;
 public class TrampolineFlashParticle extends AbstractParticleSimpleData {
 
     /** Размер частиц. */
-    private static final float sizes = 0.5F;
+    private static final float sizes = 0.3F;
     /** Время в тиках, которое видно частиц. */
     private static final int maxVisibleTime = 2;
 
@@ -26,7 +26,7 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
         super(x, y, z, maxLifeTime, ParticleIcons.anomaly0Icon);
 
         setHalfSizes(0F, 0F);
-        setAlphaFactor(0.15F);
+        setAlphaFactor(0.3F);
         setBlendFactor(1.0F);
     }
 
@@ -42,6 +42,9 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
 
         if (visibleTime >= maxVisibleTime) {
             setInvisible();
+        } else {
+            float size = sizes + sizes * visibleTime / maxVisibleTime;
+            setHalfSizes(size,size);
         }
         visibleTime++;
     }

@@ -69,9 +69,9 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
 //            if (AnomalyMod.IS_SERVER) {
 //                getWorldObj().markBlockForUpdate(xCoord, yCoord, zCoord);
 //            }
-        } else {
-            currentPhaseTick++;
         }
+
+        currentPhaseTick++;
     }
 
     @Override

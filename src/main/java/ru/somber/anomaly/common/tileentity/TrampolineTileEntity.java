@@ -104,7 +104,7 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
         }
 
         //здесь применяем эффект аномалии для всех сущностей.
-        entity.motionY = 1F;
+        entity.motionY = 0.85F;
 
         return true;
     }
