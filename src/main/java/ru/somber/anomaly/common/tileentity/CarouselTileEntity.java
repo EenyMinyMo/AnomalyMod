@@ -20,7 +20,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
     private static final float xOffsetAnomalyCenter = 0.5F;
     private static final float yOffsetAnomalyCenter = 2.0F;
     private static final float zOffsetAnomalyCenter = 0.5F;
-    private static final float suctionDistance = 3.0F;
+    private static final float suctionDistance = 7.5F;
 
     private static final AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
     private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 200);
@@ -69,6 +69,11 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
     @Override
     protected boolean processActivePhase() {
         if (targetEntity != null) {
+            if (! targetEntity.isEntityAlive()) {
+                targetEntity = null;
+                return true;
+            }
+
             if (suctionFactor < 0.5F) {
                 suctionFactor *= 1.0128;
             }
@@ -87,6 +92,11 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
             targetEntity.motionY += deltaY * suctionFactor;
             targetEntity.motionZ += deltaZ * suctionFactor;
 
+            double distance = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+            if (distance > suctionDistance) {
+                targetEntity = null;
+                return true;
+            }
         } else {
             return true;
         }
@@ -100,8 +110,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
             getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
         }
 
-
-        return (targetEntity == null);
+        return false;
     }
 
     @Override
@@ -133,20 +142,6 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
             }
         }
         return false;
-    }
-
-    private boolean isTargetEntityInAnomaly() {
-        if (targetEntity == null) {
-            return false;
-        }
-
-//        if () {
-//
-//        }
-
-        return (targetEntity != null) &&
-               (getAABBBody().intersectsWith(targetEntity.boundingBox)) &&
-               (targetEntity.isEntityAlive());
     }
 
 }
