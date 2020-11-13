@@ -6,11 +6,10 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.relauncher.FMLLaunchHandler;
 
 @Mod(modid = AnomalyMod.MOD_ID, name = AnomalyMod.MOD_NAME, version = AnomalyMod.MOD_VERSION)
 public class AnomalyMod {
-    public static final String MOD_ID = "anomaly_mod";
+    public static final String MOD_ID = "somber_anomaly";
     public static final String MOD_NAME = "Somber anomaly mod";
     public static final String MOD_VERSION = "0.0.0";
     public static final boolean IS_SERVER = FMLCommonHandler.instance().getSide().isServer();
