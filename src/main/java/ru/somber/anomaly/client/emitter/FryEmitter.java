@@ -71,7 +71,18 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY();
         float z = getPositionZ();
 
-        IParticle particle = new BurnParticle(x, y, z);
+        IParticle particle;
+        particle = new BurnParticle(x, y, z);
+        addParticleContainer(particle);
+
+        particle = new BurnParticle(x + (randomizer.nextFloat() * 0.12F - 0.06F),
+                                    y + (randomizer.nextFloat() * 0.12F - 0.06F),
+                                    z + (randomizer.nextFloat() * 0.12F - 0.06F));
+        addParticleContainer(particle);
+
+        particle = new BurnParticle(x + (randomizer.nextFloat() * 0.12F - 0.06F),
+                                    y + (randomizer.nextFloat() * 0.12F - 0.06F),
+                                    z + (randomizer.nextFloat() * 0.12F - 0.06F));
         addParticleContainer(particle);
     }
 

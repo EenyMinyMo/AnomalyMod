@@ -25,6 +25,9 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
     }
 
 
+    private int tickOnActiveOffset;
+
+
     public FryTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
               xMaxAABB, yMaxAABB, zMaxAABB);
@@ -60,8 +63,12 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
             getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
         }
 
-        return (! applyAnomalyEffectEntityList(listForSearchEntities)) ||
-                (getCurrentPhaseTick() >= getCurrentPhase().getTickDuration());
+        tickOnActiveOffset = 0;
+        if ( applyAnomalyEffectEntityList(listForSearchEntities)) {
+            tickOnActiveOffset = getCurrentPhaseTick();
+        }
+
+        return ((getCurrentPhaseTick() - tickOnActiveOffset ) >= getCurrentPhase().getTickDuration());
     }
 
     @Override
