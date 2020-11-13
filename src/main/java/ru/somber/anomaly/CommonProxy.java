@@ -4,7 +4,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import ru.somber.anomaly.client.tileentity.ClientDebugTileEntity;
 import ru.somber.anomaly.common.block.*;
 import ru.somber.anomaly.common.item.*;
 import ru.somber.anomaly.common.tileentity.CarouselTileEntity;

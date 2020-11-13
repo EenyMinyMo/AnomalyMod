@@ -2,8 +2,8 @@ package ru.somber.anomaly.client.emitter;
 
 import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.client.particle.kissel.*;
-import ru.somber.util.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.IParticle;
+import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.Random;
 

@@ -2,8 +2,8 @@ package ru.somber.anomaly.client.emitter;
 
 import ru.somber.anomaly.client.particle.fry.BurnParticle;
 import ru.somber.anomaly.client.particle.fry.DistortionHeatParticle;
-import ru.somber.util.commonutil.SomberCommonUtil;
 import ru.somber.particlesystem.particle.IParticle;
+import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.Random;
 

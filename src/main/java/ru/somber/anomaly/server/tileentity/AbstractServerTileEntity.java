@@ -1,6 +1,5 @@
 package ru.somber.anomaly.server.tileentity;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;

@@ -2,9 +2,7 @@ package ru.somber.anomaly.common.block;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import ru.somber.anomaly.client.tileentity.ClientFryTileEntity;
 import ru.somber.anomaly.common.tileentity.FryTileEntity;
-import ru.somber.anomaly.server.tileentity.ServerFryTileEntity;
 
 public class AnomalyFryBlock extends AbstractAnomalyBlock {
 

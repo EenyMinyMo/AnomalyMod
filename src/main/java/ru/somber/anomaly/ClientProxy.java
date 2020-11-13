@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import ru.somber.anomaly.client.render.DistortionParticleRenderer;
-import ru.somber.util.clientutil.textureatlas.AtlasTexture;
 import ru.somber.particlesystem.ParticleAPI;
 import ru.somber.particlesystem.container.IEmitterContainer;
 import ru.somber.particlesystem.container.IParticleContainer;
@@ -19,6 +18,7 @@ import ru.somber.particlesystem.manager.IParticleManager;
 import ru.somber.particlesystem.manager.SimpleParticleManager;
 import ru.somber.particlesystem.render.GeometryShaderParticleRenderer;
 import ru.somber.particlesystem.render.IParticleRenderer;
+import ru.somber.util.clientutil.textureatlas.AtlasTexture;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {

@@ -3,10 +3,8 @@ package ru.somber.anomaly;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ru.somber.anomaly.server.tileentity.*;
 
 @SideOnly(Side.SERVER)
 public class ServerProxy extends CommonProxy {
