@@ -37,7 +37,7 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
 
     @Override
     protected boolean processDefaultPhase() {
-        prepareCollideEntityList();
+        prepareCollideEntityList(this);
 
         if (AnomalyMod.IS_SERVER) {
 
@@ -50,7 +50,7 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
 
     @Override
     protected boolean processActivePhase() {
-        prepareCollideEntityList();
+        prepareCollideEntityList(this);
 
         if (AnomalyMod.IS_SERVER) {
 
@@ -89,22 +89,15 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
      */
     protected boolean applyAnomalyEffect(EntityLivingBase entity) {
         //попытка каста к типу игрока
-        if (entity instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entity;
-            //здесь можно прописать код эффекта только для игроков.
-
-            //если игрок в креативе, то ничего не делаем.
-            if (player.capabilities.isCreativeMode) {
-                return false;
+        if (canApplyAnomalyEffect(entity)) {
+            //здесь применяем эффект аномалии для всех сущностей.
+            if (AnomalyMod.IS_SERVER) {
+                entity.setHealth(entity.getHealth() - 0.5F);
             }
+            return true;
         }
 
-        //здесь применяем эффект аномалии для всех сущностей.
-        if (AnomalyMod.IS_SERVER) {
-            entity.setHealth(entity.getHealth() - 0.5F);
-        }
-
-        return true;
+        return false;
     }
 
 }

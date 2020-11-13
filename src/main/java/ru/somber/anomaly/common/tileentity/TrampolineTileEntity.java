@@ -40,7 +40,7 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
 
     @Override
     protected boolean processDefaultPhase() {
-        prepareCollideEntityList();
+        prepareCollideEntityList(this);
 
         if (AnomalyMod.IS_SERVER) {
 
@@ -58,7 +58,7 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
         } else {
             getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
         }
-        return getCurrentPhase().getTickDuration() <= getCurrentPhaseTick();
+        return isPhaseTimeEnd();
     }
 
     @Override
@@ -68,7 +68,7 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
         } else {
             getEmitter().updateSleepPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
         }
-        return getCurrentPhase().getTickDuration() <= getCurrentPhaseTick();
+        return isPhaseTimeEnd();
     }
 
     /**
@@ -93,20 +93,12 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
      */
     protected boolean applyAnomalyEffect(EntityLivingBase entity) {
         //попытка каста к типу игрока
-        if (entity instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entity;
-            //здесь можно прописать код эффекта только для игроков.
-
-            //если игрок в креативе, то ничего не делаем.
-            if (player.capabilities.isCreativeMode) {
-                return false;
-            }
+        if (canApplyAnomalyEffect(entity)) {
+            //здесь применяем эффект аномалии для всех сущностей.
+            entity.motionY = 0.85F;
+            return true;
         }
-
-        //здесь применяем эффект аномалии для всех сущностей.
-        entity.motionY = 0.85F;
-
-        return true;
+        return false;
     }
 
 }
