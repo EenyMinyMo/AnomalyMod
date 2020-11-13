@@ -8,6 +8,7 @@ import ru.somber.anomaly.common.block.*;
 import ru.somber.anomaly.common.item.*;
 import ru.somber.anomaly.common.tileentity.CarouselTileEntity;
 import ru.somber.anomaly.common.tileentity.FryTileEntity;
+import ru.somber.anomaly.common.tileentity.FunnelTileEntity;
 import ru.somber.anomaly.common.tileentity.TrampolineTileEntity;
 
 public class CommonProxy {
@@ -62,6 +63,7 @@ public class CommonProxy {
 
         anomalyFunnelBlock = new AnomalyFunnelBlock();
         GameRegistry.registerBlock(anomalyFunnelBlock, AnomalyFunnelItem.class, anomalyFunnelBlock.getUnlocalizedName());
+        GameRegistry.registerTileEntity(FunnelTileEntity.class, "anomaly_funnel_tileentity");
 
         anomalyKisselBlock = new AnomalyKisselBlock();
         GameRegistry.registerBlock(anomalyKisselBlock, AnomalyKisselItem.class, anomalyKisselBlock.getUnlocalizedName());
