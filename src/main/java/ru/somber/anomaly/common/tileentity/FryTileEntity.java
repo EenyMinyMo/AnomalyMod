@@ -1,7 +1,6 @@
 package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.FryEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
@@ -17,15 +16,18 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
     private static final float yMaxAABB = 3F;
     private static final float zMaxAABB = 1F;
 
+    private static final AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
+    private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 100);
+
+    static {
+        defaultPhase.setNextPhase(activePhase);
+        activePhase.setNextPhase(defaultPhase);
+    }
+
+
     public FryTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
               xMaxAABB, yMaxAABB, zMaxAABB);
-
-        AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
-        AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 100);
-
-        defaultPhase.setNextPhase(activePhase);
-        activePhase.setNextPhase(defaultPhase);
 
         setPhase(defaultPhase);
 

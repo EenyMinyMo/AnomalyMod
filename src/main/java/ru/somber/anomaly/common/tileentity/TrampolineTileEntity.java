@@ -1,7 +1,6 @@
 package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.TrampolineEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
@@ -17,18 +16,20 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
     private static final float yMaxAABB = 1.5F;
     private static final float zMaxAABB = 1.25F;
 
+    private static final AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
+    private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 1);
+    private static final AnomalyPhase sleepPhase = new AnomalyPhase(PhaseType.Sleep, 60);
+
+    static {
+        defaultPhase.setNextPhase(activePhase);
+        activePhase.setNextPhase(sleepPhase);
+        sleepPhase.setNextPhase(defaultPhase);
+    }
+
 
     public TrampolineTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
               xMaxAABB, yMaxAABB, zMaxAABB);
-
-        AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
-        AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 1);
-        AnomalyPhase sleepPhase = new AnomalyPhase(PhaseType.Sleep, 60);
-
-        defaultPhase.setNextPhase(activePhase);
-        activePhase.setNextPhase(sleepPhase);
-        sleepPhase.setNextPhase(defaultPhase);
 
         setPhase(defaultPhase);
 
