@@ -7,6 +7,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import ru.somber.anomaly.client.tileentity.ClientDebugTileEntity;
 import ru.somber.anomaly.common.block.*;
 import ru.somber.anomaly.common.item.*;
+import ru.somber.anomaly.common.tileentity.CarouselTileEntity;
 import ru.somber.anomaly.common.tileentity.FryTileEntity;
 import ru.somber.anomaly.common.tileentity.TrampolineTileEntity;
 
@@ -51,6 +52,7 @@ public class CommonProxy {
 
         anomalyCarouselBlock = new AnomalyCarouselBlock();
         GameRegistry.registerBlock(anomalyCarouselBlock, AnomalyCarouselItem.class, anomalyCarouselBlock.getUnlocalizedName());
+        GameRegistry.registerTileEntity(CarouselTileEntity.class, "anomaly_carousel_tileentity");
 
         anomalyElectraBlock = new AnomalyElectraBlock();
         GameRegistry.registerBlock(anomalyElectraBlock, AnomalyElectraItem.class, anomalyElectraBlock.getUnlocalizedName());
