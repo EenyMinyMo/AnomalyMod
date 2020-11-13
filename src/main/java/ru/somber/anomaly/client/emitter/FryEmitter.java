@@ -39,7 +39,6 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         if (getTick() % 5 == 1) {
             createDistortionHeatParticle();
         }
-
     }
 
     @Override
@@ -75,14 +74,14 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         particle = new BurnParticle(x, y, z);
         addParticleContainer(particle);
 
-        particle = new BurnParticle(x + (randomizer.nextFloat() * 0.12F - 0.06F),
-                                    y + (randomizer.nextFloat() * 0.12F - 0.06F),
-                                    z + (randomizer.nextFloat() * 0.12F - 0.06F));
+        particle = new BurnParticle(x + (randomizer.nextFloat() * 0.1F - 0.05F),
+                                    y + (randomizer.nextFloat() * 0.1F - 0.05F),
+                                    z + (randomizer.nextFloat() * 0.1F - 0.05F));
         addParticleContainer(particle);
 
-        particle = new BurnParticle(x + (randomizer.nextFloat() * 0.12F - 0.06F),
-                                    y + (randomizer.nextFloat() * 0.12F - 0.06F),
-                                    z + (randomizer.nextFloat() * 0.12F - 0.06F));
+        particle = new BurnParticle(x + (randomizer.nextFloat() * 0.1F - 0.05F),
+                                    y + (randomizer.nextFloat() * 0.1F - 0.05F),
+                                    z + (randomizer.nextFloat() * 0.1F - 0.05F));
         addParticleContainer(particle);
     }
 
