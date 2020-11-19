@@ -21,7 +21,7 @@ public class KisselEvaporationParticle extends AbstractParticleSimpleData {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.maxHeight = 0.4F + randomizer.nextFloat() * 0.15F;
-        this.maxAngle = (float) (Math.PI * 0.5F * 0.5F - randomizer.nextFloat()) * 0.5F;
+        this.maxAngle = (float) (Math.PI * 0.25F - randomizer.nextFloat()) * 0.5F;
         this.minSize = 0.1F;
         this.maxSize = 0.5F;
         this.maxAlpha = 0.3F;
@@ -48,10 +48,7 @@ public class KisselEvaporationParticle extends AbstractParticleSimpleData {
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
         setRotateAnglesZ(getAngleZ() + maxAngle * (1.0F / getMaxLifeTime()));
         setHalfSizes(size, size);
-        setAlphaFactor((1 - lifeFactor) * maxAlpha);
-
-//        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));
-//        setRotateAnglesZ(((float)Math.PI * lifeFactor));
+        setAlphaFactor(maxAlpha * (1 - lifeFactor * lifeFactor));
     }
 
 }

@@ -7,7 +7,7 @@ import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.Random;
 
-public class DistortionHeatParticle extends AbstractParticleSimpleData {
+public class FryDistortionHeatParticle extends AbstractParticleSimpleData {
 
     private static final float maxHeight = 3.5F;
     private static final float maxAlpha = 0.75F;
@@ -17,7 +17,7 @@ public class DistortionHeatParticle extends AbstractParticleSimpleData {
     private float xForce, zForce;
 
 
-    public DistortionHeatParticle(float x, float y, float z) {
+    public FryDistortionHeatParticle(float x, float y, float z) {
         super(x, y, z, 90 + SomberCommonUtil.RANDOMIZER.nextInt(10), ParticleIcons.distortion0Icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;

@@ -48,9 +48,5 @@ public class KisselDistortionBubbleParticle extends AbstractParticleSimpleData {
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
         setPositionX(getPositionX() + xForce);
         setPositionZ(getPositionZ() + zForce);
-
-//        float log = (float) Math.log10((double) lifeTime / maxLifeTime);
-//        float colorFactor =  1 - (log + 1F);
-//        setColorFactor(1, 1, 1, 0.5F * colorFactor);
     }
 }

@@ -42,7 +42,7 @@ public class AcidMistFogParticle extends AbstractParticleSimpleData {
         float lifeFactor = getLifeFactor() * 2 - 1;
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
-        setAlphaFactor(maxAlpha * (float) (1 - Math.pow(lifeFactor, 2)));
+        setAlphaFactor(maxAlpha * (1 - lifeFactor * lifeFactor));
     }
 
 }

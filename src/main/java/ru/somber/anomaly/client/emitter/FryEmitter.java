@@ -1,15 +1,13 @@
 package ru.somber.anomaly.client.emitter;
 
 import ru.somber.anomaly.client.particle.fry.BurnParticle;
-import ru.somber.anomaly.client.particle.fry.DistortionHeatParticle;
+import ru.somber.anomaly.client.particle.fry.FryDistortionHeatParticle;
 import ru.somber.particlesystem.particle.IParticle;
 import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.Random;
 
 public class FryEmitter extends AbstractAnomalyEmitter {
-
-    private boolean isActive;
 
 
     public FryEmitter(float x, float y, float z) {
@@ -58,7 +56,7 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY() - 0.2F;
         float z = getPositionZ() + randomizer.nextFloat() * 0.2F - 0.1F;
 
-        IParticle particle = new DistortionHeatParticle(x, y, z);
+        IParticle particle = new FryDistortionHeatParticle(x, y, z);
         addDistortionParticleContainer(particle);
     }
 

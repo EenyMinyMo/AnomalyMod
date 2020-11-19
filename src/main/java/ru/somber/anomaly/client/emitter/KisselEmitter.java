@@ -1,6 +1,7 @@
 package ru.somber.anomaly.client.emitter;
 
 import ru.somber.anomaly.ClientProxy;
+import ru.somber.anomaly.ParticleIcons;
 import ru.somber.anomaly.client.particle.kissel.*;
 import ru.somber.particlesystem.particle.IParticle;
 import ru.somber.util.commonutil.SomberCommonUtil;
@@ -26,64 +27,77 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
     @Override
     public void update() {
         super.update();
-
-        Random randomizer = SomberCommonUtil.RANDOMIZER;
-
-        updateIdleMode(randomizer);
-//        updateActiveMode(randomizer);
     }
 
+    @Override
+    public void updateDefaultPhase(int currentTick, int phaseTickDuration) {
+        updateIdleMode();
+    }
 
-    private void updateIdleMode(Random randomizer) {
-        if (randomizer.nextFloat() > 0.95F) {
-            createColorBubbleParticle(randomizer);
+    @Override
+    public void updateActivePhase(int currentTick, int phaseTickDuration) {
+        updateIdleMode();
+        updateActiveMode();
+    }
+
+    @Override
+    public void updateSleepPhase(int currentTick, int phaseTickDuration) {}
+
+
+    private void updateIdleMode() {
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
+
+        if (randomizer.nextFloat() > 0.94F) {
+            createAcidSprayParticle(randomizer);
         }
 
-        if (randomizer.nextFloat() > 0.95F) {
+        if (randomizer.nextFloat() > 0.94F) {
             createDistortionBubbleParticle(randomizer);
         }
 
-        if (randomizer.nextFloat() > 0.965F) {
+        if (randomizer.nextFloat() > 0.95F) {
             createEvaporationParticle(randomizer);
         }
 
-        if (randomizer.nextFloat() > 0.97F) {
+        if (randomizer.nextFloat() > 0.96F) {
             createFogParticle(randomizer);
         }
 
-        if (randomizer.nextFloat() > 0.97F) {
+        if (randomizer.nextFloat() > 0.96F) {
             createBigFogParticle(randomizer);
         }
     }
 
-    private void updateActiveMode(Random randomizer) {
+    private void updateActiveMode() {
+        Random randomizer = SomberCommonUtil.RANDOMIZER;
+
         if (randomizer.nextFloat() > 0.75F) {
             createBigActiveParticle(randomizer);
-            createColorBubbleParticle(randomizer);
+            createAcidSprayParticle(randomizer);
         }
 
         if (randomizer.nextFloat() > 0.75F) {
-            createColorBubbleParticle(randomizer);
+            createAcidSprayParticle(randomizer);
         }
     }
 
-    private void createColorBubbleParticle(Random randomizer) {
-        float x = getPositionX() - 0.5F + randomizer.nextFloat();
-        float y = getPositionY();
-        float z = getPositionZ() - 0.5F + randomizer.nextFloat();
+    private void createAcidSprayParticle(Random randomizer) {
+        float x = getPositionX() + randomizer.nextFloat() * 2 - 1;
+        float y = getPositionY() + 0.02F;
+        float z = getPositionZ() + randomizer.nextFloat() * 2 - 1;
 
         IParticle particle = new KisselBubbleParticle(x, y, z);
-
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
 
-        createDistortionWaveParticle(x, y + 0.002F, z, 20 + randomizer.nextInt(5));
-//        createFoamAnimParticle(x, y + 0.005F, z, 20 + ((int) (Math.random() * 5)));
+        //волна размытия под брызгами
+        particle = new KisselDistortionWaveParticle(x, y, z, 20 + randomizer.nextInt(5));
+        ClientProxy.getDistortionParticleManager().getParticleContainer().addParticle(particle);
     }
 
     private void createEvaporationParticle(Random randomizer) {
-        float x = getPositionX() - 0.5F + randomizer.nextFloat();
+        float x = getPositionX() + randomizer.nextFloat() * 1.8F - 0.9F;
         float y = getPositionY();
-        float z = getPositionZ() - 0.5F + randomizer.nextFloat();
+        float z = getPositionZ() + randomizer.nextFloat() * 1.8F - 0.9F;
 
         IParticle particle = new KisselEvaporationParticle(x, y, z);
 
@@ -91,35 +105,36 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
     }
 
     private void createFogParticle(Random randomizer) {
-        float x = getPositionX() - 0.7F + randomizer.nextFloat() * 1.4F;
+        float x = getPositionX() + randomizer.nextFloat() * 1.7F - 0.85F;
         float y = getPositionY();
-        float z = getPositionZ() - 0.7F + randomizer.nextFloat() * 1.4F;
+        float z = getPositionZ() + randomizer.nextFloat() * 1.7F - 0.85F;
 
-        IParticle particle = new KisselFogParticle(x, y, z);
+        IParticle particle =
+                new KisselFogParticle(x, y, z, 60 + randomizer.nextInt(5), 0.8F, ParticleIcons.smoke4Icon);
 
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
     private void createBigFogParticle(Random randomizer) {
-        float x = getPositionX() - 0.5F + ((float) Math.random());
-        float y = getPositionY();
-        float z = getPositionZ() - 0.5F + ((float) Math.random());
+        float x = getPositionX() + randomizer.nextFloat() * 1.6F - 0.8F;
+        float y = getPositionY() + 0.002F;
+        float z = getPositionZ() + randomizer.nextFloat() * 1.6F - 0.8F;
 
-        IParticle particle = new KisselBigFogParticle(x, y + 0.002F, z, 100 + randomizer.nextInt(5));
+        IParticle particle =
+                new KisselFogParticle(x, y, z, 100 + randomizer.nextInt(5), 1.5F, ParticleIcons.smoke4Icon);
 
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
 
     private void createBigActiveParticle(Random randomizer) {
-        float x = getPositionX() - 0.5F + randomizer.nextFloat();
+        float x = getPositionX() + randomizer.nextFloat() * 2 - 1;
         float y = getPositionY();
-        float z = getPositionZ() - 0.5F + randomizer.nextFloat();
+        float z = getPositionZ() + randomizer.nextFloat() * 2 - 1;
 
         IParticle particle = new KisselBigActiveParticle(x, y, z);
 
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
-
 
     private void createDistortionBubbleParticle(Random randomizer) {
         float x = getPositionX() - 0.5F + randomizer.nextFloat();

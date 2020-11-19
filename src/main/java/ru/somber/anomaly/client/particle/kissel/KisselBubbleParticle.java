@@ -50,9 +50,6 @@ public class KisselBubbleParticle extends AbstractParticleSimpleData {
 
         setPositionY(yStart + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
         setHalfSizes(size,size);
-
-//        setHalfSizes(1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)), 1F * MathHelper.sin(getLifeTime() / ((float)Math.PI * 2)));
-//        setRotateAnglesZ(((float)Math.PI * lifeFactor));
     }
 
 }
