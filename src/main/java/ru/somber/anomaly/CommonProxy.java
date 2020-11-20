@@ -64,6 +64,7 @@ public class CommonProxy {
 
         GameRegistry.registerTileEntity(AcidMistTileEntity.class, "anomaly_acidmist_tileentity");
         GameRegistry.registerTileEntity(CarouselTileEntity.class, "anomaly_carousel_tileentity");
+        GameRegistry.registerTileEntity(ElectraTileEntity.class, "anomaly_electra_tileentity");
         GameRegistry.registerTileEntity(FryTileEntity.class, "anomaly_fry_tileentity");
         GameRegistry.registerTileEntity(FunnelTileEntity.class, "anomaly_funnel_tileentity");
         GameRegistry.registerTileEntity(KisselTileEntity.class, "anomaly_kissel_tileentity");
