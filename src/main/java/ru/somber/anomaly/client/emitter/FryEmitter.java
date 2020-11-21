@@ -37,7 +37,6 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         if (getTick() % 5 == 1) {
             createDistortionHeatParticle();
         }
-//        createBurnParticle();
     }
 
     @Override

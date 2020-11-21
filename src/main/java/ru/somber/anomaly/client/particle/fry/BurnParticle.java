@@ -30,8 +30,6 @@ public class BurnParticle extends AbstractParticleSimpleData {
         this.yForce = maxHeight / getMaxLifeTime();
         this.zForce = 0;
 
-//        setColorFactor(0.9F, 0.75F, 0.75F, 1);
-
         setRotateAnglesZ((float) (randomizer.nextFloat() * Math.PI * 2));
         setHalfSizes(minSize, minSize);
         setBlendFactor(1);
