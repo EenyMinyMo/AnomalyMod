@@ -17,12 +17,12 @@ public class BurnParticle extends AbstractParticleSimpleData {
 
 
     public BurnParticle(float x, float y, float z) {
-        super(x, y, z, 10 + SomberCommonUtil.RANDOMIZER.nextInt(15), ParticleIcons.fireAnimFlame0Icon);
+        super(x, y, z, 20 + SomberCommonUtil.RANDOMIZER.nextInt(5), ParticleIcons.fireAnimFlame0Icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
 
-        this.maxHeight = 5F;
+        this.maxHeight = 4.3F;
         this.minSize = 1F;
         this.maxSize = 1.5F;
 
@@ -57,19 +57,19 @@ public class BurnParticle extends AbstractParticleSimpleData {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
         this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.015F);
         this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.015F);
-        this.yForce *= 1.002F;
+        this.yForce *= 1.02F;
 
         setPositionX(getPositionX() + xForce);
         setPositionY(getPositionY() + yForce);
         setPositionZ(getPositionZ() + zForce);
 
         float lifeFactor = getLifeFactor();
-        float alphaFactor = (float) (-Math.pow((lifeFactor - 0.7F), 2) + 0.25);
+        float alphaFactor = (float) (-Math.pow((lifeFactor - 0.7F), 2) + 0.3F);
 
         setBlendFactor((1 - lifeFactor) * 0.5F + 0.5F);
         setAlphaFactor(alphaFactor);
 
-        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, (float) (-Math.pow((lifeFactor - 0.5F), 2) + 0.25F) * 4F);
+        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, getLifeFactor());
         setHalfSizes(size, size);
     }
 }

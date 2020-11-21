@@ -53,7 +53,7 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         float x = getPositionX() + randomizer.nextFloat() * 0.2F - 0.1F;
-        float y = getPositionY() - 0.2F;
+        float y = getPositionY() - 0.1F;
         float z = getPositionZ() + randomizer.nextFloat() * 0.2F - 0.1F;
 
         IParticle particle = new FryDistortionHeatParticle(x, y, z);
@@ -65,16 +65,16 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         float x = getPositionX();
-        float y = getPositionY() - 0.1F;
+        float y = getPositionY();
         float z = getPositionZ();
 
         IParticle particle;
         particle = new BurnParticle(x, y, z);
         addParticleContainer(particle);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             particle = new BurnParticle(x + (randomizer.nextFloat() * 0.08F - 0.04F),
-                                        y + (randomizer.nextFloat() * 0.4F - 0.2F),
+                                        y + (randomizer.nextFloat() * 0.3F - 0.15F),
                                         z + (randomizer.nextFloat() * 0.08F - 0.04F));
             addParticleContainer(particle);
         }
