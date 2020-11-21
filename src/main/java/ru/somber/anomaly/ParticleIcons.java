@@ -106,6 +106,15 @@ public final class ParticleIcons {
     public static final MultiFrameAtlasIcon animfireFireAnimEnerg0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "animfire/fire_anim_energ_0", 11, 7, false, true);
 
 
+    //=======================================Fire particles=======================================
+    public static final AtlasIcon fire0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_0", false, true);
+    public static final AtlasIcon fire1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_1", false, true);
+    public static final AtlasIcon fire2Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_2", false, true);
+    public static final AtlasIcon fire3Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_3", false, true);
+    public static final AtlasIcon fire4Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_4", false, true);
+    public static final AtlasIcon fire5Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_5", false, true);
+
+
     //=======================================Mercury particles=======================================
     public static final AtlasIcon mercury0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "mercury/mercury_0", false, true);
     public static final AtlasIcon mercury1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "mercury/mercury_1", false, true);

@@ -15,17 +15,18 @@ public class BurnParticle extends AbstractParticleSimpleData {
 
 
     public BurnParticle(float x, float y, float z) {
-        super(x, y, z, 20 + SomberCommonUtil.RANDOMIZER.nextInt(4), ParticleIcons.anomaly4Icon);
+        super(x, y, z, 15, ParticleIcons.fire2Icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        this.xForce = 0;
-        this.yForce = 0;
-        this.zForce = 0;
 
-        this.maxHeight = 2.5F;
-        this.minSize = 0.15F;
-        this.maxSize = 0.6F + randomizer.nextFloat() * 0.3F;
+        this.maxHeight = 3.2F;
+        this.minSize = 0.1F;
+        this.maxSize = 1.3F;
+
+        this.xForce = 0;
+        this.yForce = maxHeight / getMaxLifeTime();
+        this.zForce = 0;
 
         setRotateAnglesZ((float) (randomizer.nextFloat() * Math.PI * 2));
         setHalfSizes(minSize, minSize);
@@ -43,17 +44,21 @@ public class BurnParticle extends AbstractParticleSimpleData {
         super.update();
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
-        this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.0025F);
-        this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.0025F);
+        this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.0175F);
+        this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.0175F);
+        this.yForce *= 1.005F;
 
-        setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()) * (1 + getLifeFactor() / 2));
         setPositionX(getPositionX() + xForce);
+        setPositionY(getPositionY() + yForce);
         setPositionZ(getPositionZ() + zForce);
 
-        setAlphaFactor((1 - getLifeFactor()) * 0.75F);
-        setBlendFactor((1 - getLifeFactor()) * 0.25F + 0.75F);
+        float lifeFactor = getLifeFactor();
+        float alphaFactor = (float) (-Math.pow((lifeFactor - 0.5F), 2) + 0.25) * 1.5F;
 
-        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, getLifeFactor());
+        setBlendFactor((1 - lifeFactor) * 0.3F + 0.7F);
+        setAlphaFactor(alphaFactor);
+
+        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, (float) (-Math.pow((lifeFactor - 0.6F), 2) + 0.45) * 1.15F);
         setHalfSizes(size, size);
     }
 }
