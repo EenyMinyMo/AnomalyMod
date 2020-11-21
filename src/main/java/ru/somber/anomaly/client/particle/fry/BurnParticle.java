@@ -3,6 +3,8 @@ package ru.somber.anomaly.client.particle.fry;
 import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
+import ru.somber.util.clientutil.textureatlas.icon.AtlasIcon;
+import ru.somber.util.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
 import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.Random;
@@ -15,18 +17,20 @@ public class BurnParticle extends AbstractParticleSimpleData {
 
 
     public BurnParticle(float x, float y, float z) {
-        super(x, y, z, 15, ParticleIcons.fire2Icon);
+        super(x, y, z, 10 + SomberCommonUtil.RANDOMIZER.nextInt(15), ParticleIcons.fireAnimFlame0Icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
 
-        this.maxHeight = 3.2F;
-        this.minSize = 0.1F;
-        this.maxSize = 1.3F;
+        this.maxHeight = 5F;
+        this.minSize = 1F;
+        this.maxSize = 1.5F;
 
         this.xForce = 0;
         this.yForce = maxHeight / getMaxLifeTime();
         this.zForce = 0;
+
+//        setColorFactor(0.9F, 0.75F, 0.75F, 1);
 
         setRotateAnglesZ((float) (randomizer.nextFloat() * Math.PI * 2));
         setHalfSizes(minSize, minSize);
@@ -40,25 +44,34 @@ public class BurnParticle extends AbstractParticleSimpleData {
     }
 
     @Override
+    public AtlasIcon getParticleIcon() {
+        MultiFrameAtlasIcon icon = (MultiFrameAtlasIcon) super.getParticleIcon();
+
+        int iconNumber = (int) ((getLifeTime() - 1) * 4F / getMaxLifeTime());
+
+        return icon.getFrameIcon(iconNumber);
+    }
+
+    @Override
     public void update() {
         super.update();
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
-        this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.0175F);
-        this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.0175F);
-        this.yForce *= 1.005F;
+        this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.015F);
+        this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.015F);
+        this.yForce *= 1.002F;
 
         setPositionX(getPositionX() + xForce);
         setPositionY(getPositionY() + yForce);
         setPositionZ(getPositionZ() + zForce);
 
         float lifeFactor = getLifeFactor();
-        float alphaFactor = (float) (-Math.pow((lifeFactor - 0.5F), 2) + 0.25) * 1.5F;
+        float alphaFactor = (float) (-Math.pow((lifeFactor - 0.7F), 2) + 0.25);
 
-        setBlendFactor((1 - lifeFactor) * 0.3F + 0.7F);
+        setBlendFactor((1 - lifeFactor) * 0.5F + 0.5F);
         setAlphaFactor(alphaFactor);
 
-        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, (float) (-Math.pow((lifeFactor - 0.6F), 2) + 0.45) * 1.15F);
+        float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, (float) (-Math.pow((lifeFactor - 0.5F), 2) + 0.25F) * 4F);
         setHalfSizes(size, size);
     }
 }

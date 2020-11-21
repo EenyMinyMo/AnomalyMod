@@ -107,6 +107,7 @@ public final class ParticleIcons {
 
 
     //=======================================Fire particles=======================================
+    public static final MultiFrameAtlasIcon fireAnimFlame0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/anim_flame_0", 4, 1, false, true);
     public static final AtlasIcon fire0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_0", false, true);
     public static final AtlasIcon fire1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_1", false, true);
     public static final AtlasIcon fire2Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_2", false, true);

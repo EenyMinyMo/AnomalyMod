@@ -193,6 +193,7 @@ public class ClientProxy extends CommonProxy {
         atlasTexture.registerIcon(ParticleIcons.animfireFireAnimEnerg0Icon);
 
 
+        atlasTexture.registerIcon(ParticleIcons.fireAnimFlame0Icon);
         atlasTexture.registerIcon(ParticleIcons.fire0Icon);
         atlasTexture.registerIcon(ParticleIcons.fire1Icon);
         atlasTexture.registerIcon(ParticleIcons.fire2Icon);

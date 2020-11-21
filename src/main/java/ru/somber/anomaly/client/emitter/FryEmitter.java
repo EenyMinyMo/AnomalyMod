@@ -37,6 +37,7 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         if (getTick() % 5 == 1) {
             createDistortionHeatParticle();
         }
+//        createBurnParticle();
     }
 
     @Override
@@ -65,14 +66,14 @@ public class FryEmitter extends AbstractAnomalyEmitter {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         float x = getPositionX();
-        float y = getPositionY();
+        float y = getPositionY() - 0.1F;
         float z = getPositionZ();
 
         IParticle particle;
         particle = new BurnParticle(x, y, z);
         addParticleContainer(particle);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             particle = new BurnParticle(x + (randomizer.nextFloat() * 0.08F - 0.04F),
                                         y + (randomizer.nextFloat() * 0.4F - 0.2F),
                                         z + (randomizer.nextFloat() * 0.08F - 0.04F));
