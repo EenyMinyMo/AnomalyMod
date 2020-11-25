@@ -25,7 +25,7 @@ public class CarouselEmitter extends AbstractAnomalyEmitter {
 
         Random random = SomberCommonUtil.RANDOMIZER;
 
-        defaultDustParticle = new CarouselDefaultDustParticle[40];
+        defaultDustParticle = new CarouselDefaultDustParticle[35];
         defaultLeafParticle = new CarouselDefaultLeafParticle[15];
 
         for (int i = 0; i < defaultDustParticle.length; i++) {

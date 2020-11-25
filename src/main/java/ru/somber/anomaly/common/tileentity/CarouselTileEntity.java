@@ -2,6 +2,7 @@ package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.CarouselEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
@@ -20,7 +21,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
     private static final float xOffsetAnomalyCenter = 0.5F;
     private static final float yOffsetAnomalyCenter = 2.0F;
     private static final float zOffsetAnomalyCenter = 0.5F;
-    private static final float suctionDistance = 7.5F;
+    private static final float suctionDistance = 6F;
 
     private static final AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
     private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 200);
@@ -71,7 +72,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
             }
 
             if (suctionFactor < 0.5F) {
-                suctionFactor *= 1.0128;
+                suctionFactor *= 1.014;
             }
 
             double deltaX = (xOffsetAnomalyCenter + xCoord) - targetEntity.posX;
@@ -88,7 +89,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
             targetEntity.motionY += deltaY * suctionFactor;
             targetEntity.motionZ += deltaZ * suctionFactor;
 
-            double distance = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
+            double distance = deltaX * deltaX + deltaZ * deltaZ;
             if (distance > suctionDistance) {
                 targetEntity = null;
                 return true;
@@ -101,6 +102,11 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
         if (AnomalyMod.IS_SERVER) {
             if (getCurrentPhaseTick() % 20 == 1) {
                 targetEntity.setHealth(targetEntity.getHealth() - 0.5F);
+            }
+            targetEntity.rotationYaw += 3;
+        } else {
+            if (targetEntity instanceof EntityPlayer) {
+                targetEntity.rotationYaw += 3;
             }
         }
 
