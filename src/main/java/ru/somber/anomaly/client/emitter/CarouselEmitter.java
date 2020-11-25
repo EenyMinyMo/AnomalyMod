@@ -30,7 +30,7 @@ public class CarouselEmitter extends AbstractAnomalyEmitter {
 
         for (int i = 0; i < defaultDustParticle.length; i++) {
             float x = getPositionX();
-            float y = getPositionY() + 0.6F + random.nextFloat() * 0.05F - 0.025F;
+            float y = getPositionY() + 0.5F + random.nextFloat() * 0.05F - 0.025F;
             float z = getPositionZ();
 
             CarouselDefaultDustParticle particle = new CarouselDefaultDustParticle(x, y, z, Integer.MAX_VALUE);
