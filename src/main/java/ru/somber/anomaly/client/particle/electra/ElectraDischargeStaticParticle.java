@@ -22,6 +22,7 @@ public class ElectraDischargeStaticParticle  extends AbstractParticleSimpleData 
 
         setHalfSizes(0, 0);
         setRotateAnglesX((float) Math.toRadians(180 * randomizer.nextFloat()));
+        setRotateAnglesY((float) Math.toRadians(360 * randomizer.nextFloat()));
         setRotateAnglesZ((float) Math.toRadians(360 * randomizer.nextFloat()));
         setBlendFactor(1);
         setAlphaFactor(1);

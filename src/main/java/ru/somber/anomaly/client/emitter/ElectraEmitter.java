@@ -39,9 +39,8 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        if (getTick() % 2 == 1) {
-            createStaticElectraParticle();
-        }
+        createStaticElectraParticle();
+
 
         if (cooldownAdditionalStaticParticle == 0) {
             createAdditionStaticElectraParticle();
@@ -50,7 +49,7 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
 
         if (cooldownSphericalParticle == 0) {
             createSphericalElectraParticle();
-            cooldownSphericalParticle = 1 + randomizer.nextInt(6);
+            cooldownSphericalParticle = 1 + randomizer.nextInt(3);
         }
 
         cooldownAdditionalStaticParticle--;
@@ -61,7 +60,7 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
     public void updateActivePhase(int currentTick, int phaseTickDuration) {
         super.updateActivePhase(currentTick, phaseTickDuration);
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 36; i++) {
             createDischargeStaticElectraParticle();
             createDischargeSphericalElectraParticle();
         }
@@ -77,9 +76,9 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
     private void createStaticElectraParticle() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float x = getPositionX() + randomizer.nextFloat() - 0.5F;
+        float x = getPositionX() + randomizer.nextFloat() * 1.8F - 0.9F;
         float y = getPositionY() + 0.03125F;
-        float z = getPositionZ() + randomizer.nextFloat() - 0.5F;
+        float z = getPositionZ() + randomizer.nextFloat() * 1.8F - 0.9F;
 
         IParticle particle = new ElectraStaticParticle(x, y, z, 10);
         addParticleContainer(particle);
@@ -88,9 +87,9 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
     private void createAdditionStaticElectraParticle() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float x = getPositionX() + randomizer.nextFloat() * 0.8F - 0.4F;
+        float x = getPositionX() + randomizer.nextFloat() * 1.6F - 0.8F;
         float y = getPositionY() + 0.03125F;
-        float z = getPositionZ() + randomizer.nextFloat() * 0.8F - 0.4F;
+        float z = getPositionZ() + randomizer.nextFloat() * 1.6F - 0.8F;
 
         IParticle particle = new ElectraStaticAdditionalParticle(x, y, z, 10);
         addParticleContainer(particle);
@@ -99,33 +98,33 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
     private void createSphericalElectraParticle() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float x = getPositionX() + randomizer.nextFloat() * 1F - 0.5F;
-        float y = getPositionY() + randomizer.nextFloat() * 0.4F + 0.2F;
-        float z = getPositionZ() + randomizer.nextFloat() * 1F - 0.5F;
+        float x = getPositionX() + randomizer.nextFloat() * 1.8F - 0.9F;
+        float y = getPositionY() + randomizer.nextFloat() * 0.8F;
+        float z = getPositionZ() + randomizer.nextFloat() * 1.8F - 0.9F;
 
-        IParticle particle = new ElectraSphericalParticle(x, y, z, 6);
+        IParticle particle = new ElectraSphericalParticle(x, y, z, 8);
         addParticleContainer(particle);
     }
 
     private void createDischargeStaticElectraParticle() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float x = getPositionX() + randomizer.nextFloat() * 2F - 1F;
+        float x = getPositionX() + randomizer.nextFloat() * 3F - 1.5F;
         float y = getPositionY() + randomizer.nextFloat() + 0.2F;
-        float z = getPositionZ() + randomizer.nextFloat() * 2F - 1F;
+        float z = getPositionZ() + randomizer.nextFloat() * 3F - 1.5F;
 
-        IParticle particle = new ElectraDischargeStaticParticle(x, y, z, 8 + randomizer.nextInt(4));
+        IParticle particle = new ElectraDischargeStaticParticle(x, y, z, 6 + randomizer.nextInt(6));
         addParticleContainer(particle);
     }
 
     private void createDischargeSphericalElectraParticle() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float x = getPositionX() + randomizer.nextFloat() * 2F - 1F;
+        float x = getPositionX() + randomizer.nextFloat() * 3F - 1.5F;
         float y = getPositionY() + randomizer.nextFloat() + 0.2F;
-        float z = getPositionZ() + randomizer.nextFloat() * 2F - 1F;
+        float z = getPositionZ() + randomizer.nextFloat() * 3F - 1.5F;
 
-        IParticle particle = new ElectraDischargeSphericalParticle(x, y, z, 8 + randomizer.nextInt(8));
+        IParticle particle = new ElectraDischargeSphericalParticle(x, y, z, 4 + randomizer.nextInt(10));
         addParticleContainer(particle);
     }
 

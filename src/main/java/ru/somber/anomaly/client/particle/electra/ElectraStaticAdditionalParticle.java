@@ -15,7 +15,7 @@ public class ElectraStaticAdditionalParticle extends AbstractParticleSimpleData 
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float maxSize = randomizer.nextFloat() * 0.4F + 0.1F;
+        float maxSize = randomizer.nextFloat() * 0.6F + 0.4F;
 
         setHalfSizes(maxSize, maxSize);
         setRotateAnglesX((float) Math.toRadians(90));

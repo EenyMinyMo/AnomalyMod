@@ -17,7 +17,7 @@ public class ElectraStaticParticle extends AbstractParticleSimpleData {
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        this.maxSize = randomizer.nextFloat() * 0.3F + 1.2F;
+        this.maxSize = randomizer.nextFloat() * 0.7F + 1.5F;
 
 
         setHalfSizes(0, 0);
