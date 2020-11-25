@@ -11,12 +11,12 @@ import ru.somber.anomaly.common.phase.PhaseType;
 import java.util.List;
 
 public class CarouselTileEntity extends AbstractAnomalyTileEntity {
-    private static final float xMinAABB = -1F;
+    private static final float xMinAABB = -0.9F;
     private static final float yMinAABB = 0F;
-    private static final float zMinAABB = -1F;
-    private static final float xMaxAABB = 2F;
-    private static final float yMaxAABB = 1F;
-    private static final float zMaxAABB = 2F;
+    private static final float zMinAABB = -0.9F;
+    private static final float xMaxAABB = 1.9F;
+    private static final float yMaxAABB = 0.95F;
+    private static final float zMaxAABB = 1.9F;
 
     private static final float xOffsetAnomalyCenter = 0.5F;
     private static final float yOffsetAnomalyCenter = 2.0F;
