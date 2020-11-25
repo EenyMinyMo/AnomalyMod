@@ -138,12 +138,30 @@ public final class ParticleIcons {
 
     public static final MultiFrameAtlasIcon smokeAnimEnerg0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_energ_0", 10, 10, false, true);
 
+    public static final AtlasIcon carouselDust0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust1", false, true);
+    public static final AtlasIcon carouselDust1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust2", false, true);
+    public static final AtlasIcon carouselDust2Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust3", false, true);
+    public static final AtlasIcon carouselDust3Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust4", false, true);
+    public static final AtlasIcon carouselDust4Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust5", false, true);
+    public static final AtlasIcon carouselDust5Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust6", false, true);
+    public static final AtlasIcon carouselDust6Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust7", false, true);
+    public static final AtlasIcon carouselDust7Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust8", false, true);
+
 
     //=======================================Trash particles=======================================
     public static final AtlasIcon trash0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_0", false, true);
     public static final AtlasIcon trash1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_1", false, true);
     public static final AtlasIcon trash2Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_2", false, true);
     public static final AtlasIcon trash3Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_3", false, true);
+    public static final AtlasIcon trash4Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_4", false, true);
+    public static final AtlasIcon trash5Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_5", false, true);
+    public static final AtlasIcon trash6Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_6", false, true);
+    public static final AtlasIcon trash7Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_7", false, true);
+    public static final AtlasIcon trash8Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_8", false, true);
+    public static final AtlasIcon trash9Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_9", false, true);
+    public static final AtlasIcon trash10Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_10", false, true);
+    public static final AtlasIcon trash11Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/trash_11", false, true);
+
 
     public static final MultiFrameAtlasIcon trashAnim0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_0", 4, 4, false, true);
     public static final MultiFrameAtlasIcon trashAnim1Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "trash/anim/trash_anim_1", 1, 2, false, true);

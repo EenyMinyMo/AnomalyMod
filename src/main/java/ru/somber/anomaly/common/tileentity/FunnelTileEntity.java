@@ -57,11 +57,7 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         prepareCollideEntityList(this);
 
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateDefaultPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processDefaultPhase();
 
         return searchTargetEntity(listForSearchEntities);
     }
@@ -102,20 +98,16 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
             if ((getCurrentPhaseTick() - 1) >= getCurrentPhase().getTickDuration()) {
                 targetEntity.setHealth(0);
             }
-        } else {
-            getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
         }
+
+        super.processActivePhase();
 
         return false;
     }
 
     @Override
     protected boolean processSleepPhase() {
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateSleepPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processSleepPhase();
 
         suctionFactor = 0.01F;
 

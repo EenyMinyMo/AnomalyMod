@@ -57,11 +57,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         prepareCollideEntityList(this);
 
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateDefaultPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processDefaultPhase();
 
         return searchTargetEntity(listForSearchEntities);
     }
@@ -106,20 +102,16 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
             if (getCurrentPhaseTick() % 20 == 1) {
                 targetEntity.setHealth(targetEntity.getHealth() - 0.5F);
             }
-        } else {
-            getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
         }
+
+        super.processActivePhase();
 
         return false;
     }
 
     @Override
     protected boolean processSleepPhase() {
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateSleepPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processSleepPhase();
 
         suctionFactor = 0.005F;
 

@@ -222,11 +222,28 @@ public class ClientProxy extends CommonProxy {
 
         atlasTexture.registerIcon(ParticleIcons.smokeAnimEnerg0Icon);
 
+        atlasTexture.registerIcon(ParticleIcons.carouselDust0Icon);
+        atlasTexture.registerIcon(ParticleIcons.carouselDust1Icon);
+        atlasTexture.registerIcon(ParticleIcons.carouselDust2Icon);
+        atlasTexture.registerIcon(ParticleIcons.carouselDust3Icon);
+        atlasTexture.registerIcon(ParticleIcons.carouselDust4Icon);
+        atlasTexture.registerIcon(ParticleIcons.carouselDust5Icon);
+        atlasTexture.registerIcon(ParticleIcons.carouselDust6Icon);
+        atlasTexture.registerIcon(ParticleIcons.carouselDust7Icon);
+
 
         atlasTexture.registerIcon(ParticleIcons.trash0Icon);
         atlasTexture.registerIcon(ParticleIcons.trash1Icon);
         atlasTexture.registerIcon(ParticleIcons.trash2Icon);
         atlasTexture.registerIcon(ParticleIcons.trash3Icon);
+        atlasTexture.registerIcon(ParticleIcons.trash4Icon);
+        atlasTexture.registerIcon(ParticleIcons.trash5Icon);
+        atlasTexture.registerIcon(ParticleIcons.trash6Icon);
+        atlasTexture.registerIcon(ParticleIcons.trash7Icon);
+        atlasTexture.registerIcon(ParticleIcons.trash8Icon);
+        atlasTexture.registerIcon(ParticleIcons.trash9Icon);
+        atlasTexture.registerIcon(ParticleIcons.trash10Icon);
+        atlasTexture.registerIcon(ParticleIcons.trash11Icon);
 
         atlasTexture.registerIcon(ParticleIcons.trashAnim0Icon);
         atlasTexture.registerIcon(ParticleIcons.trashAnim1Icon);

@@ -42,11 +42,7 @@ public class KisselTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         prepareCollideEntityList(this);
 
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateDefaultPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processDefaultPhase();
 
         return applyAnomalyEffectEntityList(listForSearchEntities);
     }
@@ -55,19 +51,11 @@ public class KisselTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processActivePhase() {
         prepareCollideEntityList(this);
 
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processActivePhase();
 
         return ! applyAnomalyEffectEntityList(listForSearchEntities);
     }
 
-    @Override
-    protected boolean processSleepPhase() {
-        return true;
-    }
 
     /**
      * Пытается применить эффект аномалии на переданный список сущностей.

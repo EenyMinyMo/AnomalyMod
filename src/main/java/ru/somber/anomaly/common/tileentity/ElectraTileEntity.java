@@ -43,32 +43,22 @@ public class ElectraTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         prepareCollideEntityList(this);
 
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateDefaultPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processDefaultPhase();
 
         return applyAnomalyEffectEntityList(listForSearchEntities);
     }
 
     @Override
     protected boolean processActivePhase() {
-        if (AnomalyMod.IS_SERVER) {
+        super.processActivePhase();
 
-        } else {
-            getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
         return isPhaseTimeEnd();
     }
 
     @Override
     protected boolean processSleepPhase() {
-        if (AnomalyMod.IS_SERVER) {
+        super.processSleepPhase();
 
-        } else {
-            getEmitter().updateSleepPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
         return isPhaseTimeEnd();
     }
 

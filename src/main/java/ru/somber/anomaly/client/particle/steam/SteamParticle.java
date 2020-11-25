@@ -16,7 +16,7 @@ public class SteamParticle extends AbstractParticleSimpleData {
 
 
     public SteamParticle(float x, float y, float z) {
-        super(x, y, z, 25 + SomberCommonUtil.RANDOMIZER.nextInt(4), ParticleIcons.smoke1Icon);
+        super(x, y, z, 25 + SomberCommonUtil.RANDOMIZER.nextInt(4), ParticleIcons.smoke4Icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
@@ -45,14 +45,14 @@ public class SteamParticle extends AbstractParticleSimpleData {
         super.update();
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
-        this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.006F);
-        this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.006F);
+        this.xForce += ((randomizer.nextFloat() - 0.5F) * 0.009F);
+        this.zForce += ((randomizer.nextFloat() - 0.5F) * 0.009F);
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()) * (1 + getLifeFactor() / 2));
         setPositionX(getPositionX() + xForce);
         setPositionZ(getPositionZ() + zForce);
 
-        setAlphaFactor((1 - getLifeFactor()) * 0.6F);
+        setAlphaFactor((1 - getLifeFactor()) * 0.5F);
         setBlendFactor((1 - getLifeFactor()) * maxBlend);
 
         float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, getLifeFactor());

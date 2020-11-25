@@ -44,11 +44,7 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         prepareCollideEntityList(this);
 
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateDefaultPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processDefaultPhase();
 
         tickOnActiveOffset = 0;
         return applyAnomalyEffectEntityList(listForSearchEntities);
@@ -58,11 +54,7 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processActivePhase() {
         prepareCollideEntityList(this);
 
-        if (AnomalyMod.IS_SERVER) {
-
-        } else {
-            getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
-        }
+        super.processActivePhase();
 
         if ( applyAnomalyEffectEntityList(listForSearchEntities)) {
             tickOnActiveOffset = getCurrentPhaseTick();
@@ -71,10 +63,6 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
         return ((getCurrentPhaseTick() - tickOnActiveOffset ) >= getCurrentPhase().getTickDuration());
     }
 
-    @Override
-    protected boolean processSleepPhase() {
-        return true;
-    }
 
     /**
      * Пытается применить эффект аномалии на переданный список сущностей.

@@ -71,12 +71,16 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
 
         //проверка на возможность перехода на следующую фазу.
         if (checkTransitionPhase) {
+
+            //вызываем метод окончания фазы
+            endCurrentPhase();
+
+            //осуществляем сам переход.
             currentPhase = currentPhase.getNextPhase();
             currentPhaseTick = 0;
 
-//            if (AnomalyMod.IS_SERVER) {
-//                getWorldObj().markBlockForUpdate(xCoord, yCoord, zCoord);
-//            }
+            //вызываем метод начала фазы
+            startCurrentPhase();
         }
 
         currentPhaseTick++;
@@ -102,6 +106,8 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
         } else {
             clientValidate();
         }
+
+        startCurrentPhase();
     }
 
     @Override
@@ -109,6 +115,17 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
         super.invalidate();
         //помечание сущности как недействительной.
         //сюда помещать код уничтожения внутренний данных сущностей и внешних зависимостей.
+
+        if (AnomalyMod.IS_SERVER) {
+            serverInvalidate();
+        } else {
+            clientInvalidate();
+        }
+    }
+
+    @Override
+    public void onChunkUnload() {
+        super.onChunkUnload();
 
         if (AnomalyMod.IS_SERVER) {
             serverInvalidate();
@@ -226,19 +243,80 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
      * Аномалия наследник должна переопределить этот метод для обработки дефолтной (фоновой) фазы.
      * Возвращает true, когда требуется перейти на следующую фазу.
      */
-    protected abstract boolean processDefaultPhase();
+    protected boolean processDefaultPhase() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().updateDefaultPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
+        }
+
+        return false;
+    }
 
     /**
      * Аномалия наследник должна переопределить этот метод для обработки активной фазы.
      * Возвращает true, когда требуется перейти на следующую фазу.
      */
-    protected abstract boolean processActivePhase();
+    protected boolean processActivePhase() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().updateActivePhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
+        }
+
+        return false;
+    }
 
     /**
      * Аномалия наследник должна переопределить этот метод для обработки фазы сна (бездействия).
      * Возвращает true, когда требуется перейти на следующую фазу.
      */
-    protected abstract boolean processSleepPhase();
+    protected boolean processSleepPhase() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().updateSleepPhase(getCurrentPhaseTick(), getCurrentPhase().getTickDuration());
+        }
+
+        return false;
+    }
+
+
+    /** Вызывается, когда начинается дефолтная фаза. */
+    protected void defaultPhaseStart() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().defaultPhaseStart();
+        }
+    }
+
+    /** Вызывается, когда начинается активная фаза. */
+    protected void activePhaseStart() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().activePhaseStart();
+        }
+    }
+
+    /** Вызывается, когда начинается фаза сна. */
+    protected void sleepPhaseStart() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().sleepPhaseStart();
+        }
+    }
+
+    /** Вызывается, когда заканчивается дефолтная фаза. */
+    protected void defaultPhaseEnd() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().defaultPhaseEnd();
+        }
+    }
+
+    /** Вызывается, когда заканчивается активная фаза. */
+    protected void activePhaseEnd() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().activePhaseEnd();
+        }
+    }
+
+    /** Вызывается, когда заканчивается фаза сна. */
+    protected void sleepPhaseEnd() {
+        if (! AnomalyMod.IS_SERVER)  {
+            getEmitter().sleepPhaseEnd();
+        }
+    }
 
 
     /**
@@ -252,6 +330,45 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
                                                tile.getAABBBody(),
                                                null,
                                                listForSearchEntities);
+    }
+
+
+    /**
+     * Вызывает метод ***PhaseEnd() для фазы текущего типа.
+     */
+    private void endCurrentPhase() {
+        switch (currentPhase.getPhaseType()) {
+            case Default : {    //если сейчас закончиться дефолтная фаза
+                defaultPhaseEnd();
+            } break;
+
+            case Active : {     //если сейчас закончиться активная фаза
+                activePhaseEnd();
+            } break;
+
+            case Sleep : {      //если сейчас закончиться фаза сна
+                sleepPhaseEnd();
+            } break;
+        }
+    }
+
+    /**
+     * Вызывает метод ***PhaseStart() для фазы текущего типа.
+     */
+    private void startCurrentPhase() {
+        switch (currentPhase.getPhaseType()) {
+            case Default : {    //если сейчас начнется дефолтная фаза
+                defaultPhaseStart();
+            } break;
+
+            case Active : {     //если сейчас начнется активная фаза
+                activePhaseStart();
+            } break;
+
+            case Sleep : {      //если сейчас начнется фаза сна
+                sleepPhaseStart();
+            } break;
+        }
     }
 
 }
