@@ -7,9 +7,9 @@ import java.util.Random;
 
 public class CarouselDefaultDustParticle extends AbstractDustParticle {
 
-    private static final float sizes = 1.2F;
+    private static final float sizes = 2F;
     private static final int countTicksForAppearance = 80;
-    private static final float maxAlpha = 0.5F;
+    private static final float maxAlpha = 1F;
     private static final float moveAngleSpeed = 4.25F;
 
     private final float xCenterCircle, zCenterCircle;
@@ -35,7 +35,7 @@ public class CarouselDefaultDustParticle extends AbstractDustParticle {
 
         setHalfSizes(sizes, sizes);
 
-        setBlendFactor(0);
+
         setRotateAnglesZ(360 * SomberCommonUtil.RANDOMIZER.nextFloat());
     }
 

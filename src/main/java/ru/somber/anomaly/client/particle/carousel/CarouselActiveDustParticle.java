@@ -8,8 +8,9 @@ import java.util.Random;
 public class CarouselActiveDustParticle extends AbstractDustParticle {
 
     private static final float sizes = 1.5F;
-    private static final int countTicksForLifting = 200;
+    private static final int countTicksForLifting = 160;
     private static final int countTicksForFall = 20;
+    private static final float maxAlpha = 1F;
 
     private final float yStart;
     private final float xCenterCircle, zCenterCircle;
@@ -46,8 +47,9 @@ public class CarouselActiveDustParticle extends AbstractDustParticle {
         setPositionZ(zCenterCircle + (float) Math.sin(currentAngle) * radius);
 
         setHalfSizes(sizes, sizes);
-
         setRotateAnglesZ(360 * SomberCommonUtil.RANDOMIZER.nextFloat());
+
+        setAlphaFactor(maxAlpha);
     }
 
 
@@ -79,7 +81,7 @@ public class CarouselActiveDustParticle extends AbstractDustParticle {
             if (currentTicks >= countTicksForFall) {
                 setDie(true);
             }
-            setAlphaFactor(1 - (float) currentTicks / countTicksForFall);
+            setAlphaFactor((1 - (float) currentTicks / countTicksForFall) * maxAlpha);
         }
     }
 

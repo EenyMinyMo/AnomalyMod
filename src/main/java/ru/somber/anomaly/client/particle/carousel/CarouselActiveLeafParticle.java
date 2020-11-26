@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class CarouselActiveLeafParticle extends AbstractLeafParticle {
 
-    private static final float sizes = 0.06F;
-    private static final int countTicksForLifting = 200;
+    private static final float sizes = 0.07F;
+    private static final int countTicksForLifting = 160;
     private static final int countTicksForFall = 20;
 
     private final float yStart;
