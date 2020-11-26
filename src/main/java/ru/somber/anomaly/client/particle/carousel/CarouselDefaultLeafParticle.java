@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class CarouselDefaultLeafParticle extends AbstractLeafParticle {
 
-    private static final float sizes = 0.08F;
+    private static final float sizes = 0.06F;
     private static final int countTicksForAppearance = 80;
     private static final float maxAlpha = 1F;
     private static final float moveAngleSpeed = 4.25F;
