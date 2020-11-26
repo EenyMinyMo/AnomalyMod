@@ -10,6 +10,18 @@ import java.util.Random;
 
 public abstract class AbstractDustParticle extends AbstractParticleSimpleData {
 
+    private static final AtlasIcon[] iconsArray = new AtlasIcon[] {
+            ParticleIcons.dust0Icon,
+            ParticleIcons.dust1Icon,
+            ParticleIcons.dust2Icon,
+            ParticleIcons.dust3Icon,
+            ParticleIcons.dust4Icon,
+            ParticleIcons.dust5Icon,
+            ParticleIcons.dust6Icon,
+            ParticleIcons.dust7Icon,
+    };
+
+
     public AbstractDustParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, getRandomDustIcon());
     }
@@ -22,43 +34,8 @@ public abstract class AbstractDustParticle extends AbstractParticleSimpleData {
 
     private static AtlasIcon getRandomDustIcon() {
         Random random = SomberCommonUtil.RANDOMIZER;
-        int randomNumber = random.nextInt(8);
-
-        switch (randomNumber) {
-            case 0 : {
-                return ParticleIcons.dust0Icon;
-            }
-
-            case 1 : {
-                return ParticleIcons.dust1Icon;
-            }
-
-            case 2 : {
-                return ParticleIcons.dust2Icon;
-            }
-
-            case 3 : {
-                return ParticleIcons.dust3Icon;
-            }
-
-            case 4 : {
-                return ParticleIcons.dust4Icon;
-            }
-
-            case 5 : {
-                return ParticleIcons.dust5Icon;
-            }
-
-            case 6 : {
-                return ParticleIcons.dust6Icon;
-            }
-
-            case 7 : {
-                return ParticleIcons.dust7Icon;
-            }
-        }
-
-        return ParticleIcons.dust0Icon;
+        int randomNumber = random.nextInt(iconsArray.length);
+        return iconsArray[randomNumber];
     }
 
 }

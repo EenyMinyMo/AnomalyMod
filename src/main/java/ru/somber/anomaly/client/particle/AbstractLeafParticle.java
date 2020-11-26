@@ -10,6 +10,19 @@ import java.util.Random;
 
 public abstract class AbstractLeafParticle extends AbstractParticleSimpleData {
 
+    private static final AtlasIcon[] iconsArray = new AtlasIcon[] {
+            ParticleIcons.trash3Icon,
+            ParticleIcons.trash4Icon,
+            ParticleIcons.trash5Icon,
+            ParticleIcons.trash6Icon,
+            ParticleIcons.trash7Icon,
+            ParticleIcons.trash8Icon,
+            ParticleIcons.trash9Icon,
+            ParticleIcons.trash10Icon,
+            ParticleIcons.trash11Icon,
+    };
+
+
     public AbstractLeafParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, getRandomLeafIcon());
     }
@@ -22,47 +35,8 @@ public abstract class AbstractLeafParticle extends AbstractParticleSimpleData {
 
     private static AtlasIcon getRandomLeafIcon() {
         Random random = SomberCommonUtil.RANDOMIZER;
-        int randomNumber = random.nextInt(9);
-
-        switch (randomNumber) {
-            case 0 : {
-                return ParticleIcons.trash3Icon;
-            }
-
-            case 1 : {
-                return ParticleIcons.trash4Icon;
-            }
-
-            case 2 : {
-                return ParticleIcons.trash5Icon;
-            }
-
-            case 3 : {
-                return ParticleIcons.trash6Icon;
-            }
-
-            case 4 : {
-                return ParticleIcons.trash7Icon;
-            }
-
-            case 5 : {
-                return ParticleIcons.trash8Icon;
-            }
-
-            case 6 : {
-                return ParticleIcons.trash9Icon;
-            }
-
-            case 7 : {
-                return ParticleIcons.trash10Icon;
-            }
-
-            case 8 : {
-                return ParticleIcons.trash11Icon;
-            }
-        }
-
-        return ParticleIcons.trash0Icon;
+        int randomNumber = random.nextInt(iconsArray.length);
+        return iconsArray[randomNumber];
     }
 
 }
