@@ -7,7 +7,7 @@ import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 public class TrampolineDistortionParticle extends AbstractParticleSimpleData {
 
     private static final float maxHeight = 1.3F;
-    private static final float maxSize = 2.4F;
+    private static final float maxSize = 3F;
 
     public TrampolineDistortionParticle(float x, float y, float z, int maxLifeTime) {
         super(x, y, z, maxLifeTime, ParticleIcons.distortion3Icon);
