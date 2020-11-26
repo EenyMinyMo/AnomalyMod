@@ -72,7 +72,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
             }
 
             if (suctionFactor < 0.5F) {
-                suctionFactor *= 1.014;
+                suctionFactor *= 1.02;
             }
 
             double deltaX = (xOffsetAnomalyCenter + xCoord) - targetEntity.posX;
@@ -101,12 +101,12 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
 
         if (AnomalyMod.IS_SERVER) {
             if (getCurrentPhaseTick() % 20 == 1) {
-                targetEntity.setHealth(targetEntity.getHealth() - 0.5F);
+                targetEntity.setHealth(targetEntity.getHealth() - 0.95F);
             }
-            targetEntity.rotationYaw += 3;
+            targetEntity.rotationYaw += 5;
         } else {
             if (targetEntity instanceof EntityPlayer) {
-                targetEntity.rotationYaw += 3;
+                targetEntity.rotationYaw += 5;
             }
         }
 

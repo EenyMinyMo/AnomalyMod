@@ -1,5 +1,7 @@
 package ru.somber.anomaly.client.emitter;
 
+import ru.somber.anomaly.client.particle.carousel.CarouselActiveDustParticle;
+import ru.somber.anomaly.client.particle.carousel.CarouselActiveLeafParticle;
 import ru.somber.anomaly.client.particle.carousel.CarouselDefaultDustParticle;
 import ru.somber.anomaly.client.particle.carousel.CarouselDefaultLeafParticle;
 import ru.somber.util.commonutil.SomberCommonUtil;
@@ -11,11 +13,12 @@ public class CarouselEmitter extends AbstractAnomalyEmitter {
     private CarouselDefaultDustParticle[] defaultDustParticle;
     private CarouselDefaultLeafParticle[] defaultLeafParticle;
 
+    private CarouselActiveDustParticle[] activeDustParticle;
+    private CarouselActiveLeafParticle[] activeLeafParticle;
+
 
     public CarouselEmitter(float x, float y, float z) {
         super(x, y, z);
-
-
     }
 
 
@@ -67,6 +70,20 @@ public class CarouselEmitter extends AbstractAnomalyEmitter {
 
         defaultDustParticle = null;
         defaultLeafParticle = null;
+
+        if (activeDustParticle != null) {
+            for (int i = 0; i < activeDustParticle.length; i++) {
+                activeDustParticle[i].setDie(true);
+            }
+            activeDustParticle = null;
+        }
+
+        if (activeLeafParticle != null) {
+            for (int i = 0; i < activeLeafParticle.length; i++) {
+                activeLeafParticle[i].setDie(true);
+            }
+            activeLeafParticle = null;
+        }
     }
 
     @Override
@@ -80,9 +97,6 @@ public class CarouselEmitter extends AbstractAnomalyEmitter {
     @Override
     public void updateDefaultPhase(int currentTick, int phaseTickDuration) {
         super.updateDefaultPhase(currentTick, phaseTickDuration);
-
-
-
     }
 
     @Override
@@ -112,6 +126,36 @@ public class CarouselEmitter extends AbstractAnomalyEmitter {
     @Override
     public void activePhaseStart() {
         super.activePhaseStart();
+
+        Random random = SomberCommonUtil.RANDOMIZER;
+
+        activeDustParticle = new CarouselActiveDustParticle[100];
+        for (int i = 0; i < activeDustParticle.length; i++) {
+            float x = getPositionX();
+            float y = getPositionY() + 0.5F + random.nextFloat() * 0.05F - 0.025F;
+            float z = getPositionZ();
+
+            CarouselActiveDustParticle particle = new CarouselActiveDustParticle(x, y, z, Integer.MAX_VALUE);
+            particle.setCurrentAngle(360F * i / activeDustParticle.length);
+            particle.setMode(true);
+
+            activeDustParticle[i] = particle;
+            addParticleContainer(particle);
+        }
+
+        activeLeafParticle = new CarouselActiveLeafParticle[30];
+        for (int i = 0; i < activeLeafParticle.length; i++) {
+            float x = getPositionX();
+            float y = getPositionY() + 0.5F + random.nextFloat() * 0.05F - 0.025F;
+            float z = getPositionZ();
+
+            CarouselActiveLeafParticle particle = new CarouselActiveLeafParticle(x, y, z, Integer.MAX_VALUE);
+            particle.setCurrentAngle(360F * i / activeLeafParticle.length);
+            particle.setMode(true);
+
+            activeLeafParticle[i] = particle;
+            addParticleContainer(particle);
+        }
     }
 
     @Override
@@ -135,10 +179,28 @@ public class CarouselEmitter extends AbstractAnomalyEmitter {
     @Override
     public void activePhaseEnd() {
         super.activePhaseEnd();
+
+        for (int i = 0; i < activeDustParticle.length; i++) {
+            activeDustParticle[i].setMode(false);
+        }
+
+        for (int i = 0; i < activeLeafParticle.length; i++) {
+            activeLeafParticle[i].setMode(false);
+        }
     }
 
     @Override
     public void sleepPhaseEnd() {
         super.sleepPhaseEnd();
+
+        for (int i = 0; i < activeDustParticle.length; i++) {
+            activeDustParticle[i].setDie(true);
+        }
+        activeDustParticle = null;
+
+        for (int i = 0; i < activeLeafParticle.length; i++) {
+            activeLeafParticle[i].setDie(true);
+        }
+        activeLeafParticle = null;
     }
 }
