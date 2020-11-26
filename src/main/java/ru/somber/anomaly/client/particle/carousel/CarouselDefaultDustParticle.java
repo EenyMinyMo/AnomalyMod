@@ -84,39 +84,39 @@ public class CarouselDefaultDustParticle extends AbstractParticleSimpleData {
 
         switch (randomNumber) {
             case 0 : {
-                return ParticleIcons.carouselDust0Icon;
+                return ParticleIcons.dust0Icon;
             }
 
             case 1 : {
-                return ParticleIcons.carouselDust1Icon;
+                return ParticleIcons.dust1Icon;
             }
 
             case 2 : {
-                return ParticleIcons.carouselDust2Icon;
+                return ParticleIcons.dust2Icon;
             }
 
             case 3 : {
-                return ParticleIcons.carouselDust3Icon;
+                return ParticleIcons.dust3Icon;
             }
 
             case 4 : {
-                return ParticleIcons.carouselDust4Icon;
+                return ParticleIcons.dust4Icon;
             }
 
             case 5 : {
-                return ParticleIcons.carouselDust5Icon;
+                return ParticleIcons.dust5Icon;
             }
 
             case 6 : {
-                return ParticleIcons.carouselDust6Icon;
+                return ParticleIcons.dust6Icon;
             }
 
             case 7 : {
-                return ParticleIcons.carouselDust7Icon;
+                return ParticleIcons.dust7Icon;
             }
         }
 
-        return ParticleIcons.carouselDust0Icon;
+        return ParticleIcons.dust0Icon;
     }
 
 }

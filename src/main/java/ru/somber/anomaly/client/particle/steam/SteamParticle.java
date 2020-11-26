@@ -16,7 +16,7 @@ public class SteamParticle extends AbstractParticleSimpleData {
 
 
     public SteamParticle(float x, float y, float z) {
-        super(x, y, z, 25 + SomberCommonUtil.RANDOMIZER.nextInt(4), ParticleIcons.smoke4Icon);
+        super(x, y, z, 25 + SomberCommonUtil.RANDOMIZER.nextInt(4), ParticleIcons.smoke2Icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 

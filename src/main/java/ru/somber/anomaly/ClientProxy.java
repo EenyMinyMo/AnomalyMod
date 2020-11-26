@@ -189,8 +189,8 @@ public class ClientProxy extends CommonProxy {
         atlasTexture.registerIcon(ParticleIcons.lightEnerg8Icon);
 
 
-        atlasTexture.registerIcon(ParticleIcons.animfireExplosionAnim0Icon);
-        atlasTexture.registerIcon(ParticleIcons.animfireFireAnimEnerg0Icon);
+        atlasTexture.registerIcon(ParticleIcons.fireExplosionAnim0Icon);
+        atlasTexture.registerIcon(ParticleIcons.fireAnimEnerg0Icon);
 
 
         atlasTexture.registerIcon(ParticleIcons.fireAnimFlame0Icon);
@@ -212,9 +212,6 @@ public class ClientProxy extends CommonProxy {
         atlasTexture.registerIcon(ParticleIcons.smoke1Icon);
         atlasTexture.registerIcon(ParticleIcons.smoke2Icon);
         atlasTexture.registerIcon(ParticleIcons.smoke3Icon);
-        atlasTexture.registerIcon(ParticleIcons.smoke4Icon);
-        atlasTexture.registerIcon(ParticleIcons.smoke5Icon);
-        atlasTexture.registerIcon(ParticleIcons.smoke6Icon);
 
         atlasTexture.registerIcon(ParticleIcons.smokeAnim0Icon);
         atlasTexture.registerIcon(ParticleIcons.smokeAnim1Icon);
@@ -222,14 +219,15 @@ public class ClientProxy extends CommonProxy {
 
         atlasTexture.registerIcon(ParticleIcons.smokeAnimEnerg0Icon);
 
-        atlasTexture.registerIcon(ParticleIcons.carouselDust0Icon);
-        atlasTexture.registerIcon(ParticleIcons.carouselDust1Icon);
-        atlasTexture.registerIcon(ParticleIcons.carouselDust2Icon);
-        atlasTexture.registerIcon(ParticleIcons.carouselDust3Icon);
-        atlasTexture.registerIcon(ParticleIcons.carouselDust4Icon);
-        atlasTexture.registerIcon(ParticleIcons.carouselDust5Icon);
-        atlasTexture.registerIcon(ParticleIcons.carouselDust6Icon);
-        atlasTexture.registerIcon(ParticleIcons.carouselDust7Icon);
+
+        atlasTexture.registerIcon(ParticleIcons.dust0Icon);
+        atlasTexture.registerIcon(ParticleIcons.dust1Icon);
+        atlasTexture.registerIcon(ParticleIcons.dust2Icon);
+        atlasTexture.registerIcon(ParticleIcons.dust3Icon);
+        atlasTexture.registerIcon(ParticleIcons.dust4Icon);
+        atlasTexture.registerIcon(ParticleIcons.dust5Icon);
+        atlasTexture.registerIcon(ParticleIcons.dust6Icon);
+        atlasTexture.registerIcon(ParticleIcons.dust7Icon);
 
 
         atlasTexture.registerIcon(ParticleIcons.trash0Icon);

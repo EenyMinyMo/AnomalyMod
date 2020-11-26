@@ -62,13 +62,13 @@ public class AcidMistEmitter extends AbstractAnomalyEmitter {
 
         IParticle particle;
 
-        particle = new AcidMistFogParticle(x, y, z, 100, 1.2F, ParticleIcons.smoke4Icon);
+        particle = new AcidMistFogParticle(x, y, z, 100, 1.2F, ParticleIcons.smoke0Icon);
         addParticleContainer(particle);
 
-        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 100, 1.2F, ParticleIcons.smoke4Icon);
+        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 100, 1.2F, ParticleIcons.smoke0Icon);
         addParticleContainer(particle);
 
-        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 100, 1.2F, ParticleIcons.smoke4Icon);
+        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 100, 1.2F, ParticleIcons.smoke0Icon);
         addParticleContainer(particle);
     }
 
@@ -79,13 +79,13 @@ public class AcidMistEmitter extends AbstractAnomalyEmitter {
         float y = getPositionY() + 0.2F;
         float z = getPositionZ() + randomizer.nextFloat() * 2.2F - 1.1F;
 
-        IParticle particle = new AcidMistFogParticle(x, y, z, 90, 0.6F, ParticleIcons.smoke4Icon);
+        IParticle particle = new AcidMistFogParticle(x, y, z, 90, 0.6F, ParticleIcons.smoke0Icon);
         addParticleContainer(particle);
 
-        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 90, 0.6F, ParticleIcons.smoke4Icon);
+        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 90, 0.6F, ParticleIcons.smoke0Icon);
         addParticleContainer(particle);
 
-        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 90, 0.6F, ParticleIcons.smoke4Icon);
+        particle = new AcidMistFogParticle(x + (randomizer.nextFloat() * 0.8F - 0.4F), y, z + (randomizer.nextFloat() * 0.8F - 0.4F), 90, 0.6F, ParticleIcons.smoke0Icon);
         addParticleContainer(particle);
     }
 

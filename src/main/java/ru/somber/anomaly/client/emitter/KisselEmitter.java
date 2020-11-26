@@ -59,11 +59,11 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
             createEvaporationParticle(randomizer);
         }
 
-        if (randomizer.nextFloat() > 0.96F) {
+        if (randomizer.nextFloat() > 0.93F) {
             createFogParticle(randomizer);
         }
 
-        if (randomizer.nextFloat() > 0.96F) {
+        if (randomizer.nextFloat() > 0.93F) {
             createBigFogParticle(randomizer);
         }
     }
@@ -71,12 +71,12 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
     private void updateActiveMode() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        if (randomizer.nextFloat() > 0.75F) {
+        if (randomizer.nextFloat() > 0.7F) {
             createBigActiveParticle(randomizer);
             createAcidSprayParticle(randomizer);
         }
 
-        if (randomizer.nextFloat() > 0.75F) {
+        if (randomizer.nextFloat() > 0.7F) {
             createAcidSprayParticle(randomizer);
         }
     }
@@ -110,7 +110,7 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
         float z = getPositionZ() + randomizer.nextFloat() * 1.7F - 0.85F;
 
         IParticle particle =
-                new KisselFogParticle(x, y, z, 60 + randomizer.nextInt(5), 0.8F, ParticleIcons.smoke4Icon);
+                new KisselFogParticle(x, y, z, 60 + randomizer.nextInt(5), 0.8F, ParticleIcons.smoke0Icon);
 
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }
@@ -121,7 +121,7 @@ public class KisselEmitter extends AbstractAnomalyEmitter {
         float z = getPositionZ() + randomizer.nextFloat() * 1.6F - 0.8F;
 
         IParticle particle =
-                new KisselFogParticle(x, y, z, 100 + randomizer.nextInt(5), 1.5F, ParticleIcons.smoke4Icon);
+                new KisselFogParticle(x, y, z, 100 + randomizer.nextInt(5), 1.5F, ParticleIcons.smoke0Icon);
 
         ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
     }

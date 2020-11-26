@@ -16,7 +16,7 @@ public class TrampolineDustParticle extends AbstractParticleSimpleData {
 
 
     public TrampolineDustParticle(float x, float y, float z, float angle, int maxLifeTime) {
-        super(x, y, z, maxLifeTime, ParticleIcons.smoke6Icon);
+        super(x, y, z, maxLifeTime, ParticleIcons.smoke1Icon);
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 

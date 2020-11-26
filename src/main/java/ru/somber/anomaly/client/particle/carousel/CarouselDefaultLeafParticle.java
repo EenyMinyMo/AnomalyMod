@@ -120,7 +120,7 @@ public class CarouselDefaultLeafParticle extends AbstractParticleSimpleData {
             }
         }
 
-        return ParticleIcons.carouselDust0Icon;
+        return ParticleIcons.dust0Icon;
     }
 
 }

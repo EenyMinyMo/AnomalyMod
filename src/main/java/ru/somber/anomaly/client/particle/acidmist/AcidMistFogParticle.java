@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class AcidMistFogParticle extends AbstractParticleSimpleData {
 
-    private final static float maxAlpha = 0.04F;
+    private final static float maxAlpha = 0.1F;
 
     private final float maxHeight;
 

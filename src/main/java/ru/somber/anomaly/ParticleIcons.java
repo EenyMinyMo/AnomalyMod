@@ -101,19 +101,17 @@ public final class ParticleIcons {
     public static final AtlasIcon lightEnerg8Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "light/energ/light_energ_8", false, true);
 
 
-    //=======================================animation fire particles=======================================
-    public static final MultiFrameAtlasIcon animfireExplosionAnim0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "animfire/explosion_anim_0", 8, 7, false, true);
-    public static final MultiFrameAtlasIcon animfireFireAnimEnerg0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "animfire/fire_anim_energ_0", 11, 7, false, true);
-
-
     //=======================================Fire particles=======================================
-    public static final MultiFrameAtlasIcon fireAnimFlame0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/anim_flame_0", 4, 1, false, true);
     public static final AtlasIcon fire0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_0", false, true);
     public static final AtlasIcon fire1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_1", false, true);
     public static final AtlasIcon fire2Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_2", false, true);
     public static final AtlasIcon fire3Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_3", false, true);
     public static final AtlasIcon fire4Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_4", false, true);
     public static final AtlasIcon fire5Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/fire_5", false, true);
+
+    public static final MultiFrameAtlasIcon fireAnimFlame0Icon =            new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/anim_flame_0", 4, 1, false, true);
+    public static final MultiFrameAtlasIcon fireExplosionAnim0Icon =        new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/anim/explosion_anim_0", 8, 7, false, true);
+    public static final MultiFrameAtlasIcon fireAnimEnerg0Icon =            new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "fire/anim/fire_anim_energ_0", 11, 7, false, true);
 
 
     //=======================================Mercury particles=======================================
@@ -128,9 +126,6 @@ public final class ParticleIcons {
     public static final AtlasIcon smoke1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/smoke_1", false, true);
     public static final AtlasIcon smoke2Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/smoke_2", false, true);
     public static final AtlasIcon smoke3Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/smoke_3", false, true);
-    public static final AtlasIcon smoke4Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/smoke_4", false, true);
-    public static final AtlasIcon smoke5Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/smoke_5", false, true);
-    public static final AtlasIcon smoke6Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/smoke_6", false, true);
 
     public static final MultiFrameAtlasIcon smokeAnim0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_0", 8, 8, false, true);
     public static final MultiFrameAtlasIcon smokeAnim1Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_1", 8, 7, false, true);
@@ -138,14 +133,16 @@ public final class ParticleIcons {
 
     public static final MultiFrameAtlasIcon smokeAnimEnerg0Icon =   new MultiFrameAtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/anim/smoke_anim_energ_0", 10, 10, false, true);
 
-    public static final AtlasIcon carouselDust0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust1", false, true);
-    public static final AtlasIcon carouselDust1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust2", false, true);
-    public static final AtlasIcon carouselDust2Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust3", false, true);
-    public static final AtlasIcon carouselDust3Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust4", false, true);
-    public static final AtlasIcon carouselDust4Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust5", false, true);
-    public static final AtlasIcon carouselDust5Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust6", false, true);
-    public static final AtlasIcon carouselDust6Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust7", false, true);
-    public static final AtlasIcon carouselDust7Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "smoke/carousel/dust8", false, true);
+
+    //=======================================Dust particles=======================================
+    public static final AtlasIcon dust0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "dust/dust1", false, true);
+    public static final AtlasIcon dust1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "dust/dust2", false, true);
+    public static final AtlasIcon dust2Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "dust/dust3", false, true);
+    public static final AtlasIcon dust3Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "dust/dust4", false, true);
+    public static final AtlasIcon dust4Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "dust/dust5", false, true);
+    public static final AtlasIcon dust5Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "dust/dust6", false, true);
+    public static final AtlasIcon dust6Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "dust/dust7", false, true);
+    public static final AtlasIcon dust7Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "dust/dust8", false, true);
 
 
     //=======================================Trash particles=======================================
@@ -170,10 +167,10 @@ public final class ParticleIcons {
 
 
     //=======================================Other particles=======================================
-    public static final AtlasIcon otherActPuh0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/act_puh", false, true);
+    public static final AtlasIcon otherActPuh0Icon =        new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/act_puh", false, true);
 
-    public static final AtlasIcon otherBlood0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/blood_0", false, true);
-    public static final AtlasIcon otherBloodEnerg0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/blood_energ_0", false, true);
+    public static final AtlasIcon otherBlood0Icon =         new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/blood_0", false, true);
+    public static final AtlasIcon otherBloodEnerg0Icon =    new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/blood_energ_0", false, true);
 
     public static final AtlasIcon otherBubble0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/bubble_0", false, true);
     public static final AtlasIcon otherBubble1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/bubble_1", false, true);
@@ -184,10 +181,10 @@ public final class ParticleIcons {
     public static final AtlasIcon otherBubble6Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/bubble_6", false, true);
     public static final AtlasIcon otherBubble7Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/bubble_7", false, true);
 
-    public static final AtlasIcon otherByaka0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/byaka_0", false, true);
-    public static final AtlasIcon otherByaka1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/byaka_1", false, true);
+    public static final AtlasIcon otherByaka0Icon =     new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/byaka_0", false, true);
+    public static final AtlasIcon otherByaka1Icon =     new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/byaka_1", false, true);
 
-    public static final AtlasIcon otherCresty0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/cresty_0", false, true);
+    public static final AtlasIcon otherCresty0Icon =    new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/cresty_0", false, true);
 
     public static final AtlasIcon otherFlash0Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/flash_0", false, true);
     public static final AtlasIcon otherFlash1Icon =   new AtlasIcon(AnomalyMod.MOD_ID + ":" + "other/flash_1", false, true);
