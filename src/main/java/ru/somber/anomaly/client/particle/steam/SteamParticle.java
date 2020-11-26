@@ -24,9 +24,9 @@ public class SteamParticle extends AbstractParticleSimpleData {
         this.yForce = 0;
         this.zForce = 0;
 
-        this.maxHeight = 2.8F;
+        this.maxHeight = 4F;
         this.minSize = 0.25F;
-        this.maxSize = 0.8F + randomizer.nextFloat() * 0.8F;
+        this.maxSize = 1F + randomizer.nextFloat() * 0.8F;
         this.maxBlend = 0.25F;
 
         setRotateAnglesZ((float) (randomizer.nextFloat() * Math.PI * 2));
