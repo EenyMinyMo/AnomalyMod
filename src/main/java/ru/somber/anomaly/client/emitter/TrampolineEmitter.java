@@ -124,7 +124,7 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
         for (int i = 0; i < countDustParticle; i++) {
             TrampolineDustParticle leafParticle =
                     new TrampolineDustParticle(randomX, randomY + (randomizer.nextFloat() * 0.5F - 0.25F), randomZ,
-                                               360 * (i / (float) countDustParticle), 20);
+                                               360 * (i / (float) countDustParticle), 30);
 
             addParticleContainer(leafParticle);
         }

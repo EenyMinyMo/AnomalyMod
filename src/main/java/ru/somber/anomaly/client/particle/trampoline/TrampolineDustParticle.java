@@ -50,8 +50,8 @@ public class TrampolineDustParticle extends AbstractParticleSimpleData {
 
         float lifeFactor = getLifeFactor();
 
-        moveX *= 0.875F;
-        moveZ *= 0.875F;
+        moveX *= 0.905F;
+        moveZ *= 0.905F;
         moveY -= moveY * 0.05F;
 
         addToPosition(moveX, moveY, moveZ);
