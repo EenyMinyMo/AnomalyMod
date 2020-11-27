@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class CarouselDefaultDustParticle extends AbstractDustParticle {
 
-    private static final float sizes = 2F;
+    private static final float sizes = 1.6F;
     private static final int countTicksForAppearance = 80;
     private static final float maxAlpha = 1F;
     private static final float moveAngleSpeed = 4.25F;

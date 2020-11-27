@@ -28,12 +28,12 @@ public class CarouselEmitter extends AbstractAnomalyEmitter {
 
         Random random = SomberCommonUtil.RANDOMIZER;
 
-        defaultDustParticle = new CarouselDefaultDustParticle[35];
+        defaultDustParticle = new CarouselDefaultDustParticle[10];
         defaultLeafParticle = new CarouselDefaultLeafParticle[15];
 
         for (int i = 0; i < defaultDustParticle.length; i++) {
             float x = getPositionX();
-            float y = getPositionY() + 0.5F + random.nextFloat() * 0.05F;
+            float y = getPositionY() + 0.5F + random.nextFloat() * 0.1F;
             float z = getPositionZ();
 
             CarouselDefaultDustParticle particle = new CarouselDefaultDustParticle(x, y, z, Integer.MAX_VALUE);
