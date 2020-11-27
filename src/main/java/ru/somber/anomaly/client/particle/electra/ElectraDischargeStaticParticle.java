@@ -30,7 +30,7 @@ public class ElectraDischargeStaticParticle  extends AbstractParticleSimpleData 
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
+    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
         computeNormalVectorStaticParticle(destination);
     }
 

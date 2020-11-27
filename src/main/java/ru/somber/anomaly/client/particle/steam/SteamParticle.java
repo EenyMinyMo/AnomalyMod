@@ -36,8 +36,8 @@ public class SteamParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, lookAtX, lookAtY, lookAtZ, interpolateFactor);
+    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
+        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
     }
 
     @Override

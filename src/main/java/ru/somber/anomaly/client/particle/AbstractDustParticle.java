@@ -27,8 +27,8 @@ public abstract class AbstractDustParticle extends AbstractParticleSimpleData {
     }
 
     @Override
-    public void computeNormalVector(Vector3f destination, float lookAtX, float lookAtY, float lookAtZ, float interpolateFactor) {
-        computeNormalVectorSphericalParticle(destination, lookAtX, lookAtY, lookAtZ, interpolateFactor);
+    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
+        computeNormalVectorSphericalParticle(destination, interpolateFactor);
     }
 
 
