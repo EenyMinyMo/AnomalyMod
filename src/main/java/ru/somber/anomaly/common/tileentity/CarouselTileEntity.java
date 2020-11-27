@@ -24,7 +24,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
     private static final float suctionDistance = 6F;
 
     private static final AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
-    private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 200);
+    private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 900);
     private static final AnomalyPhase sleepPhase = new AnomalyPhase(PhaseType.Sleep, 100);
 
     static {
@@ -112,7 +112,7 @@ public class CarouselTileEntity extends AbstractAnomalyTileEntity {
 
         super.processActivePhase();
 
-        return false;
+        return getCurrentPhaseTick() >= getCurrentPhase().getTickDuration();
     }
 
     @Override
