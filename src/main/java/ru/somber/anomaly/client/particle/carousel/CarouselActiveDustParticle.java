@@ -10,7 +10,7 @@ public class CarouselActiveDustParticle extends AbstractDustParticle {
     private static final float sizes = 1.5F;
     private static final int countTicksForLifting = 160;
     private static final int countTicksForFall = 20;
-    private static final float maxAlpha = 1F;
+    private static final float maxAlpha = 0.75F;
 
     private final float yStart;
     private final float xCenterCircle, zCenterCircle;
@@ -38,7 +38,7 @@ public class CarouselActiveDustParticle extends AbstractDustParticle {
         this.xCenterCircle = x;
         this.zCenterCircle = z;
         this.targetLiftingY = y + 1.75F + random.nextFloat() * 2F;
-        this.minRadius = 0.15F + random.nextFloat() * 0.5F;
+        this.minRadius = 0.15F + random.nextFloat() * 0.3F;
         this.maxRadius = random.nextFloat() * 2.5F;
 
         this.radius = maxRadius;
@@ -66,7 +66,7 @@ public class CarouselActiveDustParticle extends AbstractDustParticle {
             radius = SomberCommonUtil.interpolateBetween(minRadius, maxRadius, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
 
             currentAngle += moveAngleSpeed;
-            moveAngleSpeed += 0.04F;
+            moveAngleSpeed += 0.07F;
 
             float currentY = SomberCommonUtil.interpolateBetween(targetLiftingY, yStart, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
             setPositionY(currentY);
@@ -76,7 +76,7 @@ public class CarouselActiveDustParticle extends AbstractDustParticle {
             addToPosition(xDiscardingVector, yDiscardingVector, zDiscardingVector);
             xDiscardingVector *= 0.92F;
             zDiscardingVector *= 0.92F;
-            yDiscardingVector += -0.01F;
+            yDiscardingVector += -0.035F;
 
             if (currentTicks >= countTicksForFall) {
                 setDie(true);
@@ -90,7 +90,7 @@ public class CarouselActiveDustParticle extends AbstractDustParticle {
         if (! isLiftingMode) {
             Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-            discardingFactor = (1F - Math.max(1 - (float) currentTicks / countTicksForLifting, 0)) * (randomizer.nextFloat() * 0.35F + 0.15F);
+            discardingFactor = (1F - Math.max(1 - (float) currentTicks / countTicksForLifting, 0)) * (randomizer.nextFloat() * 0.35F + 0.65F);
 //            discardingFactor;
 
             xDiscardingVector = (float) Math.cos(Math.toRadians(currentAngle)) * discardingFactor;

@@ -64,7 +64,7 @@ public class CarouselActiveLeafParticle extends AbstractLeafParticle {
             radius = SomberCommonUtil.interpolateBetween(minRadius, maxRadius, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
 
             currentAngle += moveAngleSpeed;
-            moveAngleSpeed += 0.04F;
+            moveAngleSpeed += 0.07F;
 
             float currentY = SomberCommonUtil.interpolateBetween(targetLiftingY, yStart, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
             setPositionY(currentY);
@@ -88,7 +88,7 @@ public class CarouselActiveLeafParticle extends AbstractLeafParticle {
         if (! isLiftingMode) {
             Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-            discardingFactor = (1F - Math.max(1 - (float) currentTicks / countTicksForLifting, 0)) * (randomizer.nextFloat() * 0.35F + 0.15F);
+            discardingFactor = (1F - Math.max(1 - (float) currentTicks / countTicksForLifting, 0)) * (randomizer.nextFloat() * 0.35F + 0.65F);
 //            discardingFactor;
 
             xDiscardingVector = (float) Math.cos(Math.toRadians(currentAngle)) * discardingFactor * 0.5F;
