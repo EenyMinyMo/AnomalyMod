@@ -11,19 +11,19 @@ import ru.somber.anomaly.common.phase.PhaseType;
 import java.util.List;
 
 public class FunnelTileEntity extends AbstractAnomalyTileEntity {
-    private static final float xMinAABB = -0.75F;
-    private static final float yMinAABB = 0F;
-    private static final float zMinAABB = -0.75F;
-    private static final float xMaxAABB = 1.75F;
-    private static final float yMaxAABB = 3F;
-    private static final float zMaxAABB = 1.75F;
+    private static final float xMinAABB = -1.5F;
+    private static final float yMinAABB = -0.5F;
+    private static final float zMinAABB = -1.5F;
+    private static final float xMaxAABB = 2.5F;
+    private static final float yMaxAABB = 3.5F;
+    private static final float zMaxAABB = 2.5F;
 
     private static final float xOffsetAnomalyCenter = 0.5F;
     private static final float yOffsetAnomalyCenter = 2.5F;
     private static final float zOffsetAnomalyCenter = 0.5F;
 
     private static final AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
-    private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 250);
+    private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 200);
     private static final AnomalyPhase sleepPhase = new AnomalyPhase(PhaseType.Sleep, 100);
 
     static {
