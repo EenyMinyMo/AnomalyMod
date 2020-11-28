@@ -66,6 +66,8 @@ public class CarouselActiveLeafParticle extends AbstractLeafParticle {
             currentAngle += moveAngleSpeed;
             moveAngleSpeed += 0.085F;
 
+            addToRotateAngles(0, 0, 0.6F * currentTicks / countTicksForLifting);
+
             float currentY = SomberCommonUtil.interpolateBetween(targetLiftingY, yStart, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
             setPositionY(currentY);
         } else {
