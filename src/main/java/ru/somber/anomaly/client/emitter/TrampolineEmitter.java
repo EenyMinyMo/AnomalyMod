@@ -31,8 +31,7 @@ public class TrampolineEmitter extends AbstractAnomalyEmitter {
 
         flashParticle = new TrampolineFlashParticle(getPositionX(),
                                                     getPositionY(),
-                                                    getPositionZ(),
-                                                    Integer.MAX_VALUE);
+                                                    getPositionZ());
         addParticleContainer(flashParticle);
     }
 

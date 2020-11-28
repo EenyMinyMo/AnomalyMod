@@ -17,13 +17,13 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
     /**
      * Время в тиках, которое видно частицу.
      * Когда частицу делают видимой, это значение используется для отсчета времени, которое видно частицу.
-     * Когда значение в переменной сравняется с maxVisibleTime, частиц стане невидимой.
+     * Когда значение в переменной сравняется с maxVisibleTime, частица станет невидимой.
      */
     private int visibleTime = 0;
 
 
-    public TrampolineFlashParticle(float x, float y, float z, int maxLifeTime) {
-        super(x, y, z, maxLifeTime, ParticleIcons.anomaly0Icon);
+    public TrampolineFlashParticle(float x, float y, float z) {
+        super(x, y, z, Integer.MAX_VALUE, ParticleIcons.anomaly0Icon);
 
         setHalfSizes(0F, 0F);
         setAlphaFactor(0.3F);
