@@ -36,7 +36,7 @@ public class CarouselDefaultLeafParticle extends AbstractLeafParticle {
         setHalfSizes(sizes, sizes);
 
         setBlendFactor(0);
-        setRotateAnglesZ(360 * SomberCommonUtil.RANDOMIZER.nextFloat());
+        setRotateAnglesZ((float) Math.PI * 2 * SomberCommonUtil.RANDOMIZER.nextFloat());
     }
 
 

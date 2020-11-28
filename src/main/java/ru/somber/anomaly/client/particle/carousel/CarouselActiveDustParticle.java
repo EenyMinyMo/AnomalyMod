@@ -47,7 +47,7 @@ public class CarouselActiveDustParticle extends AbstractDustParticle {
         setPositionZ(zCenterCircle + (float) Math.sin(currentAngle) * radius);
 
         setHalfSizes(sizes, sizes);
-        setRotateAnglesZ(360 * SomberCommonUtil.RANDOMIZER.nextFloat());
+        setRotateAnglesZ((float) Math.PI * 2 * SomberCommonUtil.RANDOMIZER.nextFloat());
 
         setAlphaFactor(maxAlpha);
     }

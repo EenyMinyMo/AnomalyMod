@@ -47,7 +47,7 @@ public class CarouselActiveLeafParticle extends AbstractLeafParticle {
 
         setHalfSizes(sizes, sizes);
 
-        setRotateAnglesZ(360 * SomberCommonUtil.RANDOMIZER.nextFloat());
+        setRotateAnglesZ((float) Math.PI * 2 * SomberCommonUtil.RANDOMIZER.nextFloat());
     }
 
 
@@ -91,7 +91,6 @@ public class CarouselActiveLeafParticle extends AbstractLeafParticle {
             Random randomizer = SomberCommonUtil.RANDOMIZER;
 
             discardingFactor = (1F - Math.max(1 - (float) currentTicks / countTicksForLifting, 0)) * (randomizer.nextFloat() * 0.35F + 0.65F);
-//            discardingFactor;
 
             xDiscardingVector = (float) Math.cos(Math.toRadians(currentAngle)) * discardingFactor * 0.5F;
             zDiscardingVector = (float) Math.sin(Math.toRadians(currentAngle)) * discardingFactor * 0.5F;
