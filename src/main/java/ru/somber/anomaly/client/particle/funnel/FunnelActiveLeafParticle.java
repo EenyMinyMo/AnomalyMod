@@ -7,9 +7,9 @@ import java.util.Random;
 
 public class FunnelActiveLeafParticle extends AbstractLeafParticle {
 
-    private static final float sizes = 0.07F;
-    private static final int countTicksForLifting = 160;
-    private static final int countTicksForFall = 20;
+    private static final float sizes = 0.12F;
+    private static final int countTicksForLifting = 100;
+    private static final int countTicksForFall = 80;
 
     private final float yStart;
     private final float xCenterCircle, zCenterCircle;
@@ -17,7 +17,7 @@ public class FunnelActiveLeafParticle extends AbstractLeafParticle {
     private final float minRadius, maxRadius;
 
     private boolean isLiftingMode;
-    private float moveAngleSpeed = 3;
+    private float moveAngleSpeed = 1F;
     private int currentTicks;
     private float currentAngle;
     private float radius;
@@ -33,12 +33,13 @@ public class FunnelActiveLeafParticle extends AbstractLeafParticle {
 
         Random random = SomberCommonUtil.RANDOMIZER;
 
-        this.yStart = y - random.nextFloat() * 2F;
-        this.xCenterCircle = x;
-        this.zCenterCircle = z;
-        this.targetLiftingY = y + 1.75F + random.nextFloat() * 2F;
-        this.minRadius = 0.1F + random.nextFloat() * 0.4F;
-        this.maxRadius = random.nextFloat() * 2.5F;
+        this.yStart = y + random.nextFloat() - 0.5F;
+        this.xCenterCircle = x + (random.nextFloat() * 0.1F - 0.05F);
+        this.zCenterCircle = z + (random.nextFloat() * 0.1F - 0.05F);
+
+        this.targetLiftingY = yStart + 3F + random.nextFloat() * 0.5F;
+        this.minRadius = 0.1F + random.nextFloat() * 0.2F;
+        this.maxRadius = random.nextFloat() * 4F;
 
         this.radius = maxRadius;
 
@@ -47,7 +48,7 @@ public class FunnelActiveLeafParticle extends AbstractLeafParticle {
 
         setHalfSizes(sizes, sizes);
 
-        setRotateAnglesZ(360 * SomberCommonUtil.RANDOMIZER.nextFloat());
+        setRotateAnglesZ((float) Math.PI * 2 * SomberCommonUtil.RANDOMIZER.nextFloat());
     }
 
 
@@ -64,7 +65,7 @@ public class FunnelActiveLeafParticle extends AbstractLeafParticle {
             radius = SomberCommonUtil.interpolateBetween(minRadius, maxRadius, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
 
             currentAngle += moveAngleSpeed;
-            moveAngleSpeed += 0.07F;
+            moveAngleSpeed += 0.15F;
 
             float currentY = SomberCommonUtil.interpolateBetween(targetLiftingY, yStart, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
             setPositionY(currentY);
@@ -72,9 +73,9 @@ public class FunnelActiveLeafParticle extends AbstractLeafParticle {
             radius += 0.6F * (discardingFactor);
 
             addToPosition(xDiscardingVector, yDiscardingVector, zDiscardingVector);
-            xDiscardingVector *= 0.92F;
-            zDiscardingVector *= 0.92F;
-            yDiscardingVector += -0.01F;
+            xDiscardingVector *= 0.8F;
+            zDiscardingVector *= 0.8F;
+            yDiscardingVector += -0.02F;
 
             if (currentTicks >= countTicksForFall) {
                 setDie(true);
@@ -89,10 +90,9 @@ public class FunnelActiveLeafParticle extends AbstractLeafParticle {
             Random randomizer = SomberCommonUtil.RANDOMIZER;
 
             discardingFactor = (1F - Math.max(1 - (float) currentTicks / countTicksForLifting, 0)) * (randomizer.nextFloat() * 0.35F + 0.65F);
-//            discardingFactor;
 
-            xDiscardingVector = (float) Math.cos(Math.toRadians(currentAngle)) * discardingFactor * 0.5F;
-            zDiscardingVector = (float) Math.sin(Math.toRadians(currentAngle)) * discardingFactor * 0.5F;
+            xDiscardingVector = (float) Math.cos(Math.toRadians(currentAngle)) * discardingFactor * 0.25F;
+            zDiscardingVector = (float) Math.sin(Math.toRadians(currentAngle)) * discardingFactor * 0.25F;
             yDiscardingVector = (randomizer.nextFloat() - 0.5F) * (discardingFactor + 0.05F);
         }
         currentTicks = 0;

@@ -69,6 +69,7 @@ public class FunnelFlashParticle extends AbstractParticleSimpleData {
 
     public void setInvisible() {
         setHalfSizes(0, 0);
+        visibleTime = maxVisibleTime;
     }
 
 }

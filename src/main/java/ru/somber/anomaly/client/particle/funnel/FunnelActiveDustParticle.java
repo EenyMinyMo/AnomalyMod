@@ -8,9 +8,8 @@ import java.util.Random;
 public class FunnelActiveDustParticle extends AbstractDustParticle {
 
     private static final float sizes = 1.5F;
-    private static final int countTicksForLifting = 160;
-    private static final int countTicksForFall = 20;
-    private static final float maxAlpha = 0.75F;
+    private static final int countTicksForLifting = 100;
+    private static final int countTicksForFall = 60;
 
     private final float yStart;
     private final float xCenterCircle, zCenterCircle;
@@ -18,7 +17,7 @@ public class FunnelActiveDustParticle extends AbstractDustParticle {
     private final float minRadius, maxRadius;
 
     private boolean isLiftingMode;
-    private float moveAngleSpeed = 3;
+    private float moveAngleSpeed = 2.5F;
     private int currentTicks;
     private float currentAngle;
     private float radius;
@@ -34,12 +33,13 @@ public class FunnelActiveDustParticle extends AbstractDustParticle {
 
         Random random = SomberCommonUtil.RANDOMIZER;
 
-        this.yStart = y - random.nextFloat() * 2F;
-        this.xCenterCircle = x;
-        this.zCenterCircle = z;
-        this.targetLiftingY = y + 1.75F + random.nextFloat() * 2F;
-        this.minRadius = 0.15F + random.nextFloat() * 0.3F;
-        this.maxRadius = random.nextFloat() * 2.5F;
+        this.yStart = y - random.nextFloat() * 1.2F;
+        this.xCenterCircle = x + (random.nextFloat() * 0.1F - 0.05F);
+        this.zCenterCircle = z + (random.nextFloat() * 0.1F - 0.05F);
+
+        this.targetLiftingY = yStart + 3.75F + random.nextFloat() * 0.25F;
+        this.minRadius = 0.1F + random.nextFloat() * 0.3F;
+        this.maxRadius = 0.3F + random.nextFloat() * 4F;
 
         this.radius = maxRadius;
 
@@ -47,9 +47,7 @@ public class FunnelActiveDustParticle extends AbstractDustParticle {
         setPositionZ(zCenterCircle + (float) Math.sin(currentAngle) * radius);
 
         setHalfSizes(sizes, sizes);
-        setRotateAnglesZ(360 * SomberCommonUtil.RANDOMIZER.nextFloat());
-
-        setAlphaFactor(maxAlpha);
+        setRotateAnglesZ((float) Math.PI * 2 * SomberCommonUtil.RANDOMIZER.nextFloat());
     }
 
 
@@ -66,7 +64,7 @@ public class FunnelActiveDustParticle extends AbstractDustParticle {
             radius = SomberCommonUtil.interpolateBetween(minRadius, maxRadius, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
 
             currentAngle += moveAngleSpeed;
-            moveAngleSpeed += 0.07F;
+            moveAngleSpeed += 0.08F;
 
             float currentY = SomberCommonUtil.interpolateBetween(targetLiftingY, yStart, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
             setPositionY(currentY);
@@ -74,14 +72,14 @@ public class FunnelActiveDustParticle extends AbstractDustParticle {
             radius += 0.6F * (discardingFactor);
 
             addToPosition(xDiscardingVector, yDiscardingVector, zDiscardingVector);
-            xDiscardingVector *= 0.92F;
-            zDiscardingVector *= 0.92F;
-            yDiscardingVector += -0.035F;
+            xDiscardingVector *= 0.86F;
+            zDiscardingVector *= 0.86F;
+            yDiscardingVector += -0.005F;
 
             if (currentTicks >= countTicksForFall) {
                 setDie(true);
             }
-            setAlphaFactor((1 - (float) currentTicks / countTicksForFall) * maxAlpha);
+            setAlphaFactor(1 - (float) currentTicks / countTicksForFall);
         }
     }
 
@@ -91,11 +89,10 @@ public class FunnelActiveDustParticle extends AbstractDustParticle {
             Random randomizer = SomberCommonUtil.RANDOMIZER;
 
             discardingFactor = (1F - Math.max(1 - (float) currentTicks / countTicksForLifting, 0)) * (randomizer.nextFloat() * 0.35F + 0.65F);
-//            discardingFactor;
 
-            xDiscardingVector = (float) Math.cos(Math.toRadians(currentAngle)) * discardingFactor;
-            zDiscardingVector = (float) Math.sin(Math.toRadians(currentAngle)) * discardingFactor;
-            yDiscardingVector = (randomizer.nextFloat() - 0.5F) * (discardingFactor + 0.05F);
+            xDiscardingVector = (float) Math.cos(Math.toRadians(currentAngle)) * discardingFactor * (randomizer.nextFloat() * 0.3F + 0.35F);
+            zDiscardingVector = (float) Math.sin(Math.toRadians(currentAngle)) * discardingFactor * (randomizer.nextFloat() * 0.3F + 0.35F);
+            yDiscardingVector = (randomizer.nextFloat() - 0.9F) * (discardingFactor * 0.3F);
         }
         currentTicks = 0;
     }

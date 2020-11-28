@@ -9,7 +9,7 @@ public class FunnelLeafParticle extends AbstractLeafParticle {
 
     private static final float maxHeight = 2.6F;
     /** Время в тиках, которое видно частицу. */
-    private static final int maxVisibleTime = 36;
+    private static final int maxVisibleTime = 40;
 
     private final float xStart, yStart, zStart;
     private final float radius;
@@ -75,6 +75,7 @@ public class FunnelLeafParticle extends AbstractLeafParticle {
 
     public void setInvisible() {
         setHalfSizes(0, 0);
+        visibleTime = maxVisibleTime;
     }
 
 }

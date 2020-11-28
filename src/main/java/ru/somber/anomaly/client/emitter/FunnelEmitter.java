@@ -142,7 +142,7 @@ public class FunnelEmitter extends AbstractAnomalyEmitter {
 
         Random random = SomberCommonUtil.RANDOMIZER;
 
-        activeDustParticle = new FunnelActiveDustParticle[100];
+        activeDustParticle = new FunnelActiveDustParticle[150];
         for (int i = 0; i < activeDustParticle.length; i++) {
             float x = getPositionX();
             float y = getPositionY() + 0.5F + random.nextFloat() * 0.05F - 0.025F;
@@ -156,7 +156,7 @@ public class FunnelEmitter extends AbstractAnomalyEmitter {
             addParticleContainer(particle);
         }
 
-        activeLeafParticle = new FunnelActiveLeafParticle[30];
+        activeLeafParticle = new FunnelActiveLeafParticle[100];
         for (int i = 0; i < activeLeafParticle.length; i++) {
             float x = getPositionX();
             float y = getPositionY() + 0.5F + random.nextFloat() * 0.05F - 0.025F;

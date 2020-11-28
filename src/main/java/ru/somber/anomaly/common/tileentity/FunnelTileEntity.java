@@ -23,7 +23,7 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
     private static final float zOffsetAnomalyCenter = 0.5F;
 
     private static final AnomalyPhase defaultPhase = new AnomalyPhase(PhaseType.Default, -1);
-    private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 200);
+    private static final AnomalyPhase activePhase = new AnomalyPhase(PhaseType.Active, 120);
     private static final AnomalyPhase sleepPhase = new AnomalyPhase(PhaseType.Sleep, 100);
 
     static {
@@ -71,7 +71,7 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
             }
 
             if (suctionFactor < 0.5F) {
-                suctionFactor *= 1.0128;
+                suctionFactor *= 1.025F;
             }
 
             double deltaX = (xOffsetAnomalyCenter + xCoord) - targetEntity.posX;
