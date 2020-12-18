@@ -38,6 +38,14 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         distortionBufferTexture = Texture.createTexture(framebuffer.framebufferWidth, framebuffer.framebufferHeight);
         framebufferCopyTexture = Texture.createTexture(framebuffer.framebufferWidth, framebuffer.framebufferHeight);
 
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, distortionBufferTexture.getTextureID());
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_CLAMP);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_CLAMP);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, framebufferCopyTexture.getTextureID());
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_CLAMP);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_CLAMP);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+
         framebufferDefaultTexture = new Texture(framebuffer.framebufferTexture);
     }
 
