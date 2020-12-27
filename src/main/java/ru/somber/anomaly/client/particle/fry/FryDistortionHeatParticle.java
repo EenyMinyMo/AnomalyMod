@@ -33,11 +33,6 @@ public class FryDistortionHeatParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -54,5 +49,7 @@ public class FryDistortionHeatParticle extends AbstractParticleSimpleData {
 
         float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, getLifeFactor());
         setHalfSizes(size, size);
+
+        computeNormalVectorSphericalParticle();
     }
 }

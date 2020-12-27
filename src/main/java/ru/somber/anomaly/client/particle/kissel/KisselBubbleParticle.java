@@ -35,11 +35,6 @@ public class KisselBubbleParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -50,6 +45,8 @@ public class KisselBubbleParticle extends AbstractParticleSimpleData {
 
         setPositionY(yStart + maxHeight * (float) Math.pow(sin, 0.75F) - 0.1F);
         setHalfSizes(size,size);
+
+        computeNormalVectorSphericalParticle();
     }
 
 }

@@ -78,7 +78,7 @@ public class ClientProxy extends CommonProxy {
      * Создает и заполняет текстуру-атлас с текстурами частиц.
      */
     private AtlasTexture createParticleAtlasTexture() {
-        AtlasTexture atlas = new AtlasTexture("textures/particles");
+        AtlasTexture atlas = new AtlasTexture("textures/particles", 16, 4);
 
         registerParticleAtlasIcon(atlas);
         atlas.stitchTextureAtlas(Minecraft.getMinecraft().getResourceManager());

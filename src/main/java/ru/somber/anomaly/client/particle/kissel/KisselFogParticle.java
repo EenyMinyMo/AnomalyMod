@@ -30,11 +30,6 @@ public class KisselFogParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -44,6 +39,8 @@ public class KisselFogParticle extends AbstractParticleSimpleData {
 
         setPositionY(getPositionY() + maxHeight * (1.0F / getMaxLifeTime()));
         setAlphaFactor(maxAlpha * (1 - lifeFactor * lifeFactor));
+
+        computeNormalVectorSphericalParticle();
     }
 
 }

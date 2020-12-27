@@ -38,11 +38,6 @@ public class TrampolineDustParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -61,6 +56,8 @@ public class TrampolineDustParticle extends AbstractParticleSimpleData {
 
         float alphaFactor = 1 - lifeFactor;
         setAlphaFactor((float) Math.pow(alphaFactor, 1.25F) * 0.25F);
+
+        computeNormalVectorSphericalParticle();
     }
 
 }

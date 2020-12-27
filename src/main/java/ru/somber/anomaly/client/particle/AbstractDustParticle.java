@@ -1,6 +1,5 @@
 package ru.somber.anomaly.client.particle;
 
-import org.lwjgl.util.vector.Vector3f;
 import ru.somber.anomaly.ParticleIcons;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 import ru.somber.util.clientutil.textureatlas.icon.AtlasIcon;
@@ -27,8 +26,9 @@ public abstract class AbstractDustParticle extends AbstractParticleSimpleData {
     }
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        computeNormalVectorSphericalParticle(destination, interpolateFactor);
+    public void update() {
+        super.update();
+        computeNormalVectorSphericalParticle();
     }
 
 

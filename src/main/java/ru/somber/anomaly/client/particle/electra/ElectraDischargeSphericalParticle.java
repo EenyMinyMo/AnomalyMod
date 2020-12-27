@@ -27,11 +27,6 @@ public class ElectraDischargeSphericalParticle extends AbstractParticleSimpleDat
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -40,6 +35,8 @@ public class ElectraDischargeSphericalParticle extends AbstractParticleSimpleDat
         float size = maxSize * lifeFactor;
         setHalfSizes(size, size);
 
-        setAlphaFactor(1 - (float) Math.pow(lifeFactor, 1.0F) );
+        setAlphaFactor(1 - (float) Math.pow(lifeFactor, 1.0F));
+
+        computeNormalVectorSphericalParticle();
     }
 }

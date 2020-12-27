@@ -33,11 +33,6 @@ public class KisselEvaporationParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -49,6 +44,8 @@ public class KisselEvaporationParticle extends AbstractParticleSimpleData {
         setRotateAnglesZ(getAngleZ() + maxAngle * (1.0F / getMaxLifeTime()));
         setHalfSizes(size, size);
         setAlphaFactor(maxAlpha * (1 - lifeFactor * lifeFactor));
+
+        computeNormalVectorSphericalParticle();
     }
 
 }

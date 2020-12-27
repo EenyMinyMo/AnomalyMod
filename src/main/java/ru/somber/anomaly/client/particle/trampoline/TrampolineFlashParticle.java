@@ -32,11 +32,6 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -47,6 +42,8 @@ public class TrampolineFlashParticle extends AbstractParticleSimpleData {
             setHalfSizes(size,size);
         }
         visibleTime++;
+
+        computeNormalVectorSphericalParticle();
     }
 
     public void setVisible() {

@@ -29,11 +29,6 @@ public class FunnelFlashParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -53,6 +48,8 @@ public class FunnelFlashParticle extends AbstractParticleSimpleData {
             setAlphaFactor(alphaFactor * 0.25F);
         }
         visibleTime++;
+
+        computeNormalVectorSphericalParticle();
     }
 
 

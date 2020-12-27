@@ -26,16 +26,12 @@ public class ElectraStaticAdditionalParticle extends AbstractParticleSimpleData 
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        computeNormalVectorStaticParticle(destination);
-    }
-
-    @Override
     public void update() {
         super.update();
 
-
         float lifeFactor = getLifeFactor();
         setAlphaFactor((1 - (float) Math.pow(lifeFactor, 2)) * 0.75F);
+
+        computeNormalVectorStaticParticle();
     }
 }

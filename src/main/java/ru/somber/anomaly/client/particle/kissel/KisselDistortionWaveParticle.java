@@ -28,11 +28,6 @@ public class KisselDistortionWaveParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorStaticParticle(destination);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -42,5 +37,7 @@ public class KisselDistortionWaveParticle extends AbstractParticleSimpleData {
 
         setHalfSizes(size, size);
         setAlphaFactor((1 - lifeFactor));
+
+        computeNormalVectorSphericalParticle();
     }
 }

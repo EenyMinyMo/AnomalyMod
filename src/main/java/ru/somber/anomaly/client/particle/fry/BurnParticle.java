@@ -37,11 +37,6 @@ public class BurnParticle extends AbstractParticleSimpleData {
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        super.computeNormalVectorSphericalParticle(destination, interpolateFactor);
-    }
-
-    @Override
     public AtlasIcon getParticleIcon() {
         MultiFrameAtlasIcon icon = (MultiFrameAtlasIcon) super.getParticleIcon();
 
@@ -71,5 +66,7 @@ public class BurnParticle extends AbstractParticleSimpleData {
 
         float size = SomberCommonUtil.interpolateBetween(minSize, maxSize, getLifeFactor());
         setHalfSizes(size, size);
+
+        computeNormalVectorSphericalParticle();
     }
 }

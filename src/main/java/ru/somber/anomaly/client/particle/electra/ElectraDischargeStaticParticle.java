@@ -30,11 +30,6 @@ public class ElectraDischargeStaticParticle  extends AbstractParticleSimpleData 
 
 
     @Override
-    public void computeNormalVector(Vector3f destination, float interpolateFactor) {
-        computeNormalVectorStaticParticle(destination);
-    }
-
-    @Override
     public void update() {
         super.update();
 
@@ -44,5 +39,7 @@ public class ElectraDischargeStaticParticle  extends AbstractParticleSimpleData 
         setHalfSizes(size, size);
 
         setAlphaFactor(1 - (float) Math.pow(lifeFactor, 1.25F));
+
+        computeNormalVectorStaticParticle();
     }
 }
