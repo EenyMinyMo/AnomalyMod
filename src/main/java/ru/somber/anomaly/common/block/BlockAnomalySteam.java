@@ -4,9 +4,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.common.tileentity.SteamTileEntity;
 
-public class AnomalySteamBlock extends AbstractAnomalyBlock {
+public class BlockAnomalySteam extends AbstractBlockAnomaly {
 
-    public AnomalySteamBlock() {
+    public BlockAnomalySteam() {
         super();
         this.setBlockName("anomaly_steam_block");
     }

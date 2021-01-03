@@ -2,18 +2,17 @@ package ru.somber.anomaly.common.block;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import ru.somber.anomaly.common.tileentity.FryTileEntity;
 
-public class AnomalyFryBlock extends AbstractAnomalyBlock {
+public class BlockAnomalyAeration extends AbstractBlockAnomaly {
 
-    public AnomalyFryBlock() {
+    public BlockAnomalyAeration() {
         super();
-        this.setBlockName("anomaly_fry_block");
+        this.setBlockName("anomaly_aeration_block");
     }
 
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {
-        return new FryTileEntity();
+        return null;
     }
 
 }

@@ -34,7 +34,9 @@ public class ClientProxy extends CommonProxy {
     private static IEmitterContainer emitterContainer;
 
 
-    public ClientProxy() {}
+    public ClientProxy() {
+        DebugHelper.enable();
+    }
 
 
     @Override

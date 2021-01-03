@@ -4,9 +4,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.common.tileentity.TrampolineTileEntity;
 
-public class AnomalyTrampolineBlock extends AbstractAnomalyBlock {
+public class BlockAnomalyTrampoline extends AbstractBlockAnomaly {
 
-    public AnomalyTrampolineBlock() {
+    public BlockAnomalyTrampoline() {
         super();
         this.setBlockName("anomaly_trampoline_block");
     }

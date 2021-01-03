@@ -10,16 +10,16 @@ import ru.somber.anomaly.common.tileentity.*;
 
 public class CommonProxy {
 
-    public static AbstractAnomalyBlock anomalyAcidMistBlock;
-    public static AbstractAnomalyBlock anomalyAerationBlock;
-    public static AbstractAnomalyBlock anomalyBurningFluffBlock;
-    public static AbstractAnomalyBlock anomalyCarouselBlock;
-    public static AbstractAnomalyBlock anomalyElectraBlock;
-    public static AbstractAnomalyBlock anomalyFryBlock;
-    public static AbstractAnomalyBlock anomalyFunnelBlock;
-    public static AbstractAnomalyBlock anomalyKisselBlock;
-    public static AbstractAnomalyBlock anomalySteamBlock;
-    public static AbstractAnomalyBlock anomalyTrampolineBlock;
+    public static AbstractBlockAnomaly anomalyAcidMistBlock;
+    public static AbstractBlockAnomaly anomalyAerationBlock;
+    public static AbstractBlockAnomaly anomalyBurningFluffBlock;
+    public static AbstractBlockAnomaly anomalyCarouselBlock;
+    public static AbstractBlockAnomaly anomalyElectraBlock;
+    public static AbstractBlockAnomaly anomalyFryBlock;
+    public static AbstractBlockAnomaly anomalyFunnelBlock;
+    public static AbstractBlockAnomaly anomalyKisselBlock;
+    public static AbstractBlockAnomaly anomalySteamBlock;
+    public static AbstractBlockAnomaly anomalyTrampolineBlock;
 
 
     public CommonProxy() {}
@@ -37,28 +37,28 @@ public class CommonProxy {
     }
 
     private void registerAnomaly() {
-        anomalyAcidMistBlock = new AnomalyAcidMistBlock();
-        anomalyAerationBlock = new AnomalyAerationBlock();
-        anomalyBurningFluffBlock = new AnomalyBurningFluffBlock();
-        anomalyCarouselBlock = new AnomalyCarouselBlock();
-        anomalyElectraBlock = new AnomalyElectraBlock();
-        anomalyFryBlock = new AnomalyFryBlock();
-        anomalyFunnelBlock = new AnomalyFunnelBlock();
-        anomalyKisselBlock = new AnomalyKisselBlock();
-        anomalySteamBlock = new AnomalySteamBlock();
-        anomalyTrampolineBlock = new AnomalyTrampolineBlock();
+        anomalyAcidMistBlock = new BlockAnomalyAcidMist();
+        anomalyAerationBlock = new BlockAnomalyAeration();
+        anomalyBurningFluffBlock = new BlockAnomalyBurningFluff();
+        anomalyCarouselBlock = new BlockAnomalyCarousel();
+        anomalyElectraBlock = new BlockAnomalyElectra();
+        anomalyFryBlock = new BlockAnomalyFry();
+        anomalyFunnelBlock = new BlockAnomalyFunnel();
+        anomalyKisselBlock = new BlockAnomalyKissel();
+        anomalySteamBlock = new BlockAnomalySteam();
+        anomalyTrampolineBlock = new BlockAnomalyTrampoline();
 
 
-        GameRegistry.registerBlock(anomalyAcidMistBlock, AnomalyAcidMistItem.class, anomalyAcidMistBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyAerationBlock, AnomalyAerationItem.class, anomalyAerationBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyBurningFluffBlock, AnomalyBurningFluffItem.class, anomalyBurningFluffBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyCarouselBlock, AnomalyCarouselItem.class, anomalyCarouselBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyElectraBlock, AnomalyElectraItem.class, anomalyElectraBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyFryBlock, AnomalyFryItem.class, anomalyFryBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyFunnelBlock, AnomalyFunnelItem.class, anomalyFunnelBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyKisselBlock, AnomalyKisselItem.class, anomalyKisselBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalySteamBlock, AnomalySteamItem.class, anomalySteamBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyTrampolineBlock, AnomalyTrampolineItem.class, anomalyTrampolineBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyAcidMistBlock, ItemAnomalyAcidMist.class, anomalyAcidMistBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyAerationBlock, ItemAnomalyAeration.class, anomalyAerationBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyBurningFluffBlock, ItemAnomalyBurningFluff.class, anomalyBurningFluffBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyCarouselBlock, ItemAnomalyCarousel.class, anomalyCarouselBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyElectraBlock, ItemAnomalyElectra.class, anomalyElectraBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyFryBlock, ItemAnomalyFry.class, anomalyFryBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyFunnelBlock, ItemAnomalyFunnel.class, anomalyFunnelBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyKisselBlock, ItemAnomalyKissel.class, anomalyKisselBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalySteamBlock, ItemAnomalySteam.class, anomalySteamBlock.getUnlocalizedName());
+        GameRegistry.registerBlock(anomalyTrampolineBlock, ItemAnomalyTrampoline.class, anomalyTrampolineBlock.getUnlocalizedName());
 
 
         GameRegistry.registerTileEntity(AcidMistTileEntity.class, "anomaly_acidmist_tileentity");

@@ -4,9 +4,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.common.tileentity.FunnelTileEntity;
 
-public class AnomalyFunnelBlock extends AbstractAnomalyBlock {
+public class BlockAnomalyFunnel extends AbstractBlockAnomaly {
 
-    public AnomalyFunnelBlock() {
+    public BlockAnomalyFunnel() {
         super();
         this.setBlockName("anomaly_funnel_block");
     }

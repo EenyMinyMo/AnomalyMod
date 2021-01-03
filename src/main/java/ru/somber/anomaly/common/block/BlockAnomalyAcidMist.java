@@ -4,9 +4,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.common.tileentity.AcidMistTileEntity;
 
-public class AnomalyAcidMistBlock extends AbstractAnomalyBlock {
+public class BlockAnomalyAcidMist extends AbstractBlockAnomaly {
 
-    public AnomalyAcidMistBlock() {
+    public BlockAnomalyAcidMist() {
         super();
         this.setBlockName("anomaly_acidmist_block");
     }

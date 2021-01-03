@@ -4,9 +4,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.common.tileentity.KisselTileEntity;
 
-public class AnomalyKisselBlock extends AbstractAnomalyBlock {
+public class BlockAnomalyKissel extends AbstractBlockAnomaly {
 
-    public AnomalyKisselBlock() {
+    public BlockAnomalyKissel() {
         super();
         this.setBlockName("anomaly_kissel_block");
     }

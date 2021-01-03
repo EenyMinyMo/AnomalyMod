@@ -3,11 +3,12 @@ package ru.somber.anomaly.common.block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class AnomalyAerationBlock extends AbstractAnomalyBlock {
 
-    public AnomalyAerationBlock() {
+public class BlockAnomalyBurningFluff extends AbstractBlockAnomaly {
+
+    public BlockAnomalyBurningFluff() {
         super();
-        this.setBlockName("anomaly_aeration_block");
+        this.setBlockName("anomaly_burningfluff_block");
     }
 
     @Override

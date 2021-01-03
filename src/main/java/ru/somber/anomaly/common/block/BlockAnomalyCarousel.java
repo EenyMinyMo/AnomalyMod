@@ -4,9 +4,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.common.tileentity.CarouselTileEntity;
 
-public class AnomalyCarouselBlock extends AbstractAnomalyBlock {
+public class BlockAnomalyCarousel extends AbstractBlockAnomaly {
 
-    public AnomalyCarouselBlock() {
+    public BlockAnomalyCarousel() {
         super();
         this.setBlockName("anomaly_carousel_block");
     }

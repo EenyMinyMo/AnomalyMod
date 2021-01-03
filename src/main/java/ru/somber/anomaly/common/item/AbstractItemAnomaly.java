@@ -5,11 +5,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.IIcon;
-import ru.somber.anomaly.common.block.AbstractAnomalyBlock;
+import ru.somber.anomaly.common.block.AbstractBlockAnomaly;
 
-public abstract class AbstractAnomalyItem extends ItemBlock {
+public abstract class AbstractItemAnomaly extends ItemBlock {
 
-    public AbstractAnomalyItem(AbstractAnomalyBlock block) {
+    public AbstractItemAnomaly(AbstractBlockAnomaly block) {
         super(block);
         setMaxStackSize(1);
         setMaxDamage(0);

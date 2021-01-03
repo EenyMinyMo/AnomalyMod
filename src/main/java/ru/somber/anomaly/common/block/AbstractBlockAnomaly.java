@@ -9,9 +9,9 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import ru.somber.anomaly.AnomalyMod;
 
-public abstract class AbstractAnomalyBlock extends Block implements ITileEntityProvider {
+public abstract class AbstractBlockAnomaly extends Block implements ITileEntityProvider {
 
-    public AbstractAnomalyBlock() {
+    public AbstractBlockAnomaly() {
         super(Material.rock);
 
         this.setBlockTextureName(AnomalyMod.MOD_ID + ":empty");

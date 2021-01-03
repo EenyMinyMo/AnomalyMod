@@ -4,9 +4,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ru.somber.anomaly.common.tileentity.ElectraTileEntity;
 
-public class AnomalyElectraBlock extends AbstractAnomalyBlock {
+public class BlockAnomalyElectra extends AbstractBlockAnomaly {
 
-    public AnomalyElectraBlock() {
+    public BlockAnomalyElectra() {
         super();
         this.setBlockName("anomaly_electra_block");
     }
