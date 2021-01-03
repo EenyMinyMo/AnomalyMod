@@ -1,6 +1,7 @@
 package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.KisselEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
@@ -40,54 +41,31 @@ public class KisselTileEntity extends AbstractAnomalyTileEntity {
 
     @Override
     protected boolean processDefaultPhase() {
+        super.processDefaultPhase();
         prepareCollideEntityList(this);
 
-        super.processDefaultPhase();
-
-        return applyAnomalyEffectEntityList(listForSearchEntities);
+        return ! listForSearchEntities.isEmpty();
     }
 
     @Override
     protected boolean processActivePhase() {
+        super.processActivePhase();
         prepareCollideEntityList(this);
 
-        super.processActivePhase();
-
-        return ! applyAnomalyEffectEntityList(listForSearchEntities);
-    }
-
-
-    /**
-     * Пытается применить эффект аномалии на переданный список сущностей.
-     * Т.е. для каждой сущности вызывается applyAnomalyEffect(entity).
-     *
-     * @return true - если хотя бы на одну сущность был применен эффект аномалии, иначе false.
-     */
-    protected boolean applyAnomalyEffectEntityList(List< EntityLivingBase > entities) {
-        boolean flag = false;
-        for (EntityLivingBase entity : entities) {
-            flag = flag || applyAnomalyEffect(entity);
-        }
-        return flag;
-    }
-
-    /**
-     * Пытается применить эффект аномалии на переданную сущность.
-     * Если переднная сущность - игрок в креативе, эффект аномалии не применяется.
-     *
-     * @return true - если на переданную сущность был применен эффект аномалии, иначе false.
-     */
-    protected boolean applyAnomalyEffect(EntityLivingBase entity) {
-        //попытка каста к типу игрока
-        if (canApplyAnomalyEffect(entity)) {
-            //здесь применяем эффект аномалии для всех сущностей.
-            if (AnomalyMod.IS_SERVER) {
-                entity.setHealth(entity.getHealth() - 0.5F);
+        if (! listForSearchEntities.isEmpty()) {
+            for (EntityLivingBase entity : listForSearchEntities) {
+                if (AnomalyMod.IS_SERVER && getCurrentPhaseTick() % 5 == 0) {
+                    if (!(entity instanceof EntityPlayer) ||
+                            !((EntityPlayer) entity).capabilities.isCreativeMode) {
+                        entity.setHealth(entity.getHealth() - 1);
+                    }
+                }
             }
+
+            return false;
+        } else {
             return true;
         }
-
-        return false;
     }
 
 }

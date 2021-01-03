@@ -2,6 +2,8 @@ package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.CarouselEmitter;
 import ru.somber.anomaly.client.emitter.FunnelEmitter;
@@ -11,12 +13,12 @@ import ru.somber.anomaly.common.phase.PhaseType;
 import java.util.List;
 
 public class FunnelTileEntity extends AbstractAnomalyTileEntity {
-    private static final float xMinAABB = -1.5F;
+    private static final float xMinAABB = -2F;
     private static final float yMinAABB = -0.5F;
-    private static final float zMinAABB = -1.5F;
-    private static final float xMaxAABB = 2.5F;
+    private static final float zMinAABB = -2F;
+    private static final float xMaxAABB = 3F;
     private static final float yMaxAABB = 3.5F;
-    private static final float zMaxAABB = 2.5F;
+    private static final float zMaxAABB = 3F;
 
     private static final float xOffsetAnomalyCenter = 0.5F;
     private static final float yOffsetAnomalyCenter = 2.5F;
@@ -55,9 +57,8 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
 
     @Override
     protected boolean processDefaultPhase() {
-        prepareCollideEntityList(this);
-
         super.processDefaultPhase();
+        prepareCollideEntityList(this);
 
         return searchTargetEntity(listForSearchEntities);
     }
@@ -66,7 +67,6 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processActivePhase() {
         if (targetEntity != null) {
             if (! targetEntity.isEntityAlive()) {
-                targetEntity = null;
                 return true;
             }
 
@@ -74,62 +74,84 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
                 suctionFactor *= 1.025F;
             }
 
-            double deltaX = (xOffsetAnomalyCenter + xCoord) - targetEntity.posX;
-            double deltaY = (yOffsetAnomalyCenter + yCoord) - targetEntity.posY;
-            double deltaZ = (zOffsetAnomalyCenter + zCoord) - targetEntity.posZ;
+            if (AnomalyMod.IS_SERVER) {
+                //действия происходят на сервере.
 
-            if (! AnomalyMod.IS_SERVER && targetEntity == Minecraft.getMinecraft().renderViewEntity) {
-                deltaY += 1.62;
-            }
+                //если сущность не является сущностью игрока, то применяем эффект аномалии.
+                if (!(targetEntity instanceof EntityPlayer)) {
+                    applyAnomalyEffect();
+                }
 
-            targetEntity.motionX = 0;
-            targetEntity.motionY = 0;
-            targetEntity.motionZ = 0;
+                //если время активной фазы вышло, убиваем сущность.
+                if ((getCurrentPhaseTick()) >= getCurrentPhase().getTickDuration()) {
+                    if (!(targetEntity instanceof EntityPlayer) ||
+                            !((EntityPlayer) targetEntity).capabilities.isCreativeMode) {
+                        targetEntity.setHealth(0);
+                    }
+                }
+            } else {
+                //действия просяходят на клиенте.
 
-            targetEntity.motionX += deltaX * suctionFactor;
-            targetEntity.motionY += deltaY * suctionFactor;
-            targetEntity.motionZ += deltaZ * suctionFactor;
-        } else {
-            return true;
-        }
-
-
-        if (AnomalyMod.IS_SERVER) {
-            if ((getCurrentPhaseTick() - 1) >= getCurrentPhase().getTickDuration()) {
-                targetEntity.setHealth(0);
+                //если сущность - главный игрок клиента и не находится в креативе, то применяем эффект аномалии.
+                if (targetEntity instanceof EntityPlayer) {
+                    if ((targetEntity == Minecraft.getMinecraft().renderViewEntity) &&
+                            (!((EntityPlayer) targetEntity).capabilities.isCreativeMode)) {
+                        applyAnomalyEffect();
+                    }
+                } else {
+                    //если сущность не игрок, то применяем эффект аномалии.
+                    applyAnomalyEffect();
+                }
             }
         }
 
         super.processActivePhase();
 
-        return false;
+        return isPhaseTimeEnd();
     }
 
     @Override
     protected boolean processSleepPhase() {
         super.processSleepPhase();
 
-        suctionFactor = 0.01F;
-
         return isPhaseTimeEnd();
     }
 
-    /**
-     * Пытается найти в переданном списке целевую сущность через canApplyAnomalyEffect().
-     * Если целевая сущность найдена, она записывается в targetEntity и метод возврщает true.
-     * Если целевая сущность не найдена, возвращается false.
-     */
+    @Override
+    protected void activePhaseEnd() {
+        super.activePhaseEnd();
+
+        suctionFactor = 0.01F;
+        targetEntity = null;
+    }
+
+
     private boolean searchTargetEntity(List<EntityLivingBase> entities) {
-        for (EntityLivingBase entity : entities) {
-            if (canApplyAnomalyEffect(entity)) {
-                //здесь применяем эффект аномалии для всех сущностей.
-                if (targetEntity == null) {
-                    targetEntity = entity;
-                }
-                return true;
+        if (! entities.isEmpty()) {
+            if (targetEntity == null) {
+                targetEntity = entities.get(0);
             }
+            return true;
         }
         return false;
+    }
+
+    private void applyAnomalyEffect() {
+        double deltaX = (xOffsetAnomalyCenter + xCoord) - targetEntity.posX;
+        double deltaY = (yOffsetAnomalyCenter + yCoord) - targetEntity.posY;
+        double deltaZ = (zOffsetAnomalyCenter + zCoord) - targetEntity.posZ;
+
+        if ((! AnomalyMod.IS_SERVER) && targetEntity == Minecraft.getMinecraft().renderViewEntity) {
+            deltaY += 1.62;
+        }
+
+        targetEntity.motionX = 0;
+        targetEntity.motionY = 0;
+        targetEntity.motionZ = 0;
+
+        targetEntity.motionX += deltaX * suctionFactor;
+        targetEntity.motionY += deltaY * suctionFactor;
+        targetEntity.motionZ += deltaZ * suctionFactor;
     }
 
 }

@@ -2,8 +2,6 @@ package ru.somber.anomaly.common.block;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import ru.somber.anomaly.client.tileentity.ClientAerationTileEntity;
-import ru.somber.anomaly.server.tileentity.ServerAerationTileEntity;
 
 public class AnomalyAerationBlock extends AbstractAnomalyBlock {
 
@@ -14,11 +12,7 @@ public class AnomalyAerationBlock extends AbstractAnomalyBlock {
 
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {
-        if (world.isRemote) {
-            return new ClientAerationTileEntity();
-        } else {
-            return new ServerAerationTileEntity();
-        }
+        return null;
     }
 
 }

@@ -1,6 +1,7 @@
 package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.FryEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
@@ -42,59 +43,32 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
 
     @Override
     protected boolean processDefaultPhase() {
+        super.processDefaultPhase();
         prepareCollideEntityList(this);
 
-        super.processDefaultPhase();
-
         tickOnActiveOffset = 0;
-        return applyAnomalyEffectEntityList(listForSearchEntities);
+
+        return ! listForSearchEntities.isEmpty();
     }
 
     @Override
     protected boolean processActivePhase() {
+        super.processActivePhase();
         prepareCollideEntityList(this);
 
-        super.processActivePhase();
-
-        if ( applyAnomalyEffectEntityList(listForSearchEntities)) {
+        if (! listForSearchEntities.isEmpty()) {
+            for (EntityLivingBase entity : listForSearchEntities) {
+                if (AnomalyMod.IS_SERVER && getCurrentPhaseTick() % 4 == 0) {
+                    if (!(entity instanceof EntityPlayer) ||
+                            !((EntityPlayer) entity).capabilities.isCreativeMode) {
+                        entity.setHealth(entity.getHealth() - 2);
+                    }
+                }
+            }
             tickOnActiveOffset = getCurrentPhaseTick();
         }
 
         return ((getCurrentPhaseTick() - tickOnActiveOffset ) >= getCurrentPhase().getTickDuration());
-    }
-
-
-    /**
-     * Пытается применить эффект аномалии на переданный список сущностей.
-     * Т.е. для каждой сущности вызывается applyAnomalyEffect(entity).
-     *
-     * @return true - если хотя бы на одну сущность был применен эффект аномалии, иначе false.
-     */
-    protected boolean applyAnomalyEffectEntityList(List<EntityLivingBase> entities) {
-        boolean flag = false;
-        for (EntityLivingBase entity : entities) {
-            flag = flag || applyAnomalyEffect(entity);
-        }
-        return flag;
-    }
-
-    /**
-     * Пытается применить эффект аномалии на переданную сущность.
-     * Если переднная сущность - игрок в креативе, эффект аномалии не применяется.
-     *
-     * @return true - если на переданную сущность был применен эффект аномалии, иначе false.
-     */
-    protected boolean applyAnomalyEffect(EntityLivingBase entity) {
-        //попытка каста к типу игрока
-        if (canApplyAnomalyEffect(entity)) {
-            //здесь применяем эффект аномалии для всех сущностей.
-            if (AnomalyMod.IS_SERVER) {
-                entity.setHealth(entity.getHealth() - 0.5F);
-            }
-            return true;
-        }
-
-        return false;
     }
 
 }

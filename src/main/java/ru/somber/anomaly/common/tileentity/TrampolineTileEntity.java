@@ -1,6 +1,8 @@
 package ru.somber.anomaly.common.tileentity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.TrampolineEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
@@ -41,11 +43,43 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
 
     @Override
     protected boolean processDefaultPhase() {
+        super.processDefaultPhase();
         prepareCollideEntityList(this);
 
-        super.processDefaultPhase();
+        if (! listForSearchEntities.isEmpty()) {
+            for (EntityLivingBase entity : listForSearchEntities) {
+                if (AnomalyMod.IS_SERVER) {
+                    //действия происходят на сервере.
 
-        return applyAnomalyEffectEntityList(listForSearchEntities);
+                    //если сущность не является сущностью игрока, то применяем эффект аномалии.
+                    if (!(entity instanceof EntityPlayer)) {
+                        applyAnomalyEffect(entity);
+                    }
+
+                    if (!(entity instanceof EntityPlayer) ||
+                            !((EntityPlayer) entity).capabilities.isCreativeMode) {
+                        entity.setHealth(entity.getHealth() - 3);
+                    }
+                } else {
+                    //действия просяходят на клиенте.
+
+                    //если сущность - главный игрок клиента и не находится в креативе, то применяем эффект аномалии.
+                    if (entity instanceof EntityPlayer) {
+                        if ((entity == Minecraft.getMinecraft().renderViewEntity) &&
+                                (!((EntityPlayer) entity).capabilities.isCreativeMode)) {
+                            applyAnomalyEffect(entity);
+                        }
+                    } else {
+                        //если сущность не игрок, то применяем эффект аномалии.
+                        applyAnomalyEffect(entity);
+                    }
+                }
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -63,34 +97,8 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
     }
 
 
-    /**
-     * Пытается применить эффект аномалии на переданный список сущностей.
-     * Т.е. для каждой сущности вызывается applyAnomalyEffect(entity).
-     *
-     * @return true - если хотя бы на одну сущность был применен эффект аномалии, иначе false.
-     */
-    protected boolean applyAnomalyEffectEntityList(List<EntityLivingBase> entities) {
-        boolean flag = false;
-        for (EntityLivingBase entity : entities) {
-            flag = flag || applyAnomalyEffect(entity);
-        }
-        return flag;
-    }
-
-    /**
-     * Пытается применить эффект аномалии на переданную сущность.
-     * Если переднная сущность - игрок в креативе, эффект аномалии не применяется.
-     *
-     * @return true - если на переданную сущность был применен эффект аномалии, иначе false.
-     */
-    protected boolean applyAnomalyEffect(EntityLivingBase entity) {
-        //попытка каста к типу игрока
-        if (canApplyAnomalyEffect(entity)) {
-            //здесь применяем эффект аномалии для всех сущностей.
-            entity.motionY = 0.85F;
-            return true;
-        }
-        return false;
+    private void applyAnomalyEffect(EntityLivingBase entity) {
+        entity.motionY = 0.85F;
     }
 
 }

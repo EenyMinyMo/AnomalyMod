@@ -198,12 +198,14 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
      * Код в этом методе должен произоводить подготовку аномалии на серверной стороне.
      * Метод вызывается, когда тайловая сушность готова обрабатываться.
      */
+    @SideOnly(Side.SERVER)
     protected void serverValidate() {}
 
     /**
      * Код в этом методе должен произоводить подготовку аномалии на клиентской стороне.
      * Метод вызывается, когда тайловая сушность готова обрабатываться.
      */
+    @SideOnly(Side.CLIENT)
     protected void clientValidate() {
         emitter.setPosition(xCoord + 0.5F, yCoord, zCoord + 0.5F);
         emitter.create();
@@ -213,29 +215,16 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
      * Код в этом методе должен уничтожать внешние связи сущности на серверной стороне.
      * Метод вызывается перед моментом удаления тайловой сущности.
      */
+    @SideOnly(Side.SERVER)
     protected void serverInvalidate() {}
 
     /**
      * Код в этом методе должен уничтожать внешние связи сущности на клиентской стороне.
      * Метод вызывается перед моментом удаления тайловой сущности.
      */
+    @SideOnly(Side.CLIENT)
     protected void clientInvalidate() {
         emitter.setDie();
-    }
-
-    /**
-     * Метод для проверки возможно ли применить эффект аномалии на переданную сущность.
-     * Возвращает true, есть возможно применить эффект аномалии, иначе false.
-     *
-     * В дефолтной реализации для игроков в креативе возвращает false, для остальные сущностей true.
-     * Если логика аномалии отлична от этой, просто переопредели метод.
-     */
-    protected boolean canApplyAnomalyEffect(EntityLivingBase entity) {
-        if (entity instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entity;
-            return ! player.capabilities.isCreativeMode;
-        }
-        return true;
     }
 
 
@@ -320,20 +309,6 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
 
 
     /**
-     * Произоводит подготовку списка сущностей в пределах аномалии.
-     * Сущности ищутся через AABB аномалии в мире тайловой сушности.
-     */
-    protected static void prepareCollideEntityList(AbstractAnomalyTileEntity tile) {
-        listForSearchEntities.clear();
-        SomberCommonUtil.getEntitiesWithinAABB(tile.getWorldObj(),
-                                               EntityLivingBase.class,
-                                               tile.getAABBBody(),
-                                               null,
-                                               listForSearchEntities);
-    }
-
-
-    /**
      * Вызывает метод ***PhaseEnd() для фазы текущего типа.
      */
     private void endCurrentPhase() {
@@ -369,6 +344,20 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
                 sleepPhaseStart();
             } break;
         }
+    }
+
+
+    /**
+     * Произоводит подготовку списка сущностей в пределах аномалии.
+     * Сущности ищутся через AABB аномалии в мире тайловой сушности.
+     */
+    protected static void prepareCollideEntityList(AbstractAnomalyTileEntity tile) {
+        listForSearchEntities.clear();
+        SomberCommonUtil.getEntitiesWithinAABB(tile.getWorldObj(),
+                                               EntityLivingBase.class,
+                                               tile.getAABBBody(),
+                                               null,
+                                               listForSearchEntities);
     }
 
 }

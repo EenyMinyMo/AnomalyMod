@@ -4,7 +4,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import ru.somber.anomaly.client.emitter.AcidMistEmitter;
 import ru.somber.anomaly.common.block.*;
 import ru.somber.anomaly.common.item.*;
 import ru.somber.anomaly.common.tileentity.*;
@@ -26,7 +25,7 @@ public class CommonProxy {
     public CommonProxy() {}
 
     public void preInit(FMLPreInitializationEvent event) {
-        registerAnomalyBlock();
+        registerAnomaly();
     }
 
     public void init(FMLInitializationEvent event) {
@@ -37,7 +36,7 @@ public class CommonProxy {
 
     }
 
-    private void registerAnomalyBlock() {
+    private void registerAnomaly() {
         anomalyAcidMistBlock = new AnomalyAcidMistBlock();
         anomalyAerationBlock = new AnomalyAerationBlock();
         anomalyBurningFluffBlock = new AnomalyBurningFluffBlock();

@@ -2,8 +2,7 @@ package ru.somber.anomaly.common.block;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import ru.somber.anomaly.client.tileentity.ClientBurningFluffTileEntity;
-import ru.somber.anomaly.server.tileentity.ServerBurningFluffTileEntity;
+
 
 public class AnomalyBurningFluffBlock extends AbstractAnomalyBlock {
 
@@ -14,11 +13,7 @@ public class AnomalyBurningFluffBlock extends AbstractAnomalyBlock {
 
     @Override
     public TileEntity createNewTileEntity(World world, int metadata) {
-        if (world.isRemote) {
-            return new ClientBurningFluffTileEntity();
-        } else {
-            return new ServerBurningFluffTileEntity();
-        }
+        return null;
     }
 
 }

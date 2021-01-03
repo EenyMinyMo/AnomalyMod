@@ -16,9 +16,11 @@ import ru.somber.particlesystem.container.ListEmitterContainer;
 import ru.somber.particlesystem.container.ListParticleContainer;
 import ru.somber.particlesystem.manager.IParticleManager;
 import ru.somber.particlesystem.manager.SimpleParticleManager;
+import ru.somber.util.clientutil.opengl.DebugHelper;
 import ru.somber.particlesystem.render.GeometryShaderParticleRenderer;
 import ru.somber.particlesystem.render.IParticleRenderer;
 import ru.somber.util.clientutil.textureatlas.AtlasTexture;
+import ru.somber.util.clientutil.textureatlas.icon.AtlasIcon;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -40,17 +42,6 @@ public class ClientProxy extends CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
 
-//        GameRegistry.registerTileEntity(ClientDebugTileEntity.class, "client_anomaly_debug_tileentity");
-//        GameRegistry.registerTileEntity(ClientAcidMistTileEntity.class, "client_anomaly_acidmist_tileentity");
-//        GameRegistry.registerTileEntity(ClientAerationTileEntity.class, "client_anomaly_aeration_tileentity");
-//        GameRegistry.registerTileEntity(ClientBurningFluffTileEntity.class, "client_anomaly_burningfluff_tileentity");
-//        GameRegistry.registerTileEntity(ClientCarouselTileEntity.class, "client_anomaly_carousel_tileentity");
-//        GameRegistry.registerTileEntity(ClientElectraTileEntity.class, "client_anomaly_electra_tileentity");
-//        GameRegistry.registerTileEntity(ClientFryTileEntity.class, "client_anomaly_fry_tileentity");
-//        GameRegistry.registerTileEntity(ClientFunnelTileEntity.class, "client_anomaly_funnel_tileentity");
-//        GameRegistry.registerTileEntity(ClientKisselTileEntity.class, "client_anomaly_kissel_tileentity");
-//        GameRegistry.registerTileEntity(ClientSteamTileEntity.class, "client_anomaly_steam_tileentity");
-//        GameRegistry.registerTileEntity(ClientTrampolineTileEntity.class, "client_anomaly_trampoline_tileentity");
     }
 
     @Override
@@ -81,7 +72,7 @@ public class ClientProxy extends CommonProxy {
         AtlasTexture atlas = new AtlasTexture("textures/particles", 16, 4);
 
         registerParticleAtlasIcon(atlas);
-        atlas.stitchTextureAtlas(Minecraft.getMinecraft().getResourceManager());
+//        atlas.stitchTextureAtlas(Minecraft.getMinecraft().getResourceManager());
 
         atlas.setFilteringMode(GL11.GL_LINEAR_MIPMAP_LINEAR, GL11.GL_LINEAR);
         atlas.setWrapMode(GL12.GL_CLAMP_TO_EDGE);
