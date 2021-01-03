@@ -1,5 +1,6 @@
-package ru.somber.anomaly;
+package ru.somber.anomaly.client;
 
+import ru.somber.anomaly.AnomalyMod;
 import ru.somber.util.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.util.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
 

@@ -17,7 +17,7 @@ public class CarouselActiveLeafParticle extends AbstractLeafParticle {
     private final float minRadius, maxRadius;
 
     private boolean isLiftingMode;
-    private float moveAngleSpeed = 6;
+    private float moveAngleSpeed = 3F;
     private int currentTicks;
     private float currentAngle;
     private float radius;
@@ -64,7 +64,7 @@ public class CarouselActiveLeafParticle extends AbstractLeafParticle {
             radius = SomberCommonUtil.interpolateBetween(minRadius, maxRadius, Math.max(1 - (float) currentTicks / countTicksForLifting, 0));
 
             currentAngle += moveAngleSpeed;
-            moveAngleSpeed += 0.085F;
+            moveAngleSpeed += 0.09F;
 
             addToRotateAngles(0, 0, 0.6F * currentTicks / countTicksForLifting);
 

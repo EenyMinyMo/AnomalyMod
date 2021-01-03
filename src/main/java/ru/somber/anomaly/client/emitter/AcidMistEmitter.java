@@ -1,6 +1,6 @@
 package ru.somber.anomaly.client.emitter;
 
-import ru.somber.anomaly.ParticleIcons;
+import ru.somber.anomaly.client.ParticleIcons;
 import ru.somber.anomaly.client.particle.acidmist.AcidMistFogParticle;
 import ru.somber.particlesystem.particle.IParticle;
 import ru.somber.util.commonutil.SomberCommonUtil;

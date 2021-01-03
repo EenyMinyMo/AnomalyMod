@@ -1,7 +1,6 @@
 package ru.somber.anomaly.client.particle.fry;
 
-import org.lwjgl.util.vector.Vector3f;
-import ru.somber.anomaly.ParticleIcons;
+import ru.somber.anomaly.client.ParticleIcons;
 import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
 import ru.somber.util.clientutil.textureatlas.icon.AtlasIcon;
 import ru.somber.util.clientutil.textureatlas.icon.MultiFrameAtlasIcon;

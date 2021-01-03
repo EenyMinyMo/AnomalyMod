@@ -1,12 +1,7 @@
 package ru.somber.anomaly.client.particle.trampoline;
 
 import net.minecraft.util.MathHelper;
-import org.lwjgl.util.vector.Vector3f;
-import ru.somber.anomaly.ParticleIcons;
 import ru.somber.anomaly.client.particle.AbstractLeafParticle;
-import ru.somber.particlesystem.particle.AbstractParticleSimpleData;
-import ru.somber.util.clientutil.textureatlas.icon.AtlasIcon;
-import ru.somber.util.clientutil.textureatlas.icon.MultiFrameAtlasIcon;
 import ru.somber.util.commonutil.SomberCommonUtil;
 
 import java.util.Random;

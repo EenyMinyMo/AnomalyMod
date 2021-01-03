@@ -1,7 +1,7 @@
 package ru.somber.anomaly.client.emitter;
 
 import ru.somber.anomaly.ClientProxy;
-import ru.somber.anomaly.ParticleIcons;
+import ru.somber.anomaly.client.ParticleIcons;
 import ru.somber.anomaly.client.particle.kissel.*;
 import ru.somber.particlesystem.particle.IParticle;
 import ru.somber.util.commonutil.SomberCommonUtil;
