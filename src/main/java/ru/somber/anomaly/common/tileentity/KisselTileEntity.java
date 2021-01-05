@@ -43,16 +43,18 @@ public class KisselTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         super.processDefaultPhase();
         prepareCollideEntityList(this);
+        prepareCollideBoltList(this);
 
-        return ! listForSearchEntities.isEmpty();
+        return (! listForSearchEntities.isEmpty()) || (! listForSearchBolts.isEmpty());
     }
 
     @Override
     protected boolean processActivePhase() {
         super.processActivePhase();
         prepareCollideEntityList(this);
+        prepareCollideBoltList(this);
 
-        if (! listForSearchEntities.isEmpty()) {
+        if ((! listForSearchEntities.isEmpty()) || (! listForSearchBolts.isEmpty())) {
             for (EntityLivingBase entity : listForSearchEntities) {
                 if (AnomalyMod.IS_SERVER && getCurrentPhaseTick() % 5 == 0) {
                     if (!(entity instanceof EntityPlayer) ||

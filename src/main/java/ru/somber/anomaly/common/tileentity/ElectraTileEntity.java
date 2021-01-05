@@ -4,6 +4,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.ElectraEmitter;
+import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
@@ -42,8 +43,9 @@ public class ElectraTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         super.processDefaultPhase();
         prepareCollideEntityList(this);
+        prepareCollideBoltList(this);
 
-        if (! listForSearchEntities.isEmpty()) {
+        if ((! listForSearchEntities.isEmpty()) || (! listForSearchBolts.isEmpty())) {
             for (EntityLivingBase entity : listForSearchEntities) {
                 if (AnomalyMod.IS_SERVER) {
                     if (!(entity instanceof EntityPlayer) ||

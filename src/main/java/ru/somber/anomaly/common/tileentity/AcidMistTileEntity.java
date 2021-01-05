@@ -42,8 +42,9 @@ public class AcidMistTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         super.processDefaultPhase();
         prepareCollideEntityList(this);
+        prepareCollideBoltList(this);
 
-        return ! listForSearchEntities.isEmpty();
+        return (! listForSearchEntities.isEmpty()) || (! listForSearchBolts.isEmpty());
     }
 
     @Override
@@ -51,7 +52,7 @@ public class AcidMistTileEntity extends AbstractAnomalyTileEntity {
         super.processActivePhase();
         prepareCollideEntityList(this);
 
-        if (! listForSearchEntities.isEmpty()) {
+        if ((! listForSearchEntities.isEmpty()) || (! listForSearchBolts.isEmpty()))  {
             for (EntityLivingBase entity : listForSearchEntities) {
                 if (AnomalyMod.IS_SERVER && getCurrentPhaseTick() % 10 == 0) {
                     if (!(entity instanceof EntityPlayer) ||

@@ -3,8 +3,10 @@ package ru.somber.anomaly;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ru.somber.anomaly.common.block.*;
+import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.anomaly.common.item.*;
 import ru.somber.anomaly.common.tileentity.*;
 
@@ -20,6 +22,7 @@ public class CommonProxy {
     public static AbstractBlockAnomaly anomalyKisselBlock;
     public static AbstractBlockAnomaly anomalySteamBlock;
     public static AbstractBlockAnomaly anomalyTrampolineBlock;
+    public static ItemBolt itemBolt;
 
 
     public CommonProxy() {}
@@ -48,7 +51,6 @@ public class CommonProxy {
         anomalySteamBlock = new BlockAnomalySteam();
         anomalyTrampolineBlock = new BlockAnomalyTrampoline();
 
-
         GameRegistry.registerBlock(anomalyAcidMistBlock, ItemAnomalyAcidMist.class, anomalyAcidMistBlock.getUnlocalizedName());
         GameRegistry.registerBlock(anomalyAerationBlock, ItemAnomalyAeration.class, anomalyAerationBlock.getUnlocalizedName());
         GameRegistry.registerBlock(anomalyBurningFluffBlock, ItemAnomalyBurningFluff.class, anomalyBurningFluffBlock.getUnlocalizedName());
@@ -60,7 +62,6 @@ public class CommonProxy {
         GameRegistry.registerBlock(anomalySteamBlock, ItemAnomalySteam.class, anomalySteamBlock.getUnlocalizedName());
         GameRegistry.registerBlock(anomalyTrampolineBlock, ItemAnomalyTrampoline.class, anomalyTrampolineBlock.getUnlocalizedName());
 
-
         GameRegistry.registerTileEntity(AcidMistTileEntity.class, "anomaly_acidmist_tileentity");
         GameRegistry.registerTileEntity(CarouselTileEntity.class, "anomaly_carousel_tileentity");
         GameRegistry.registerTileEntity(ElectraTileEntity.class, "anomaly_electra_tileentity");
@@ -70,6 +71,8 @@ public class CommonProxy {
         GameRegistry.registerTileEntity(SteamTileEntity.class, "anomaly_steam_tileentity");
         GameRegistry.registerTileEntity(TrampolineTileEntity.class, "anomaly_trampoline_tileentity");
 
+        itemBolt = new ItemBolt();
+        GameRegistry.registerItem(itemBolt, itemBolt.getUnlocalizedName());
     }
 
 }

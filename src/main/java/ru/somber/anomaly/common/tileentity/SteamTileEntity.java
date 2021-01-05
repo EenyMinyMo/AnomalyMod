@@ -42,16 +42,18 @@ public class SteamTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         super.processDefaultPhase();
         prepareCollideEntityList(this);
+        prepareCollideBoltList(this);
 
-        return ! listForSearchEntities.isEmpty();
+        return (! listForSearchEntities.isEmpty()) || (! listForSearchBolts.isEmpty());
     }
 
     @Override
     protected boolean processActivePhase() {
         super.processActivePhase();
         prepareCollideEntityList(this);
+        prepareCollideBoltList(this);
 
-        if (! listForSearchEntities.isEmpty()) {
+        if ((! listForSearchEntities.isEmpty()) || (! listForSearchBolts.isEmpty())) {
             for (EntityLivingBase entity : listForSearchEntities) {
                 if (AnomalyMod.IS_SERVER && getCurrentPhaseTick() % 3 == 0) {
                     if (!(entity instanceof EntityPlayer) ||
@@ -60,10 +62,8 @@ public class SteamTileEntity extends AbstractAnomalyTileEntity {
                     }
                 }
             }
-
             return false;
         }
-
         return true;
     }
 }

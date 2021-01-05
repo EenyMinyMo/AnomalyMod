@@ -37,6 +37,6 @@ public class KisselDistortionWaveParticle extends AbstractParticleSimpleData {
         setHalfSizes(size, size);
         setAlphaFactor((1 - lifeFactor));
 
-        computeNormalVectorSphericalParticle();
+        computeNormalVectorStaticParticle();
     }
 }

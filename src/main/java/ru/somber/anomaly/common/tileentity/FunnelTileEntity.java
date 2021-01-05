@@ -5,20 +5,23 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import ru.somber.anomaly.AnomalyMod;
+import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.client.emitter.CarouselEmitter;
 import ru.somber.anomaly.client.emitter.FunnelEmitter;
+import ru.somber.anomaly.client.particle.SplashGravityParticle;
+import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
 import java.util.List;
 
 public class FunnelTileEntity extends AbstractAnomalyTileEntity {
-    private static final float xMinAABB = -2F;
+    private static final float xMinAABB = -1.9F;
     private static final float yMinAABB = -0.5F;
-    private static final float zMinAABB = -2F;
-    private static final float xMaxAABB = 3F;
+    private static final float zMinAABB = -1.9F;
+    private static final float xMaxAABB = 2.9F;
     private static final float yMaxAABB = 3.5F;
-    private static final float zMaxAABB = 3F;
+    private static final float zMaxAABB = 2.9F;
 
     private static final float xOffsetAnomalyCenter = 0.5F;
     private static final float yOffsetAnomalyCenter = 2.5F;
@@ -59,6 +62,25 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         super.processDefaultPhase();
         prepareCollideEntityList(this);
+        prepareCollideBoltList(this);
+
+        for (EntityBolt entityBolt : listForSearchBolts) {
+            if (! AnomalyMod.IS_SERVER) {
+                float xParticlePos = (float) entityBolt.posX;
+                float yParticlePos = (float) entityBolt.posY;
+                float zParticlePos = (float) entityBolt.posZ;
+                float xNormal = (float) entityBolt.motionX;
+                float yNormal = (float) entityBolt.motionY;
+                float zNormal = (float) entityBolt.motionZ;
+
+                SplashGravityParticle particle = new SplashGravityParticle(xParticlePos, yParticlePos, zParticlePos, xNormal, yNormal, zNormal);
+                ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
+            }
+
+            entityBolt.motionX = -entityBolt.motionX;
+            entityBolt.motionY = -entityBolt.motionY;
+            entityBolt.motionZ = -entityBolt.motionZ;
+        }
 
         return searchTargetEntity(listForSearchEntities);
     }

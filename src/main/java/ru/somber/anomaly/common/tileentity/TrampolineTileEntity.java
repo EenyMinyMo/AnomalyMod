@@ -1,10 +1,12 @@
 package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.TrampolineEmitter;
+import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
@@ -45,8 +47,9 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processDefaultPhase() {
         super.processDefaultPhase();
         prepareCollideEntityList(this);
+        prepareCollideBoltList(this);
 
-        if (! listForSearchEntities.isEmpty()) {
+        if ((! listForSearchEntities.isEmpty()) || (! listForSearchBolts.isEmpty())) {
             for (EntityLivingBase entity : listForSearchEntities) {
                 if (AnomalyMod.IS_SERVER) {
                     //действия происходят на сервере.
@@ -76,6 +79,10 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
                 }
             }
 
+            for (EntityBolt entity : listForSearchBolts) {
+                applyAnomalyEffect(entity);
+            }
+
             return true;
         } else {
             return false;
@@ -97,7 +104,7 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
     }
 
 
-    private void applyAnomalyEffect(EntityLivingBase entity) {
+    private void applyAnomalyEffect(Entity entity) {
         entity.motionY = 0.85F;
     }
 

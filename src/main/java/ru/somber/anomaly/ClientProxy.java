@@ -1,5 +1,7 @@
 package ru.somber.anomaly;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -9,6 +11,8 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import ru.somber.anomaly.client.ParticleIcons;
 import ru.somber.anomaly.client.render.DistortionParticleRenderer;
+import ru.somber.anomaly.client.render.RenderEntityBolt;
+import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.particlesystem.ParticleAPI;
 import ru.somber.particlesystem.container.IEmitterContainer;
 import ru.somber.particlesystem.container.IParticleContainer;
@@ -42,6 +46,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event);
+
+        RenderingRegistry.registerEntityRenderingHandler(EntityBolt.class, new RenderEntityBolt());
 
     }
 
