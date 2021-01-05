@@ -7,8 +7,6 @@ import ru.somber.anomaly.client.emitter.AcidMistEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
-import java.util.List;
-
 public class AcidMistTileEntity extends AbstractAnomalyTileEntity {
     private static final float xMinAABB = -1F;
     private static final float yMinAABB = 0F;

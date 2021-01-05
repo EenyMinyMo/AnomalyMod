@@ -7,8 +7,6 @@ import ru.somber.anomaly.client.emitter.KisselEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
-import java.util.List;
-
 public class KisselTileEntity extends AbstractAnomalyTileEntity {
     private static final float xMinAABB = -0.5F;
     private static final float yMinAABB = 0F;

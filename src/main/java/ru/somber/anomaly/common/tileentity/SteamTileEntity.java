@@ -1,13 +1,15 @@
 package ru.somber.anomaly.common.tileentity;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import ru.AmaZ1nG.sound.MutableSound;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.SteamEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
-
-import java.util.List;
 
 public class SteamTileEntity extends AbstractAnomalyTileEntity {
     private static final float xMinAABB = 0F;
@@ -25,6 +27,8 @@ public class SteamTileEntity extends AbstractAnomalyTileEntity {
         activePhase.setNextPhase(defaultPhase);
     }
 
+    @SideOnly(Side.CLIENT)
+    private MutableSound defaultSound;
 
     public SteamTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
@@ -36,6 +40,23 @@ public class SteamTileEntity extends AbstractAnomalyTileEntity {
             SteamEmitter emitter = new SteamEmitter(0, 0, 0);
             setEmitter(emitter);
         }
+    }
+
+    @Override
+    protected void clientValidate() {
+        super.clientValidate();
+
+        defaultSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":steam"));
+        defaultSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        defaultSound.setRepeatable(true);
+        defaultSound.play();
+    }
+
+    @Override
+    protected void clientInvalidate() {
+        super.clientInvalidate();
+
+        defaultSound.stop();
     }
 
     @Override

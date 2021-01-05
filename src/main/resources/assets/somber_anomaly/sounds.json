@@ -1,0 +1,11 @@
+{
+  "steam": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "steam",
+        "stream": false
+      }
+    ]
+  }
+}

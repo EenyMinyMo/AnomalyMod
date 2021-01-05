@@ -10,8 +10,6 @@ import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
-import java.util.List;
-
 public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
     private static final float xMinAABB = -0.25F;
     private static final float yMinAABB = 0F;
@@ -105,7 +103,7 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
 
 
     private void applyAnomalyEffect(Entity entity) {
-        entity.motionY = 0.85F;
+        entity.addVelocity(0, 0.85, 0);
     }
 
 }
