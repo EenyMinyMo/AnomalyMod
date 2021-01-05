@@ -3,11 +3,11 @@ package ru.somber.anomaly.common.tileentity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.AbstractAnomalyEmitter;
+import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.util.commonutil.SomberCommonUtil;
 
@@ -17,6 +17,7 @@ import java.util.List;
 public abstract class AbstractAnomalyTileEntity extends TileEntity {
     /** Список сущностей. Вынесен для поиска сущностей в мире через метод prepareCollidedEntities(). */
     protected static final List<EntityLivingBase> listForSearchEntities = new ArrayList<>();
+    protected static final List<EntityBolt> listForSearchBolts = new ArrayList<>();
 
     /** AABB аномалии, в пределах которой будут накладываться эффекты на сущности. */
     private final AxisAlignedBB aabbBody;
@@ -358,6 +359,15 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
                                                tile.getAABBBody(),
                                                null,
                                                listForSearchEntities);
+    }
+
+    protected static void prepareCollideBoltList(AbstractAnomalyTileEntity tile) {
+        listForSearchBolts.clear();
+        SomberCommonUtil.getEntitiesWithinAABB(tile.getWorldObj(),
+                                               EntityBolt.class,
+                                               tile.getAABBBody(),
+                                               null,
+                                               listForSearchBolts);
     }
 
 }
