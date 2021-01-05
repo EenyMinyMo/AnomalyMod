@@ -9,10 +9,10 @@ import java.util.Random;
 public class FunnelFlashParticle extends AbstractParticleSimpleData {
 
     private static final float minSizes = 0.1F;
-    private static final float maxSizes = 2.5F;
+    private static final float maxSizes = 3.5F;
     private static final float maxHeight = 2.8F;
     /** Время в тиках, которое видно частицу. */
-    private static final int maxVisibleTime = 40;
+    private static final int maxVisibleTime = 26;
 
     private final float yStart;
     private int visibleTime = 1;

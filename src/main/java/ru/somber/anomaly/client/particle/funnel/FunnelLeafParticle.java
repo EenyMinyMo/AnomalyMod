@@ -7,9 +7,8 @@ import java.util.Random;
 
 public class FunnelLeafParticle extends AbstractLeafParticle {
 
-    private static final float maxHeight = 2.6F;
     /** Время в тиках, которое видно частицу. */
-    private static final int maxVisibleTime = 40;
+    private static final int maxVisibleTime = 22;
 
     private final float xStart, yStart, zStart;
     private final float radius;
@@ -24,15 +23,15 @@ public class FunnelLeafParticle extends AbstractLeafParticle {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
         this.xStart = x + (randomizer.nextFloat() * 0.16F - 0.08F);
-        this.yStart = y + (randomizer.nextFloat() + 1.9F);
+        this.yStart = y + (randomizer.nextFloat() * 1.6F - 0.6F);
         this.zStart = z + (randomizer.nextFloat() * 0.16F - 0.08F);
 
-        this.radius = 1.5F;
+        this.radius = 3F;
 
         this.angle = (float) Math.PI * 2 * randomizer.nextFloat();
         this.visibleTime = randomizer.nextInt(maxVisibleTime);
 
-        setHalfSizes(0.08F, 0.08F);
+        setHalfSizes(0.1F, 0.1F);
     }
 
     @Override
@@ -50,16 +49,16 @@ public class FunnelLeafParticle extends AbstractLeafParticle {
             setPosition(x, yStart, z);
             setOldPosition(x, yStart, z);
 
-            xVector = - (float) Math.cos(angle) * radius / maxVisibleTime;
-            zVector = - (float) Math.sin(angle) * radius / maxVisibleTime;
-            yVector = 0.26F;
+            xVector = (float) -Math.cos(angle) * radius / maxVisibleTime * 1.5F;
+            zVector = (float) -Math.sin(angle) * radius / maxVisibleTime * 1.5F;
+            yVector = 0.9F;
 
             visibleTime = 1;
         }
 
-        yVector -= 0.02F;
+        yVector -= 0.1F;
         addToPosition(xVector, yVector,zVector);
-        addToRotateAngles(0, 0, 0.15F);
+        addToRotateAngles(0, 0, 0F);
 
         visibleTime++;
     }

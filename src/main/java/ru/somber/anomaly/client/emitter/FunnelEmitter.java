@@ -49,7 +49,7 @@ public class FunnelEmitter extends AbstractAnomalyEmitter {
         factor %= 1.0F;
         distortionParticleRecoveryTick = (int) (countTickFlashParticleRecovery * factor);
 
-        leafParticles = new FunnelLeafParticle[8];
+        leafParticles = new FunnelLeafParticle[12];
         for (int i = 0; i < leafParticles.length; i++) {
             FunnelLeafParticle leafParticle = new FunnelLeafParticle(getPositionX(), getPositionY(), getPositionZ());
 
