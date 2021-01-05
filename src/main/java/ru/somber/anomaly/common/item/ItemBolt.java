@@ -44,6 +44,10 @@ public class ItemBolt extends Item {
 
     @Override
     public void onPlayerStoppedUsing(ItemStack itemStack, World world, EntityPlayer player, int useDuration) {
+        if (! AnomalyMod.IS_SERVER) {
+            return;
+        }
+
         int deltaUseDuration = this.getMaxItemUseDuration(itemStack) - useDuration;
 
         float forceFactor = deltaUseDuration / 12.0F;

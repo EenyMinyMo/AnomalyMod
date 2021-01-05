@@ -73,6 +73,7 @@ public class CommonProxy {
 
         itemBolt = new ItemBolt();
         GameRegistry.registerItem(itemBolt, itemBolt.getUnlocalizedName());
+        EntityRegistry.registerModEntity(EntityBolt.class, "STALKER_ENTITY_BOLT", EntityRegistry.findGlobalUniqueEntityId(), AnomalyMod.getInstance(), 64, 10, true);
     }
 
 }

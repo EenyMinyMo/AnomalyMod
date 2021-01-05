@@ -14,6 +14,8 @@ public class AnomalyMod {
     public static final String MOD_VERSION = "0.0.0";
     public static final boolean IS_SERVER = FMLCommonHandler.instance().getSide().isServer();
 
+    @Mod.Instance(AnomalyMod.MOD_ID)
+    private static AnomalyMod instance;
 
     @SidedProxy(clientSide = "ru.somber.anomaly.ClientProxy",
             serverSide = "ru.somber.anomaly.ServerProxy")
@@ -33,6 +35,10 @@ public class AnomalyMod {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit(event);
+    }
+
+    public static AnomalyMod getInstance() {
+        return instance;
     }
 
 }

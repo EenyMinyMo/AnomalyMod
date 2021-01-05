@@ -2,31 +2,24 @@ package ru.somber.anomaly.common.entity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.material.Material;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-import java.util.List;
-
 public class EntityBolt extends Entity implements IProjectile {
-    private final float forceFactor;
-    private boolean requiredReflect;
 
-
-    public EntityBolt(World world, float forceFactor, EntityLivingBase shootingEntity) {
+    public EntityBolt(World world) {
         super(world);
 
-        this.forceFactor = forceFactor;
         this.renderDistanceWeight = 10;
         this.setSize(0.1F, 0.1F);
+    }
+
+    public EntityBolt(World world, float forceFactor, EntityLivingBase shootingEntity) {
+        this(world);
 
         this.setLocationAndAngles(shootingEntity.posX, shootingEntity.posY + shootingEntity.getEyeHeight(), shootingEntity.posZ,
                                   shootingEntity.rotationYaw, shootingEntity.rotationPitch);
