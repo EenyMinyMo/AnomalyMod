@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class ElectraEmitter extends AbstractAnomalyEmitter {
 
-    private float cooldownAdditionalStaticParticle;
+    private float cooldownStaticParticle;
     private float cooldownSphericalParticle;
 
 
@@ -39,20 +39,17 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
 
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        createStaticElectraParticle();
-
-
-        if (cooldownAdditionalStaticParticle == 0) {
-            createAdditionStaticElectraParticle();
-            cooldownAdditionalStaticParticle = 6 + randomizer.nextInt(10);
+        if (cooldownStaticParticle <= 0) {
+            createStaticElectraParticle();
+            cooldownStaticParticle = 1 + randomizer.nextInt(9);
         }
 
-        if (cooldownSphericalParticle == 0) {
+        if (cooldownSphericalParticle <= 0) {
             createSphericalElectraParticle();
-            cooldownSphericalParticle = 1 + randomizer.nextInt(3);
+            cooldownSphericalParticle = 4 + randomizer.nextInt(5);
         }
 
-        cooldownAdditionalStaticParticle--;
+        cooldownStaticParticle--;
         cooldownSphericalParticle--;
     }
 
@@ -76,22 +73,11 @@ public class ElectraEmitter extends AbstractAnomalyEmitter {
     private void createStaticElectraParticle() {
         Random randomizer = SomberCommonUtil.RANDOMIZER;
 
-        float x = getPositionX() + randomizer.nextFloat() * 1.8F - 0.9F;
+        float x = getPositionX() + randomizer.nextFloat() * 1.7F - 0.85F;
         float y = getPositionY() + 0.03125F;
-        float z = getPositionZ() + randomizer.nextFloat() * 1.8F - 0.9F;
+        float z = getPositionZ() + randomizer.nextFloat() * 1.7F - 0.85F;
 
         IParticle particle = new ElectraStaticParticle(x, y, z, 10);
-        addParticleContainer(particle);
-    }
-
-    private void createAdditionStaticElectraParticle() {
-        Random randomizer = SomberCommonUtil.RANDOMIZER;
-
-        float x = getPositionX() + randomizer.nextFloat() * 1.6F - 0.8F;
-        float y = getPositionY() + 0.03125F;
-        float z = getPositionZ() + randomizer.nextFloat() * 1.6F - 0.8F;
-
-        IParticle particle = new ElectraStaticAdditionalParticle(x, y, z, 10);
         addParticleContainer(particle);
     }
 
