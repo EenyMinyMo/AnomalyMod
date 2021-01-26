@@ -2,8 +2,11 @@ package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import ru.AmaZ1nG.sound.MutableSound;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.AcidMistEmitter;
+import ru.somber.anomaly.client.emitter.SteamEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 
@@ -29,11 +32,14 @@ public class AcidMistTileEntity extends AbstractAnomalyTileEntity {
               xMaxAABB, yMaxAABB, zMaxAABB);
 
         setPhase(defaultPhase);
+    }
 
-        if (!AnomalyMod.IS_SERVER) {
-            AcidMistEmitter emitter = new AcidMistEmitter(0, 0, 0);
-            setEmitter(emitter);
-        }
+    @Override
+    protected void clientValidate() {
+        AcidMistEmitter emitter = new AcidMistEmitter(xCoord + 0.5F, yCoord, zCoord + 0.5F);
+        setEmitter(emitter);
+
+        super.clientValidate();
     }
 
     @Override

@@ -1,14 +1,20 @@
 package ru.somber.anomaly.common.tileentity;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import ru.AmaZ1nG.sound.MutableSound;
 import ru.somber.anomaly.AnomalyMod;
+import ru.somber.anomaly.client.emitter.KisselEmitter;
 import ru.somber.anomaly.client.emitter.TrampolineEmitter;
 import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
+import ru.somber.util.commonutil.SomberCommonUtil;
 
 public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
     private static final float xMinAABB = -0.25F;
@@ -29,16 +35,42 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
     }
 
 
+    @SideOnly(Side.CLIENT)
+    private MutableSound idleSound;
+    @SideOnly(Side.CLIENT)
+    private MutableSound activeSound;
+
+
     public TrampolineTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
               xMaxAABB, yMaxAABB, zMaxAABB);
 
         setPhase(defaultPhase);
+    }
 
-        if (!AnomalyMod.IS_SERVER) {
-            TrampolineEmitter emitter = new TrampolineEmitter(0, 0, 0);
-            setEmitter(emitter);
-        }
+    @Override
+    protected void clientValidate() {
+        TrampolineEmitter emitter = new TrampolineEmitter(xCoord + 0.5F, yCoord, zCoord + 0.5F);
+        setEmitter(emitter);
+
+        super.clientValidate();
+
+        idleSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":trampoline_idle"));
+        idleSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        idleSound.setRepeatable(true);
+        idleSound.setRepeatDelay(25 + SomberCommonUtil.RANDOMIZER.nextInt(15));
+
+        activeSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":trampoline_active"));
+        activeSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        activeSound.setRepeatable(false);
+    }
+
+    @Override
+    protected void clientInvalidate() {
+        super.clientInvalidate();
+
+        idleSound.stop();
+        activeSound.stop();
     }
 
     @Override
@@ -101,6 +133,44 @@ public class TrampolineTileEntity extends AbstractAnomalyTileEntity {
         return isPhaseTimeEnd();
     }
 
+    @Override
+    protected void defaultPhaseStart() {
+        super.defaultPhaseStart();
+        if (! AnomalyMod.IS_SERVER) {
+            idleSound.play();
+        }
+    }
+
+    @Override
+    protected void defaultPhaseEnd() {
+        super.defaultPhaseEnd();
+        if (! AnomalyMod.IS_SERVER) {
+            idleSound.stop();
+        }
+    }
+
+    @Override
+    protected void activePhaseStart() {
+        super.activePhaseStart();
+        if (! AnomalyMod.IS_SERVER) {
+            activeSound.play();
+        }
+    }
+
+    @Override
+    protected void activePhaseEnd() {
+        super.activePhaseEnd();
+    }
+
+    @Override
+    protected void sleepPhaseStart() {
+        super.sleepPhaseStart();
+    }
+
+    @Override
+    protected void sleepPhaseEnd() {
+        super.sleepPhaseEnd();
+    }
 
     private void applyAnomalyEffect(Entity entity) {
         entity.addVelocity(0, 0.85, 0);

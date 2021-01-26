@@ -1,11 +1,192 @@
 {
-  "steam": {
+
+  "carousel_active": {
     "category": "ambient",
     "sounds": [
       {
-        "name": "steam",
-        "stream": false
+        "name": "carousel_active"
+      }
+    ]
+  },
+
+  "carousel_bolt_reaction": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "carousel_bolt_reaction"
+      }
+    ]
+  },
+
+  "carousel_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "carousel_idle"
+      }
+    ]
+  },
+
+  "electra_active_1": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "electra_active_1"
+      }
+    ]
+  },
+
+  "electra_active_2": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "electra_active_2"
+      }
+    ]
+  },
+
+  "electra_bolt_reaction": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "electra_bolt_reaction"
+      }
+    ]
+  },
+
+  "electra_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "electra_idle"
+      }
+    ]
+  },
+
+  "fry_active": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "fry_active"
+      }
+    ]
+  },
+
+  "fry_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "fry_idle"
+      }
+    ]
+  },
+
+  "funnel_active": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "funnel_active"
+      }
+    ]
+  },
+
+  "funnel_bolt_reaction": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "funnel_bolt_reaction"
+      }
+    ]
+  },
+
+  "funnel_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "funnel_idle"
+      }
+    ]
+  },
+
+  "kissel_active": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "kissel_active"
+      }
+    ]
+  },
+
+  "kissel_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "kissel_idle"
+      }
+    ]
+  },
+
+  "steam_active": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "steam_active"
+      }
+    ]
+  },
+
+  "steam_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "steam_idle"
+      }
+    ]
+  },
+
+  "teleport_active": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "teleport_active"
+      }
+    ]
+  },
+
+  "teleport_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "teleport_idle"
+      }
+    ]
+  },
+
+  "trampoline_active": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "trampoline_active"
+      }
+    ]
+  },
+
+  "trampoline_bolt_reaction": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "trampoline_bolt_reaction"
+      }
+    ]
+  },
+
+  "trampoline_idle": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "trampoline_idle"
       }
     ]
   }
+
 }

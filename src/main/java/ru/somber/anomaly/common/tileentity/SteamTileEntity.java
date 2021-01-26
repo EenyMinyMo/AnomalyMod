@@ -27,36 +27,44 @@ public class SteamTileEntity extends AbstractAnomalyTileEntity {
         activePhase.setNextPhase(defaultPhase);
     }
 
+
+    private int tickOnActiveOffset;
+
     @SideOnly(Side.CLIENT)
-    private MutableSound defaultSound;
+    private MutableSound idleSound;
+    @SideOnly(Side.CLIENT)
+    private MutableSound activeSound;
+
 
     public SteamTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
               xMaxAABB, yMaxAABB, zMaxAABB);
 
         setPhase(defaultPhase);
-
-        if (!AnomalyMod.IS_SERVER) {
-            SteamEmitter emitter = new SteamEmitter(0, 0, 0);
-            setEmitter(emitter);
-        }
     }
 
     @Override
     protected void clientValidate() {
+        SteamEmitter emitter = new SteamEmitter(xCoord + 0.5F, yCoord, zCoord + 0.5F);
+        setEmitter(emitter);
+
         super.clientValidate();
 
-        defaultSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":steam"));
-        defaultSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
-        defaultSound.setRepeatable(true);
-        defaultSound.play();
+        idleSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":steam_idle"));
+        idleSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        idleSound.setRepeatable(true);
+
+        activeSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":steam_active"));
+        activeSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        activeSound.setRepeatable(true);
     }
 
     @Override
     protected void clientInvalidate() {
         super.clientInvalidate();
 
-        defaultSound.stop();
+        idleSound.stop();
+        activeSound.stop();
     }
 
     @Override
@@ -83,8 +91,40 @@ public class SteamTileEntity extends AbstractAnomalyTileEntity {
                     }
                 }
             }
-            return false;
+            tickOnActiveOffset = getCurrentPhaseTick();
         }
-        return true;
+        return ((getCurrentPhaseTick() - tickOnActiveOffset ) >= getCurrentPhase().getTickDuration());
+    }
+
+    @Override
+    protected void defaultPhaseStart() {
+        super.defaultPhaseStart();
+        if (! AnomalyMod.IS_SERVER) {
+            idleSound.play();
+        }
+    }
+
+    @Override
+    protected void defaultPhaseEnd() {
+        super.defaultPhaseEnd();
+        if (! AnomalyMod.IS_SERVER) {
+            idleSound.stop();
+        }
+    }
+
+    @Override
+    protected void activePhaseStart() {
+        super.activePhaseStart();
+        if (! AnomalyMod.IS_SERVER) {
+            activeSound.play();
+        }
+    }
+
+    @Override
+    protected void activePhaseEnd() {
+        super.activePhaseEnd();
+        if (! AnomalyMod.IS_SERVER) {
+            activeSound.stop();
+        }
     }
 }

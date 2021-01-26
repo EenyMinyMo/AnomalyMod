@@ -19,9 +19,9 @@ import ru.somber.particlesystem.container.ListEmitterContainer;
 import ru.somber.particlesystem.container.ListParticleContainer;
 import ru.somber.particlesystem.manager.IParticleManager;
 import ru.somber.particlesystem.manager.SimpleParticleManager;
-import ru.somber.util.clientutil.opengl.DebugHelper;
 import ru.somber.particlesystem.render.GeometryShaderParticleRenderer;
 import ru.somber.particlesystem.render.IParticleRenderer;
+import ru.somber.util.clientutil.opengl.DebugHelper;
 import ru.somber.util.clientutil.textureatlas.AtlasTexture;
 
 @SideOnly(Side.CLIENT)

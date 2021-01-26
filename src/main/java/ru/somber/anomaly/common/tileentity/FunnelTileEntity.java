@@ -1,8 +1,12 @@
 package ru.somber.anomaly.common.tileentity;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import ru.AmaZ1nG.sound.MutableSound;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.ClientProxy;
 import ru.somber.anomaly.client.emitter.FunnelEmitter;
@@ -41,6 +45,13 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
     /** Коэффициент засасывания аномалии. */
     private float suctionFactor;
 
+    @SideOnly(Side.CLIENT)
+    private MutableSound idleSound;
+    @SideOnly(Side.CLIENT)
+    private MutableSound activeSound;
+    @SideOnly(Side.CLIENT)
+    private MutableSound boltReactionSound;
+
 
     public FunnelTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
@@ -48,12 +59,36 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
 
         setPhase(defaultPhase);
 
-        if (!AnomalyMod.IS_SERVER) {
-            FunnelEmitter emitter = new FunnelEmitter(0, 0, 0);
-            setEmitter(emitter);
-        }
-
         suctionFactor = 0.01F;
+    }
+
+    @Override
+    protected void clientValidate() {
+        FunnelEmitter emitter = new FunnelEmitter(xCoord + 0.5F, yCoord, zCoord + 0.5F);
+        setEmitter(emitter);
+
+        super.clientValidate();
+
+        idleSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":funnel_idle"));
+        idleSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        idleSound.setRepeatable(true);
+
+        activeSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":funnel_active"));
+        activeSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        activeSound.setRepeatable(false);
+
+        boltReactionSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":funnel_bolt_reaction"));
+        boltReactionSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        boltReactionSound.setRepeatable(false);
+    }
+
+    @Override
+    protected void clientInvalidate() {
+        super.clientInvalidate();
+
+        idleSound.stop();
+        activeSound.stop();
+        boltReactionSound.stop();
     }
 
     @Override
@@ -73,6 +108,7 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
 
                 SplashGravityParticle particle = new SplashGravityParticle(xParticlePos, yParticlePos, zParticlePos, xNormal, yNormal, zNormal);
                 ClientProxy.getParticleManager().getParticleContainer().addParticle(particle);
+                boltReactionSound.play();
             }
 
             entityBolt.motionX = -entityBolt.motionX;
@@ -87,6 +123,9 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
     protected boolean processActivePhase() {
         if (targetEntity != null) {
             if (! targetEntity.isEntityAlive()) {
+                if (! AnomalyMod.IS_SERVER) {
+                    activeSound.stop();
+                }
                 return true;
             }
 
@@ -138,11 +177,45 @@ public class FunnelTileEntity extends AbstractAnomalyTileEntity {
     }
 
     @Override
+    protected void defaultPhaseStart() {
+        super.defaultPhaseStart();
+        if (! AnomalyMod.IS_SERVER) {
+            idleSound.play();
+        }
+    }
+
+    @Override
+    protected void defaultPhaseEnd() {
+        super.defaultPhaseEnd();
+        if (! AnomalyMod.IS_SERVER) {
+            idleSound.stop();
+        }
+    }
+
+    @Override
+    protected void activePhaseStart() {
+        super.activePhaseStart();
+        if (! AnomalyMod.IS_SERVER) {
+            activeSound.play();
+        }
+    }
+
+    @Override
     protected void activePhaseEnd() {
         super.activePhaseEnd();
 
         suctionFactor = 0.01F;
         targetEntity = null;
+    }
+
+    @Override
+    protected void sleepPhaseEnd() {
+        super.sleepPhaseEnd();
+    }
+
+    @Override
+    protected void sleepPhaseStart() {
+        super.sleepPhaseStart();
     }
 
 

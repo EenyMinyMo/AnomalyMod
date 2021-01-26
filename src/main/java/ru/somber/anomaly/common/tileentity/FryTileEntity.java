@@ -1,7 +1,11 @@
 package ru.somber.anomaly.common.tileentity;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
+import ru.AmaZ1nG.sound.MutableSound;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.FryEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
@@ -26,17 +30,41 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
 
     private int tickOnActiveOffset;
 
+    @SideOnly(Side.CLIENT)
+    private MutableSound idleSound;
+    @SideOnly(Side.CLIENT)
+    private MutableSound activeSound;
+
 
     public FryTileEntity() {
         super(xMinAABB, yMinAABB, zMinAABB,
               xMaxAABB, yMaxAABB, zMaxAABB);
 
         setPhase(defaultPhase);
+    }
 
-        if (!AnomalyMod.IS_SERVER) {
-            FryEmitter emitter = new FryEmitter(0, 0, 0);
-            setEmitter(emitter);
-        }
+    @Override
+    protected void clientValidate() {
+        FryEmitter emitter = new FryEmitter(xCoord + 0.5F, yCoord, zCoord + 0.5F);
+        setEmitter(emitter);
+
+        super.clientValidate();
+
+        idleSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":fry_idle"));
+        idleSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        idleSound.setRepeatable(true);
+
+        activeSound = new MutableSound(new ResourceLocation(AnomalyMod.MOD_ID + ":fry_active"));
+        activeSound.setPosition(xCoord + 0.5, yCoord, zCoord + 0.5);
+        activeSound.setRepeatable(true);
+    }
+
+    @Override
+    protected void clientInvalidate() {
+        super.clientInvalidate();
+
+        idleSound.stop();
+        activeSound.stop();
     }
 
     @Override
@@ -71,4 +99,35 @@ public class FryTileEntity extends AbstractAnomalyTileEntity {
         return ((getCurrentPhaseTick() - tickOnActiveOffset ) >= getCurrentPhase().getTickDuration());
     }
 
+    @Override
+    protected void defaultPhaseStart() {
+        super.defaultPhaseStart();
+        if (! AnomalyMod.IS_SERVER) {
+            idleSound.play();
+        }
+    }
+
+    @Override
+    protected void defaultPhaseEnd() {
+        super.defaultPhaseEnd();
+        if (! AnomalyMod.IS_SERVER) {
+            idleSound.stop();
+        }
+    }
+
+    @Override
+    protected void activePhaseStart() {
+        super.activePhaseStart();
+        if (! AnomalyMod.IS_SERVER) {
+            activeSound.play();
+        }
+    }
+
+    @Override
+    protected void activePhaseEnd() {
+        super.activePhaseEnd();
+        if (! AnomalyMod.IS_SERVER) {
+            activeSound.stop();
+        }
+    }
 }

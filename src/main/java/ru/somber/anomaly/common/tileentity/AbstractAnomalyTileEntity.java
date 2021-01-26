@@ -208,7 +208,6 @@ public abstract class AbstractAnomalyTileEntity extends TileEntity {
      */
     @SideOnly(Side.CLIENT)
     protected void clientValidate() {
-        emitter.setPosition(xCoord + 0.5F, yCoord, zCoord + 0.5F);
         emitter.create();
     }
 
