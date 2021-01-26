@@ -13,8 +13,6 @@ import ru.somber.anomaly.common.tileentity.*;
 public class CommonProxy {
 
     public static AbstractBlockAnomaly anomalyAcidMistBlock;
-    public static AbstractBlockAnomaly anomalyAerationBlock;
-    public static AbstractBlockAnomaly anomalyBurningFluffBlock;
     public static AbstractBlockAnomaly anomalyCarouselBlock;
     public static AbstractBlockAnomaly anomalyElectraBlock;
     public static AbstractBlockAnomaly anomalyFryBlock;
@@ -31,18 +29,12 @@ public class CommonProxy {
         registerAnomaly();
     }
 
-    public void init(FMLInitializationEvent event) {
+    public void init(FMLInitializationEvent event) {}
 
-    }
-
-    public void postInit(FMLPostInitializationEvent event) {
-
-    }
+    public void postInit(FMLPostInitializationEvent event) {}
 
     private void registerAnomaly() {
         anomalyAcidMistBlock = new BlockAnomalyAcidMist();
-        anomalyAerationBlock = new BlockAnomalyAeration();
-        anomalyBurningFluffBlock = new BlockAnomalyBurningFluff();
         anomalyCarouselBlock = new BlockAnomalyCarousel();
         anomalyElectraBlock = new BlockAnomalyElectra();
         anomalyFryBlock = new BlockAnomalyFry();
@@ -52,8 +44,6 @@ public class CommonProxy {
         anomalyTrampolineBlock = new BlockAnomalyTrampoline();
 
         GameRegistry.registerBlock(anomalyAcidMistBlock, ItemAnomalyAcidMist.class, anomalyAcidMistBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyAerationBlock, ItemAnomalyAeration.class, anomalyAerationBlock.getUnlocalizedName());
-        GameRegistry.registerBlock(anomalyBurningFluffBlock, ItemAnomalyBurningFluff.class, anomalyBurningFluffBlock.getUnlocalizedName());
         GameRegistry.registerBlock(anomalyCarouselBlock, ItemAnomalyCarousel.class, anomalyCarouselBlock.getUnlocalizedName());
         GameRegistry.registerBlock(anomalyElectraBlock, ItemAnomalyElectra.class, anomalyElectraBlock.getUnlocalizedName());
         GameRegistry.registerBlock(anomalyFryBlock, ItemAnomalyFry.class, anomalyFryBlock.getUnlocalizedName());
@@ -73,7 +63,7 @@ public class CommonProxy {
 
         itemBolt = new ItemBolt();
         GameRegistry.registerItem(itemBolt, itemBolt.getUnlocalizedName());
-        EntityRegistry.registerModEntity(EntityBolt.class, "STALKER_ENTITY_BOLT", EntityRegistry.findGlobalUniqueEntityId(), AnomalyMod.getInstance(), 64, 10, true);
+        EntityRegistry.registerModEntity(EntityBolt.class, "staler_entity_bolt", EntityRegistry.findGlobalUniqueEntityId(), AnomalyMod.getInstance(), 64, 10, true);
     }
 
 }

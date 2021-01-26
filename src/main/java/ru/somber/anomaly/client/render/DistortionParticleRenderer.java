@@ -77,17 +77,16 @@ public class DistortionParticleRenderer extends GeometryShaderParticleRenderer {
         super.postRender(particleList, interpolationFactor);
 
         setFramebufferTexture(GL30.GL_COLOR_ATTACHMENT0, framebufferDefaultTexture.getTextureID());
-        //для дебага размытия
-        if (! Keyboard.isKeyDown(Keyboard.KEY_Y)) { //рендер кадра с эффектом размытия.
+        //сборка эффекта distortion.
+        preDistortionRender();
+        distortionRender();
+        postDistortionRender();
 
-            //сборка эффекта distortion.
-            preDistortionRender();
-            distortionRender();
-            postDistortionRender();
-        } else {    //буфера размытия без окружающего мира.
-            GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-            OpenGLUtil.drawTextureOverFramebuffer(distortionBufferTexture.getTextureID());
-        }
+        //для дебага размытия
+//        if (Keyboard.isKeyDown(Keyboard.KEY_Y)) {
+//            GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+//            OpenGLUtil.drawTextureOverFramebuffer(distortionBufferTexture.getTextureID());
+//        }
     }
 
 
