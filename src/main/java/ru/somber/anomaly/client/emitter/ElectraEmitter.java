@@ -1,6 +1,9 @@
 package ru.somber.anomaly.client.emitter;
 
-import ru.somber.anomaly.client.particle.electra.*;
+import ru.somber.anomaly.client.particle.electra.ElectraDischargeSphericalParticle;
+import ru.somber.anomaly.client.particle.electra.ElectraDischargeStaticParticle;
+import ru.somber.anomaly.client.particle.electra.ElectraSphericalParticle;
+import ru.somber.anomaly.client.particle.electra.ElectraStaticParticle;
 import ru.somber.particlesystem.particle.IParticle;
 import ru.somber.util.commonutil.SomberCommonUtil;
 

@@ -2,11 +2,8 @@ package ru.somber.anomaly.common.tileentity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ResourceLocation;
-import ru.AmaZ1nG.sound.MutableSound;
 import ru.somber.anomaly.AnomalyMod;
 import ru.somber.anomaly.client.emitter.AcidMistEmitter;
-import ru.somber.anomaly.client.emitter.SteamEmitter;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
 import ru.somber.anomaly.common.phase.PhaseType;
 

@@ -9,7 +9,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import ru.AmaZ1nG.sound.MutableSound;
 import ru.somber.anomaly.AnomalyMod;
-import ru.somber.anomaly.client.emitter.KisselEmitter;
 import ru.somber.anomaly.client.emitter.TrampolineEmitter;
 import ru.somber.anomaly.common.entity.EntityBolt;
 import ru.somber.anomaly.common.phase.AnomalyPhase;
